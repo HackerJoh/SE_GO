@@ -3,7 +3,8 @@
 PR Software Engineering
 Projekt: Brettspiel GO
 Betreuer: Johannes Sametinger
+
 Teammitglieder:
-> - Johannes Hacker (Teamleiter)
-> - Julian Lumetsberger
-> - Moritz Neuwirth
+- Johannes Hacker (Teamleiter)
+- Julian Lumetsberger
+- Moritz Neuwirth

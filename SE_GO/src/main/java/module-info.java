@@ -6,5 +6,4 @@ module com.example.se_go {
     requires org.kordamp.ikonli.javafx;
 
     opens com.example.se_go to javafx.fxml;
-    exports com.example.se_go;
 }

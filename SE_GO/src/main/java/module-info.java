@@ -5,6 +5,8 @@ module com.example.se_go {
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
 
+    opens controller;
+
     exports model;
     exports controller;
 

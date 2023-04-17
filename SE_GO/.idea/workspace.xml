@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/se_go/GoModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/se_go/Stone.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/se_go/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/se_go/GoModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/se_go/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/se_go/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/se_go/HelloController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,11 +49,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.se_go.HelloApplication" />
+    <configuration name="GoView" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.se_go.GoView" />
       <module name="SE_GO" />
       <extension name="coverage">
         <pattern>
@@ -67,7 +68,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.GoView" />
       </list>
     </recent_temporary>
   </component>
@@ -80,7 +81,10 @@
       <option name="presentableId" value="Default" />
       <updated>1679991152459</updated>
       <workItem from="1680004183176" duration="6000" />
-      <workItem from="1680010640569" duration="10143000" />
+      <workItem from="1680010640569" duration="11022000" />
+      <workItem from="1680046250719" duration="825000" />
+      <workItem from="1680077884558" duration="5675000" />
+      <workItem from="1680880378803" duration="16000" />
     </task>
     <servers />
   </component>
@@ -103,18 +107,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/se_go/GoModel.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="4" />
+          <line>56</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/se_go/GoModel.java</url>
-          <line>42</line>
-          <option name="timeStamp" value="5" />
+          <line>60</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/se_go/GoModel.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="6" />
+          <line>36</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

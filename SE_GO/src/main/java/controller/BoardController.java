@@ -3,11 +3,9 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import model.GoModel;
 import model.Stone;
 
@@ -15,7 +13,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class BoardController implements Initializable {
-    private int boardSize = 9;
+    private int boardSize = 13;
     private GoModel model;
 
     @FXML
@@ -32,14 +30,14 @@ public class BoardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        model = new GoModel(9);
+        model = new GoModel(13);
         createAndConfigurePane();
         createAndLayoutControls();
         updateControllerFromListeners();
     }
 
     private void createAndConfigurePane() {
-        sceneWidth = 460;
+        sceneWidth = 438;
         gp_boardGrid.setGridLinesVisible(true);
         gp_boardGrid.setStyle("-fx-background-color: #FAEBD7;");
         //gp_bigGrid.add(vbx_sideMenu, 0, 0);

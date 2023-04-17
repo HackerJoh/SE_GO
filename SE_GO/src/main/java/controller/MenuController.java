@@ -57,7 +57,7 @@ public class MenuController implements Initializable {
 
         cbx_boardSize.getItems().removeAll(cbx_boardSize.getItems());
         cbx_boardSize.getItems().addAll("19x19", "13x13", "9x9");
-        cbx_boardSize.getSelectionModel().select("19x19");
+        cbx_boardSize.getSelectionModel().select("13x13");
 
     }
 

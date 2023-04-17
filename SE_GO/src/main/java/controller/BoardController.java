@@ -1,19 +1,17 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import model.GoModel;
+import model.Settings;
 import model.Stone;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class BoardController implements Initializable {
-    private int boardSize = 13;
+public class BoardController {
+    private int boardSize;
+    private int handicap;
+    private double komi;
     private GoModel model;
 
     @FXML
@@ -22,25 +20,24 @@ public class BoardController implements Initializable {
     @FXML
     private GridPane gp_boardGrid;
 
-    @FXML
-    private VBox vbx_sideMenu;
-
-    private int sceneWidth;
     int zug = 0;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        model = new GoModel(13);
+    public void initData(Settings s) {
+        boardSize = s.getBoardSize();
+        handicap = s.getHandicap();
+        komi = s.getKomi();
+
+        model = new GoModel(boardSize);
+
         createAndConfigurePane();
         createAndLayoutControls();
         updateControllerFromListeners();
     }
 
     private void createAndConfigurePane() {
-        sceneWidth = 438;
+        int sceneWidth = (int) gp_boardGrid.getWidth();
         gp_boardGrid.setGridLinesVisible(true);
         gp_boardGrid.setStyle("-fx-background-color: #FAEBD7;");
-        //gp_bigGrid.add(vbx_sideMenu, 0, 0);
 
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
@@ -100,4 +97,6 @@ public class BoardController implements Initializable {
             }
         }
     }
+
+
 }

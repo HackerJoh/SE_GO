@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.GoApplication;
+import model.Settings;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
@@ -62,14 +62,28 @@ public class MenuController implements Initializable {
     }
 
     public void startGame() throws IOException {
+        Settings s = new Settings();
+        String boardSize = cbx_boardSize.getValue();
+        switch (boardSize) {
+            case "19x19" -> s.setBoardSize(19);
+            case "13x13" -> s.setBoardSize(13);
+            default -> s.setBoardSize(9);
+        }
+        s.setHandicap(sp_handicap.getValue());
+        s.setKomi(sp_komi.getValue());
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
         Parent root = loader.load();
 
         Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();
-
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setScene(scene);
+
+        BoardController controller = loader.getController();
+        controller.initData(s);
+
         primaryStage.show();
     }
+
 }

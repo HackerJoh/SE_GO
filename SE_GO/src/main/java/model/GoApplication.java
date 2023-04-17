@@ -1,25 +1,25 @@
 package model;
 
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
+
+import java.io.IOException;
 
 public class GoApplication extends Application {
-    private final int size;
-
-    public GoApplication(int size) {
-        this.size = size;
-    }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
+        Parent root = loader.load();
 
-        GoModel model = new GoModel(size);
-        GoView view = new GoView(model);
-
-        Scene scene = new Scene(view.asParent(), 600, 600);
-        stage.setScene(scene);
-        stage.show();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

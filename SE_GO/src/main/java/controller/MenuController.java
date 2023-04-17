@@ -1,12 +1,17 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.GoApplication;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -56,15 +61,15 @@ public class MenuController implements Initializable {
 
     }
 
-    public void startGame() {
-        GoApplication game;
-        String selectedSize = cbx_boardSize.getValue();
-        switch (selectedSize) {
-            case "13x13" -> game = new GoApplication(13);
-            case "9x9" -> game = new GoApplication(9);
-            default -> game = new GoApplication(19);
-        }
-        game.start((Stage) btn_startGame.getScene().getWindow());
+    public void startGame() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
+        Parent root = loader.load();
 
+        Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 }

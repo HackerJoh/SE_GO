@@ -55,7 +55,7 @@
                                          GridPane.rowIndex="2"/>
                             </children>
                         </GridPane>
-                        <Button fx:id="btn_startGame" mnemonicParsing="false" text="Spiel starten"
+                        <Button fx:id="btn_startGame" mnemonicParsing="false" onAction="#startGame" text="Spiel starten"
                                 textAlignment="CENTER">
                             <styleClass>
                                 <String fx:value="btn"/>

@@ -1,18 +1,18 @@
-package com.example.se_go;
+package model;
 
 import javafx.scene.paint.Color;
 
 public class GoModel {
-    private int[][] boardArray;
-    private int size;
+    private final int[][] boardArray;
+    private final int size;
 
-    GoModel(int size){
+    public GoModel(int size) {
         boardArray = new int[size][size];
         this.size = size;
     }
 
-    public void setStone(int id, int color){
-        boardArray[id/size][id%size] = color;
+    public void setStone(int id, int color) {
+        boardArray[id / size][id % size] = color;
     }
 
     public String toString(){

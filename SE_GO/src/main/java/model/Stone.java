@@ -1,4 +1,4 @@
-package com.example.se_go;
+package model;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;

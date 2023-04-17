@@ -1,4 +1,4 @@
-package com.example.se_go;
+package model;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -10,19 +10,36 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
 public class GoView extends Application {
     GoModel goModel;
     GridPane bigGrid;
     GridPane boardgrid;
-    int boardSize = 3;
-    int sceneHeight = 500;
-    int sceneWight = 500;
+    int boardSize;
+    double komi;
+    int handicap;
+    int sceneHeight = 600;
+    int sceneWight = 600;
     long zug = 0;
 
+    public void setBoardSize(int boardSize) {
+        this.boardSize = boardSize;
+    }
+
+    public void setKomi(double komi) {
+        this.komi = komi;
+    }
+
+    public void setHandicap(int handicap) {
+        this.handicap = handicap;
+    }
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) {
+        System.out.println("board size: " + boardSize);
+        System.out.println("handicap: " + handicap);
+        System.out.println("komi: " + komi);
+
         goModel = new GoModel(boardSize);
         bigGrid = new GridPane();
         boardgrid = new GridPane();
@@ -31,7 +48,7 @@ public class GoView extends Application {
 
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                Stone stone = new Stone( i*boardSize+j,sceneWight / boardSize / 2, Color.TRANSPARENT);
+                Stone stone = new Stone(i * boardSize + j, sceneWight / boardSize / 2, Color.TRANSPARENT);
                 stone.setStroke(Color.TRANSPARENT);
                 stone.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
@@ -101,10 +118,6 @@ public class GoView extends Application {
                 stone.setFill(goModel.getColorById(stone.id));
             }
         }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
 

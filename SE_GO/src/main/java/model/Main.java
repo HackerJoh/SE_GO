@@ -12,14 +12,9 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        // Load the FXML file and get the controller instance
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
         Parent root = loader.load();
 
-        // Call a method on the controller instance
-        //controller.doSomething();
-
-        // Set the FXML file as the root of the scene and show it
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setScene(scene);

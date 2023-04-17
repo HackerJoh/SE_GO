@@ -24,9 +24,9 @@
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="282.0"/>
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="86.0" valignment="CENTER"
+                <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="89.0" valignment="CENTER"
                                 vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="294.0" vgrow="SOMETIMES"/>
+                <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="286.0" vgrow="SOMETIMES"/>
                 <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
@@ -83,21 +83,29 @@
                 </VBox>
                 <Text fx:id="txt_copyright" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info"
                       text="© 2023 Hacker, Lumetsberger, Neuwirth" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
-                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnSpan="2"
-                      GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                <VBox alignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER"
+                      GridPane.valignment="CENTER">
                     <children>
-                        <Text fx:id="txt_heading" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="GO"
-                              textAlignment="CENTER" wrappingWidth="180.0">
+                        <Text fx:id="txt_heading" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1"
+                              text="GO" textAlignment="CENTER" wrappingWidth="180.0">
                             <font>
                                 <Font name="System Bold" size="40.0"/>
                             </font>
                         </Text>
-                        <Text fx:id="txt_subheading" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieleinstellungen">
+                        <Text fx:id="txt_subheading" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3"
+                              text="Spieleinstellungen">
                             <font>
                                 <Font name="System Bold" size="18.0"/>
                             </font>
                         </Text>
                     </children>
+                    <styleClass>
+                        <String fx:value="lbl"/>
+                        <String fx:value="lbl-primary"/>
+                    </styleClass>
+                    <GridPane.margin>
+                        <Insets/>
+                    </GridPane.margin>
                 </VBox>
             </children>
         </GridPane>

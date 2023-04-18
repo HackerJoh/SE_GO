@@ -31,6 +31,7 @@ public class GoView {
         boardgrid.setGridLinesVisible(true);
         boardgrid.setStyle("-fx-background-color: #FAEBD7;");
 
+
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 Stone stone = new Stone(i * boardSize + j, sceneWight / boardSize / 2, Color.TRANSPARENT);
@@ -55,16 +56,17 @@ public class GoView {
     }
 
     private void createAndLayoutControls() {
-        btn_cstones = new Button("CSTONES");
-        bigGrid.add(btn_cstones, 0, 0);
+        //btn_cstones = new Button("CSTONES");
+        //bigGrid.add(btn_cstones, 0, 0);
         bigGrid.add(boardgrid, 1, 0);
+        //btn_cstones.setMinWidth(100);
     }
 
     private void updateControllerFromListeners() {
-        btn_cstones.setOnMouseClicked(mouseEvent -> {
+        /*btn_cstones.setOnMouseClicked(mouseEvent -> {
             model.removeCatchedStones();
             gridReload();
-        });
+        });*/
 
         bigGrid.widthProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(bigGrid.getHeight(), newVal.doubleValue());

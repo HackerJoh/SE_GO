@@ -4,11 +4,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
 public class Stone extends Circle {
-    private static Color hoverColorBlack = Color.gray(0.3, 0.7);
-    private static Color hoverColorWhite = Color.gray(0.8, 0.5);
+    private static final Color hoverColorBlack = Color.gray(0.3, 0.7);
+    private static final Color hoverColorWhite = Color.gray(0.8, 0.5);
 
-    int id;
-    private GoModel model;
+    final int id;
+    private final GoModel model;
     private boolean isUsed;
 
 
@@ -25,14 +25,14 @@ public class Stone extends Circle {
         this.setStroke(Color.TRANSPARENT);
         this.setOnMouseClicked(mouseEvent -> {
             if(!isUsed){
-                if(model.getZug() % 2 == 0){
+                if(model.getMoveCounter() % 2 == 0){
                     this.setFill(Color.BLACK);
                     model.setStone(this.id, -1);
                 }else {
                     this.setFill(Color.WHITE);
                     model.setStone(this.id, 1);
                 }
-                model.increaseZug();
+                model.increaseMoves();
                 this.isUsed = true;
             }
         });
@@ -41,7 +41,7 @@ public class Stone extends Circle {
     private void addHoverListener(){
         this.setOnMouseEntered(mouseEvent -> {
             if(!isUsed){
-                if(model.getZug() % 2 == 0){
+                if(model.getMoveCounter() % 2 == 0){
                     this.setFill(hoverColorBlack);
                 }else{
                     this.setFill(hoverColorWhite);

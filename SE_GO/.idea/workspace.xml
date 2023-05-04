@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Structered Stone and added Lines to the Gobaord">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/VLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/HLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Stone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +82,7 @@
       <workItem from="1682066640248" duration="652000" />
       <workItem from="1682970927209" duration="8466000" />
       <workItem from="1683021880730" duration="4065000" />
+      <workItem from="1683229460042" duration="370000" />
     </task>
     <task id="LOCAL-00001" summary="Rebased">
       <created>1681806117856</created>
@@ -108,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683022310323</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Structered Stone and added Lines to the Gobaord">
+      <created>1683229502718</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683229502719</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

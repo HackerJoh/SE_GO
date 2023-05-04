@@ -7,7 +7,7 @@ public class Stone extends Circle {
     private static Color hoverColorBlack = Color.gray(0.3, 0.7);
     private static Color hoverColorWhite = Color.gray(0.8, 0.5);
 
-    int id;
+    public int id;
     private GoModel model;
     private boolean isUsed;
 
@@ -19,6 +19,11 @@ public class Stone extends Circle {
         this.model = model;
         addSetListener();
         addHoverListener();
+    }
+
+    public Stone(int id, int radius, Color c){
+        super(radius, c);
+        this.id = id;
     }
 
     private void addSetListener(){

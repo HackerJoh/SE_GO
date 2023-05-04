@@ -12,7 +12,7 @@ public class Stone extends Circle {
     private boolean isUsed;
 
 
-    public Stone(int id, int radius, GoModel model){
+    public Stone(int id, double radius, GoModel model){
         super(radius, Color.TRANSPARENT);
         this.id = id;
         this.isUsed = false;

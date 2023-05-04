@@ -5,14 +5,22 @@ import javafx.scene.paint.Color;
 public class GoModel {
     private final int[][] boardArray;
     private final int size;
+    private long zug;
 
     public GoModel(int size) {
         boardArray = new int[size][size];
         this.size = size;
+        this.zug = 0;
     }
 
     public int getSize() {
         return size;
+    }
+
+    public long getZug(){return zug;}
+
+    public void increaseZug(){
+        this.zug++;
     }
 
     public void setStone(int id, int color) {

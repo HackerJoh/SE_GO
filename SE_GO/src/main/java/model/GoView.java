@@ -1,5 +1,6 @@
 package model;
 
+import javafx.geometry.HPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -34,18 +35,22 @@ public class GoView {
         boardgrid = new GridPane();
         boardgrid.setGridLinesVisible(false);
         boardgrid.setStyle("-fx-background-color: #FAEBD7;");
+        bigGrid.setStyle("-fx-background-color: #FAEBD7;");
+
 
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (49+(i%9));
             Text text = new Text(Character.toString(vertical));
             boardgrid.add(text, 0, i+1);
+            boardgrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65+i);
             Text text = new Text(Character.toString(vertical));
             boardgrid.add(text, i+1, 0);
+            boardgrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize ; i++) {
@@ -83,12 +88,14 @@ public class GoView {
             char vertical = (char) (49+(i%9));
             Text text = new Text(Character.toString(vertical));
             boardgrid.add(text, boardSize +1 , i+1);
+            boardgrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65+i);
             Text text = new Text(Character.toString(vertical));
             boardgrid.add(text, i+1, boardSize + 1);
+            boardgrid.setHalignment(text, HPos.CENTER);
         }
     }
 

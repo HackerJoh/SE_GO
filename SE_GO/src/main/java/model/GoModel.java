@@ -5,28 +5,49 @@ import javafx.scene.paint.Color;
 public class GoModel {
     private final int[][] boardArray;
     private final int size;
-    private long zug;
+    private long moves;
 
     public GoModel(int size) {
         boardArray = new int[size][size];
         this.size = size;
-        this.zug = 0;
+        this.moves = 0;
     }
 
+    /**
+     * Getter for the size of the Go-Board
+     * @return : The size of the Go-Board (6 --> 6x6)
+     */
     public int getSize() {
         return size;
     }
 
-    public long getZug(){return zug;}
+    /**
+     * Returns the Counter for the 
+     * @return an long with the current move
+     */
+    public long getMoveCounter(){return moves;}
 
-    public void increaseZug(){
-        this.zug++;
+    /**
+     * Increases
+     */
+    public void increaseMoves(){
+        this.moves++;
     }
 
+    /**
+     *
+     * @param id is the ID of the Stone, outside the Model class it's one number, here it's converted for the
+     *           two-dimensional Array
+     * @param color is the Color of the Stone reprented as an Integer -1 is Black, 1 is White and 0 is Transparent
+     */
     public void setStone(int id, int color) {
         boardArray[id / size][id % size] = color;
     }
 
+    /**
+     * Creates an Illustration from the current Go-Board as an String
+     * @return An String which illustrates a two-dimensional Array
+     */
     public String toString() {
         String out = "[\n";
         for (int i = 0; i < size; i++) {
@@ -59,11 +80,7 @@ public class GoModel {
         }
     }
 
-    /**
-     * @param y
-     * @param x
-     * @return
-     */
+
     public boolean isCatchedWhiteInnerStone(int y, int x) {
         return (boardArray[y - 1][x] == -1 && boardArray[y + 1][x] == -1 && boardArray[y][x - 1] == -1 && boardArray[y][x + 1] == -1);
     }
@@ -72,11 +89,21 @@ public class GoModel {
         return (boardArray[y - 1][x] == 1 && boardArray[y + 1][x] == 1 && boardArray[y][x - 1] == 1 && boardArray[y][x + 1] == 1);
     }
 
+
+    /**
+     * Sets the Color of the Stone to Transparent --> 0
+     * @param id it's a one Integer ID, which is becomes the Coordinates for the two-dimensional array
+     */
     public void removeStone(int id) {
         boardArray[id / size][id % size] = 0;
     }
 
 
+    /**
+     * Getter for the Color of the Stone in the Model Array
+     * @param id it's a one Integer ID, which is becomes the Coordinates for the two-dimensional array
+     * @return a Color object, which represents the color of the position in the Array
+     */
     public Color getColorById(int id) {
         if (boardArray[id / size][id % size] > 0) return Color.WHITE;
         if (boardArray[id / size][id % size] < 0) return Color.BLACK;

@@ -1,17 +1,19 @@
 package controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
-import model.GoModel;
-import model.Settings;
-import model.Stone;
+import javafx.scene.text.Text;
+import model.*;
 
 public class BoardController {
     private int boardSize;
     private int handicap;
     private double komi;
+    int sceneWidth = 0;
+    double stoneRatio = 0.8;
     private GoModel model;
 
     @FXML
@@ -35,34 +37,78 @@ public class BoardController {
     }
 
     private void createAndConfigurePane() {
-        int sceneWidth = (int) gp_boardGrid.getWidth();
-        gp_boardGrid.setGridLinesVisible(true);
+        //gp_bigGrid = new GridPane();
+        //gp_boardGrid = new GridPane();
+
+        gp_boardGrid.setGridLinesVisible(false);
+
         gp_boardGrid.setStyle("-fx-background-color: #FAEBD7;");
+        gp_bigGrid.setStyle("-fx-background-color: #FAEBD7;");
+
+        this.sceneWidth=(int)gp_boardGrid.getWidth();
 
         for (int i = 0; i < boardSize; i++) {
-            for (int j = 0; j < boardSize; j++) {
-                Stone stone = new Stone(i * boardSize + j, sceneWidth / boardSize / 2, Color.TRANSPARENT);
-                stone.setStroke(Color.TRANSPARENT);
-                stone.setOnMouseClicked(mouseEvent -> {
-                    if (Color.TRANSPARENT.equals(stone.getFill())) {
-                        if (zug % 2 == 0) {
+            char vertical = (char) (49+(i%9));
+            Text text = new Text(Character.toString(vertical));
+            gp_boardGrid.add(text, 0, i+1);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
+        }
 
-                            stone.setFill(Color.BLACK);
-                            model.setStone(stone.id, -1);
-                        } else {
-                            stone.setFill(Color.WHITE);
-                            model.setStone(stone.id, 1);
-                        }
-                        System.out.println(model);
-                        zug++;
-                    }
-                });
-                gp_boardGrid.add(stone, j, i);
+        for (int i = 0; i < boardSize; i++) {
+            char vertical = (char) (65+i);
+            Text text = new Text(Character.toString(vertical));
+            gp_boardGrid.add(text, i+1, 0);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
+        }
+
+        for (int i = 0; i < boardSize ; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                int id = i * boardSize + j;
+                Group group = new Group();
+                int stoneRadius = sceneWidth / (boardSize +2) / 2;
+                Stone stone = new Stone(id, stoneRadius * stoneRatio, model);
+                HLine newLineH;
+                VLine newLineV;
+
+                if(j == 0 ){
+                    newLineH = new HLine(id,0, stoneRadius);
+                }else if(j == boardSize -1){
+                    newLineH = new HLine(id,-stoneRadius, 0);
+                }else {
+                    newLineH = new HLine(id, -stoneRadius, stoneRadius);
+                }
+
+                if(i == 0 ){
+                    newLineV = new VLine(id, 0, stoneRadius);
+                }else if(i == boardSize-1){
+                    newLineV = new VLine(id,-stoneRadius, 0);
+                }else{
+                    newLineV = new VLine(id, -stoneRadius, stoneRadius);
+                }
+                group.getChildren().add(newLineH);
+                group.getChildren().add(newLineV);
+                group.getChildren().add(stone);
+                gp_boardGrid.add(group, j+1, i+1);
             }
+        }
+
+        for (int i = 0; i < boardSize; i++) {
+            char vertical = (char) (49+(i%9));
+            Text text = new Text(Character.toString(vertical));
+            gp_boardGrid.add(text, boardSize +1 , i+1);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
+        }
+
+        for (int i = 0; i < boardSize; i++) {
+            char vertical = (char) (65+i);
+            Text text = new Text(Character.toString(vertical));
+            gp_boardGrid.add(text, i+1, boardSize + 1);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
     }
 
     private void createAndLayoutControls() {
+        //gp_bigGrid.add(gp_boardGrid, 1, 0);
         //btn_cstones = new Button("CSTONES");
         //bigGrid.add(btn_cstones, 0, 0);
     }
@@ -75,17 +121,48 @@ public class BoardController {
 
         gp_bigGrid.widthProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(gp_bigGrid.getHeight(), newVal.doubleValue());
-            radius = radius / boardSize / 2;
+            radius = radius / (boardSize +2) / 2;
             for (Node n : gp_boardGrid.getChildren()) {
-                if (n instanceof Stone) ((Stone) n).setRadius(radius);
+                if(n instanceof Group){
+                    for(Node n2: ((Group) n).getChildren()){
+                        if(n2 instanceof Stone) ((Stone) n2).setRadius(radius*stoneRatio);
+                        if(n2 instanceof HLine){
+                            HLine l = (HLine) n2;
+                            if(l.getGoLineId() % boardSize == 0){
+                                l.setEndX(radius);
+                            }else if(l.getGoLineId() % boardSize == boardSize -1){
+                                l.setStartX(-radius);
+                            }else{
+                                l.setStartX(-radius);
+                                l.setEndX(radius);
+                            }
+                        }
+                    }
+                }
             }
         });
 
         gp_bigGrid.heightProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(gp_bigGrid.getWidth(), newVal.doubleValue());
-            radius = radius / boardSize / 2;
+            radius = radius / (boardSize+2) / 2;
             for (Node n : gp_boardGrid.getChildren()) {
-                if (n instanceof Stone) ((Stone) n).setRadius(radius);
+                if(n instanceof Group){
+                    for(Node n2: ((Group) n).getChildren()){
+                        if(n2 instanceof Stone) ((Stone) n2).setRadius(radius*stoneRatio);
+                        if(n2 instanceof VLine){
+                            VLine l = (VLine) n2;
+                            if(l.getGoLineId() / boardSize == 0){
+                                l.setEndY(radius);
+                            }else if(l.getGoLineId() / boardSize == boardSize -1){
+                                l.setStartY(-radius);
+                            }else{
+                                l.setStartY(-radius);
+                                l.setEndY(radius);
+                            }
+
+                        }
+                    }
+                }
             }
         });
     }

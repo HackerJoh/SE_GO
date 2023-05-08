@@ -17,41 +17,45 @@ public class GoModel {
     public GoModel(int size) {
         boardArray = new int[size][size];
         this.size = size;
-        this.turn=0;
+        this.turn = 0;
     }
 
     public int getSize() {
         return size;
     }
 
-    public long getTurn(){return turn;}
-    public void increaseTurn(){
+    public long getTurn() {
+        return turn;
+    }
+
+    public void increaseTurn() {
         this.turn++;
     }
 
     public void setStone(int id, int color) {
         boardArray[id / size][id % size] = color;
         int x = id / size;
-        int y= id % size;
+        int y = id % size;
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
     }
+
     private void checkAllStonesIfTheyHaveLiberties() {
-        for(int x = 0; x<boardArray.length; x++){
-            for(int y=0; y<boardArray[x].length; y++){
+        for (int x = 0; x < boardArray.length; x++) {
+            for (int y = 0; y < boardArray[x].length; y++) {
                 int color = boardArray[x][y];
-                islandPoints=new ArrayList<Point>();
-                callBFS(deepCopy(this.boardArray),x,y,color);
+                islandPoints = new ArrayList<Point>();
+                callBFS(deepCopy(this.boardArray), x, y, color);
                 //now i got island Points
-                int totalLiberties=0;
-                for (Point p:islandPoints
+                int totalLiberties = 0;
+                for (Point p : islandPoints
                 ) {
                     //check Freiheiten
-                    totalLiberties+=getLiberties(p.x,p.y);
+                    totalLiberties += getLiberties(p.x, p.y);
                 }
-                if(totalLiberties==0){
+                if (totalLiberties == 0) {
                     //remove group - got catched!
-                    for (Point p:islandPoints
+                    for (Point p : islandPoints
                     ) {
                         //check Freiheiten
                         int id = p.x * size + p.y;
@@ -62,34 +66,37 @@ public class GoModel {
             }
         }
     }
-    private void callBFS(int [][] grid, int x ,int y, int color){
-        if(x<0 || x >=grid.length || y<0 || y>=grid[x].length || (grid[x][y]==-color ||grid[x][y] == 0)){
+
+    private void callBFS(int[][] grid, int x, int y, int color) {
+        if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] == -color || grid[x][y] == 0)) {
             return;
         }
-        islandPoints.add(new Point(x,y));
-        grid[x][y]= -color;
-        callBFS(grid,x+1,y,color);
-        callBFS(grid,x-1,y,color);
-        callBFS(grid,x,y+1,color);
-        callBFS(grid,x,y-1,color);
+        islandPoints.add(new Point(x, y));
+        grid[x][y] = -color;
+        callBFS(grid, x + 1, y, color);
+        callBFS(grid, x - 1, y, color);
+        callBFS(grid, x, y + 1, color);
+        callBFS(grid, x, y - 1, color);
     }
+
     private int getLiberties(int x, int y) {
         int liberties = 0;
         // Check the four neighbors of the stone
-        if (x > 0 && boardArray[x-1][y] == 0) {
+        if (x > 0 && boardArray[x - 1][y] == 0) {
             liberties++;
         }
-        if (x < boardArray.length - 1 && boardArray[x+1][y] == 0) {
+        if (x < boardArray.length - 1 && boardArray[x + 1][y] == 0) {
             liberties++;
         }
-        if (y > 0 && boardArray[x][y-1] == 0) {
+        if (y > 0 && boardArray[x][y - 1] == 0) {
             liberties++;
         }
-        if (y < boardArray[x].length - 1 && boardArray[x][y+1] == 0) {
+        if (y < boardArray[x].length - 1 && boardArray[x][y + 1] == 0) {
             liberties++;
         }
         return liberties;
     }
+
     public static int[][] deepCopy(int[][] original) {
         if (original == null) {
             return null;

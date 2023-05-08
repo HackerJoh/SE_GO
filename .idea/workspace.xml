@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="550228b7-8389-40d4-8d63-b5378922b11a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/GoView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/HLine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/VLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/GoApplication.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/HLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/singleComponents/HLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/GoApplication/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/Point.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/singleComponents/Point.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/singleComponents/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/singleComponents/Stone.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/VLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/singleComponents/VLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SE_GO/src/main/java/model/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/SE_GO/src/main/java/model/Stone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +43,6 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/Dev/Projekte/Uni/PR_SE/GO/SE_GO/SE_GO/SE_GO/src/main/java/model",
     "node.js.detected.package.eslint": "true",
@@ -62,17 +56,14 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\SE_GO\src\main\java\model" />
     </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
-    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="GoApplication.Main" />
+      <option name="MAIN_CLASS_NAME" value="model.Main" />
       <module name="SE_GO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="GoApplication.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683550398132</updated>
-      <workItem from="1683550399658" duration="3788000" />
+      <workItem from="1683550399658" duration="2327000" />
     </task>
     <servers />
   </component>

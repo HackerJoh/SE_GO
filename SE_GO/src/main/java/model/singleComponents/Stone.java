@@ -5,8 +5,8 @@ import javafx.scene.shape.Circle;
 import model.GoModel;
 
 public class Stone extends Circle {
-    private static Color hoverColorBlack = Color.gray(0.3, 0.7);
-    private static Color hoverColorWhite = Color.gray(0.8, 0.5);
+    private static final Color hoverColorBlack = Color.gray(0.3, 0.7);
+    private static final Color hoverColorWhite = new Color(1, 1, 1, 0.85);
 
     public int id;
     private GoModel model;

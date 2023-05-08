@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
@@ -23,6 +24,7 @@ public class Main extends Application {
 
         // Set the scene on the primary stage and display it
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(new Image("file:go_logo.png"));
         primaryStage.show();
     }
     // The main() method is the entry point of the Java application

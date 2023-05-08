@@ -72,7 +72,7 @@ public class MenuController implements Initializable {
         s.setHandicap(sp_handicap.getValue());
         s.setKomi(sp_komi.getValue());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board_2.fxml"));
         Parent root = loader.load();
 
         Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();

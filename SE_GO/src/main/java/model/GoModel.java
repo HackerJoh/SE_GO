@@ -1,6 +1,7 @@
 package model;
 
 import javafx.scene.paint.Color;
+import model.singleComponents.Point;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,6 +56,7 @@ public class GoModel {
                         //check Freiheiten
                         int id = p.x * size + p.y;
                         this.removeStone(id);
+                        System.out.println("gefangen!");
                     }
                 }
             }

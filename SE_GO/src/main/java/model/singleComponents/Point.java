@@ -1,7 +1,7 @@
-package model;
+package model.singleComponents;
 
 public class Point {
-    int x,y;
+    public int x,y;
 
     public Point(int x, int y){
         this.x=x;

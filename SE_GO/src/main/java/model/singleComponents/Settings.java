@@ -1,4 +1,4 @@
-package model;
+package model.singleComponents;
 
 public class Settings {
     private int boardSize;

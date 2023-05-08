@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.Settings;
+import model.singleComponents.Settings;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;

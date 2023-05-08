@@ -1,4 +1,4 @@
-package model;
+package model.singleComponents;
 
 import javafx.scene.shape.Line;
 

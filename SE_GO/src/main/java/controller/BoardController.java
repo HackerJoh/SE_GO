@@ -7,6 +7,10 @@ import javafx.scene.Node;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import model.*;
+import model.singleComponents.HLine;
+import model.singleComponents.Settings;
+import model.singleComponents.Stone;
+import model.singleComponents.VLine;
 
 public class BoardController {
     private int boardSize;

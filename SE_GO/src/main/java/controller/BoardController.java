@@ -61,7 +61,10 @@ public class BoardController {
 
     @FXML
     void onPass(ActionEvent event) {
-
+        zug++;
+        if(zug == 2){
+            //TODO: Spiel vorbei...
+        }
     }
 
     @FXML

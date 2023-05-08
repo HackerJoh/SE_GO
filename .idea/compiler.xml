@@ -9,8 +9,5 @@
         <module name="SE_GO" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="SE_GO" target="19" />
-    </bytecodeTargetLevel>
   </component>
 </project>

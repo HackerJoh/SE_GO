@@ -21,10 +21,5 @@
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
     </remote-repository>
-    <remote-repository>
-      <option name="id" value="gluon-nexus-repository" />
-      <option name="name" value="gluon-nexus-repository" />
-      <option name="url" value="https://nexus.gluonhq.com/nexus/content/repositories/releases/com/gluonhq/charm-glisten/6.2.3/" />
-    </remote-repository>
   </component>
 </project>

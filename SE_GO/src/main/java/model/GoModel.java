@@ -1,5 +1,6 @@
 package model;
 
+import controller.BoardController;
 import javafx.scene.paint.Color;
 import model.singleComponents.Point;
 
@@ -11,13 +12,15 @@ public class GoModel {
     private final int[][] boardArray;
     private final int size;
     private long turn;
+    private BoardController controller;
 
     private List<Point> islandPoints = new ArrayList<Point>();
 
-    public GoModel(int size) {
+    public GoModel(int size, BoardController controller) {
         boardArray = new int[size][size];
         this.size = size;
         this.turn = 0;
+        this.controller = controller;
     }
 
     public int getSize() {
@@ -60,8 +63,10 @@ public class GoModel {
                         //check Freiheiten
                         int id = p.x * size + p.y;
                         this.removeStone(id);
+                        System.out.println(this);
                         System.out.println("gefangen!");
                     }
+                    controller.gridReload();
                 }
             }
         }

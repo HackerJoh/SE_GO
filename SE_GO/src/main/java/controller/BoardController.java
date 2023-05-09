@@ -47,7 +47,7 @@ public class BoardController {
         handicap = s.getHandicap();
         komi = s.getKomi();
 
-        model = new GoModel(boardSize);
+        model = new GoModel(boardSize, this);
 
         createAndConfigurePane();
         createAndLayoutControls();
@@ -89,14 +89,14 @@ public class BoardController {
             char vertical = (char) (49 + (i % 9));
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, 0, i + 1);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 1, 0);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
@@ -134,14 +134,14 @@ public class BoardController {
             char vertical = (char) (49 + (i % 9));
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, boardSize + 1, i + 1);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 1, boardSize + 1);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
     }
 
@@ -157,7 +157,7 @@ public class BoardController {
             gridReload();
         });*/
 
-        gp_bigGrid.widthProperty().addListener((obs, oldVal, newVal) -> {
+        gp_boardGrid.widthProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(gp_boardGrid.getHeight(), newVal.doubleValue());
             radius = radius / (boardSize + 2) / 2;
             for (Node n : gp_boardGrid.getChildren()) {
@@ -180,7 +180,7 @@ public class BoardController {
             }
         });
 
-        gp_bigGrid.heightProperty().addListener((obs, oldVal, newVal) -> {
+        gp_boardGrid.heightProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(gp_boardGrid.getWidth(), newVal.doubleValue());
             radius = radius / (boardSize + 2) / 2;
             for (Node n : gp_boardGrid.getChildren()) {
@@ -205,10 +205,12 @@ public class BoardController {
         });
     }
 
-    private void gridReload() {
+    public void gridReload() {
         for (Node n : gp_boardGrid.getChildren()) {
-            if (n instanceof Stone stone) {
-                stone.setFill(model.getColorById(stone.id));
+            if (n instanceof Group) {
+                for (Node n2 : ((Group) n).getChildren()) {
+                    if (n2 instanceof Stone) ((Stone) n2).setFill(model.getColorById(((Stone) n2).id));
+                }
             }
         }
     }

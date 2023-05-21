@@ -30,7 +30,7 @@ public class Stone extends Circle {
     private void addSetListener(){
         this.setStroke(Color.TRANSPARENT);
         this.setOnMouseClicked(mouseEvent -> {
-            if(!isUsed){
+            if(!isUsed && !model.isGameHasEnded()){
                 if(model.getNoMoves() % 2 == 0){
                     this.setFill(Color.BLACK);
                     model.setStone(this.id, -1);
@@ -46,7 +46,7 @@ public class Stone extends Circle {
 
     private void addHoverListener(){
         this.setOnMouseEntered(mouseEvent -> {
-            if(!isUsed){
+            if(!isUsed && !model.isGameHasEnded()){
                 if(model.getNoMoves() % 2 == 0){
                     this.setFill(hoverColorBlack);
                 }else{

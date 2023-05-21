@@ -64,6 +64,7 @@ public class GoModel {
         } else {
             controller.setStatusText("SCHWARZ gewinnt!");
         }
+        controller.disableBtns();
         gameHasEnded = true;
     }
 
@@ -73,6 +74,10 @@ public class GoModel {
 
     public long getNoMoves() {
         return noMoves;
+    }
+
+    public boolean isGameHasEnded() {
+        return gameHasEnded;
     }
 
     public void increaseTurn() {
@@ -87,6 +92,7 @@ public class GoModel {
         setStatusText();
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
+
     }
 
     private void checkAllStonesIfTheyHaveLiberties() {
@@ -111,9 +117,9 @@ public class GoModel {
                         this.removeStone(id);
                         System.out.println(this);
                         System.out.println("gefangen!");
-                        if(getTurn() == StoneColor.WHITE){
+                        if (getTurn() == StoneColor.WHITE) {
                             blackPoints++;
-                        }else{
+                        } else {
                             whitePoints++;
                         }
                     }

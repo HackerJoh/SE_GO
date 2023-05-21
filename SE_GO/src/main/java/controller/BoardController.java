@@ -4,17 +4,16 @@ import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.GoModel;
+import org.kordamp.bootstrapfx.BootstrapFX;
 import singleComponents.HLine;
 import singleComponents.Settings;
 import singleComponents.Stone;
@@ -127,8 +126,16 @@ public class BoardController {
     }
 
     @FXML
-    void newGame(ActionEvent event) {
+    void newGame(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
+        Parent root = loader.load();
 
+        Stage primaryStage = (Stage) btn_surrender.getScene().getWindow();
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
+        primaryStage.setScene(scene);
+
+        primaryStage.show();
     }
 
     @FXML
@@ -159,26 +166,27 @@ public class BoardController {
         txt_status.setText(text);
     }
 
+    public void disableBtns(){
+        btn_pass.setDisable(true);
+        btn_surrender.setDisable(true);
+    }
+
     private void createAndConfigurePane() {
         gp_boardGrid.setGridLinesVisible(false);
-
-        gp_boardGrid.setStyle("-fx-background-color: #FAEBD7;");
-        gp_bigGrid.setStyle("-fx-background-color: #FAEBD7;");
 
         this.sceneWidth = (int) gp_boardGrid.getWidth();
 
         for (int i = 0; i < boardSize; i++) {
-            char vertical = (char) (49 + (i % 9));
-            Text text = new Text(Character.toString(vertical));
+            Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, 0, i + 1);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 1, 0);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
@@ -213,17 +221,16 @@ public class BoardController {
         }
 
         for (int i = 0; i < boardSize; i++) {
-            char vertical = (char) (49 + (i % 9));
-            Text text = new Text(Character.toString(vertical));
+            Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, boardSize + 1, i + 1);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 1, boardSize + 1);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
     }
 

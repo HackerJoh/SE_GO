@@ -15,6 +15,7 @@ public class GoModel {
     private int noMoves; //TODO: kein Zugriff von außen
     private BoardController controller;
     private boolean gameHasEnded = false;
+    private boolean haveSurrendered = false;
     private double whitePoints;
     private double blackPoints;
 
@@ -59,10 +60,18 @@ public class GoModel {
     }
 
     public void endGame() {
-        if (whitePoints > blackPoints) {
+        if (haveSurrendered) {
+            if (getTurn() == StoneColor.WHITE) {
+                controller.setStatusText("WEIß gewinnt!");
+            } else {
+                controller.setStatusText("SCHWARZ gewinnt!");
+            }
+        } else if (whitePoints > blackPoints) {
             controller.setStatusText("WEIß gewinnt!");
-        } else {
+        } else if (blackPoints > whitePoints) {
             controller.setStatusText("SCHWARZ gewinnt!");
+        } else {
+            controller.setStatusText("Unentschieden!");
         }
         controller.disableBtns();
         gameHasEnded = true;
@@ -78,6 +87,10 @@ public class GoModel {
 
     public boolean isGameHasEnded() {
         return gameHasEnded;
+    }
+
+    public void setHaveSurrendered(boolean haveSurrendered) {
+        this.haveSurrendered = haveSurrendered;
     }
 
     public void increaseTurn() {

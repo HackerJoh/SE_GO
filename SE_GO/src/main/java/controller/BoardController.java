@@ -4,11 +4,13 @@ import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -122,6 +124,7 @@ public class BoardController {
 
     @FXML
     void onSurrender(ActionEvent event) {
+        model.setHaveSurrendered(true);
         model.endGame();
     }
 
@@ -178,14 +181,14 @@ public class BoardController {
 
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
-            gp_boardGrid.add(text, 0, i + 1);
+            gp_boardGrid.add(text, 2, i + 3);
             //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
-            gp_boardGrid.add(text, i + 1, 0);
+            gp_boardGrid.add(text, i + 3, 2);
             //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
@@ -216,22 +219,27 @@ public class BoardController {
                 group.getChildren().add(newLineH);
                 group.getChildren().add(newLineV);
                 group.getChildren().add(stone);
-                gp_boardGrid.add(group, j + 1, i + 1);
+                gp_boardGrid.add(group, j + 3, i + 3);
             }
         }
 
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
-            gp_boardGrid.add(text, boardSize + 1, i + 1);
+            gp_boardGrid.add(text, boardSize + 3, i + 3);
             //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
-            gp_boardGrid.add(text, i + 1, boardSize + 1);
+            gp_boardGrid.add(text, i + 3, boardSize + 3);
             //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
+
+        ColumnConstraints col = new ColumnConstraints();
+        col.setMaxWidth(0);
+        gp_boardGrid.getColumnConstraints().set(0, col);
+        gp_boardGrid.getColumnConstraints().set(1, col);
     }
 
     private void createAndLayoutControls() {

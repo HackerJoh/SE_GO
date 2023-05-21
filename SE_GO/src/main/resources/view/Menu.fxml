@@ -13,101 +13,84 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
-      prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.MenuController">
-    <children>
-        <GridPane prefHeight="404.0" prefWidth="600.0">
-            <columnConstraints>
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="399.0" minWidth="10.0"
-                                   prefWidth="318.0"/>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="282.0"/>
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="89.0" valignment="CENTER"
-                                vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="375.0" minHeight="10.0" prefHeight="286.0" vgrow="SOMETIMES"/>
-                <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES"/>
-            </rowConstraints>
-            <children>
-                <VBox alignment="CENTER" GridPane.rowIndex="1">
-                    <children>
-                        <GridPane alignment="CENTER" prefHeight="159.0" prefWidth="204.0">
-                            <columnConstraints>
-                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0"
-                                                   prefWidth="113.0"/>
-                                <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0"
-                                                   prefWidth="91.0"/>
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                            </rowConstraints>
-                            <children>
-                                <Label fx:id="lbl_boardSize" text="Spielfeldgröße"/>
-                                <Label fx:id="lbl_handicap" text="Handicap" GridPane.rowIndex="1"/>
-                                <Label fx:id="lbl_komi" text="Komi" GridPane.rowIndex="2"/>
-                                <ComboBox fx:id="cbx_boardSize" prefWidth="150.0" GridPane.columnIndex="1"/>
-                                <Spinner fx:id="sp_handicap" editable="true" GridPane.columnIndex="1"
-                                         GridPane.rowIndex="1"/>
-                                <Spinner fx:id="sp_komi" editable="true" GridPane.columnIndex="1"
-                                         GridPane.rowIndex="2"/>
-                            </children>
-                        </GridPane>
-                        <Button fx:id="btn_startGame" mnemonicParsing="false" onAction="#startGame" text="Spiel starten"
-                                textAlignment="CENTER">
-                            <styleClass>
-                                <String fx:value="btn"/>
-                                <String fx:value="btn-primary"/>
-                            </styleClass>
-                            <VBox.margin>
-                                <Insets top="25.0"/>
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-                <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <children>
-                        <Button fx:id="btn_loadGame" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false"
-                                text="Spiel laden...">
-                            <styleClass>
-                                <String fx:value="btn"/>
-                                <String fx:value="btn-primary"/>
-                            </styleClass>
-                            <VBox.margin>
-                                <Insets bottom="50.0"/>
-                            </VBox.margin>
-                        </Button>
-                    </children>
-                </VBox>
-                <Text fx:id="txt_copyright" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info"
-                      text="© 2023 Hacker, Lumetsberger, Neuwirth" GridPane.columnSpan="2" GridPane.rowIndex="2"/>
-                <VBox alignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER"
-                      GridPane.valignment="CENTER">
-                    <children>
-                        <Text fx:id="txt_heading" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1"
-                              text="GO" textAlignment="CENTER" wrappingWidth="180.0">
-                            <font>
-                                <Font name="System Bold" size="40.0"/>
-                            </font>
-                        </Text>
-                        <Text fx:id="txt_subheading" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3"
-                              text="Spieleinstellungen">
-                            <font>
-                                <Font name="System Bold" size="18.0"/>
-                            </font>
-                        </Text>
-                    </children>
-                    <styleClass>
-                        <String fx:value="lbl"/>
-                        <String fx:value="lbl-primary"/>
-                    </styleClass>
-                    <GridPane.margin>
-                        <Insets/>
-                    </GridPane.margin>
-                </VBox>
-            </children>
-        </GridPane>
-    </children>
-</VBox>
+
+  <GridPane style="-fx-background-color: #FAEBD7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+      <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="318.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="282.0" />
+      </columnConstraints>
+      <rowConstraints>
+          <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="90.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="286.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <children>
+          <VBox alignment="CENTER" GridPane.rowIndex="1">
+              <children>
+                  <GridPane alignment="CENTER" prefHeight="159.0" prefWidth="204.0">
+                      <columnConstraints>
+                          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="113.0" />
+                          <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="113.0" minWidth="10.0" prefWidth="91.0" />
+                      </columnConstraints>
+                      <rowConstraints>
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      </rowConstraints>
+                      <children>
+                          <Label fx:id="lbl_boardSize" text="Spielfeldgröße" />
+                          <Label fx:id="lbl_handicap" text="Handicap" GridPane.rowIndex="1" />
+                          <Label fx:id="lbl_komi" text="Komi" GridPane.rowIndex="2" />
+                          <ComboBox fx:id="cbx_boardSize" prefWidth="150.0" GridPane.columnIndex="1" />
+                          <Spinner fx:id="sp_handicap" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                          <Spinner fx:id="sp_komi" editable="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                      </children>
+                  </GridPane>
+                  <Button fx:id="btn_startGame" mnemonicParsing="false" onAction="#startGame" text="Spiel starten" textAlignment="CENTER">
+                      <styleClass>
+                          <String fx:value="btn" />
+                          <String fx:value="btn-primary" />
+                      </styleClass>
+                      <VBox.margin>
+                          <Insets top="25.0" />
+                      </VBox.margin>
+                  </Button>
+              </children>
+          </VBox>
+          <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+              <children>
+                  <Button fx:id="btn_loadGame" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Spiel laden...">
+                      <styleClass>
+                          <String fx:value="btn" />
+                          <String fx:value="btn-primary" />
+                      </styleClass>
+                      <VBox.margin>
+                          <Insets bottom="50.0" />
+                      </VBox.margin>
+                  </Button>
+              </children>
+          </VBox>
+          <Text fx:id="txt_copyright" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="© 2023 Hacker, Lumetsberger, Neuwirth" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+          <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+              <children>
+                  <Text fx:id="txt_heading" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="JKU GO" textAlignment="CENTER" wrappingWidth="180.0">
+                      <font>
+                          <Font name="System Bold" size="40.0" />
+                      </font>
+                  </Text>
+                  <Text fx:id="txt_subheading" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h3" text="Spieleinstellungen">
+                      <font>
+                          <Font name="System Bold" size="18.0" />
+                      </font>
+                  </Text>
+              </children>
+              <styleClass>
+                  <String fx:value="lbl" />
+                  <String fx:value="lbl-primary" />
+              </styleClass>
+              <GridPane.margin>
+                  <Insets />
+              </GridPane.margin>
+          </VBox>
+      </children>
+  </GridPane>

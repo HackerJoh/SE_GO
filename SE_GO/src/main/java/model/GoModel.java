@@ -1,38 +1,213 @@
 package model;
 
+import controller.BoardController;
 import javafx.scene.paint.Color;
+import singleComponents.Point;
+import singleComponents.StoneColor;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GoModel {
-    private final int[][] boardArray;
+    private final int[][] boardArray; //TODO: Stone-Array
     private final int size;
+<<<<<<< HEAD
     private long zug;
 
     private List<Point> islandPoints = new ArrayList<Point>();
+=======
+    private int noMoves; //TODO: kein Zugriff von außen
+    private BoardController controller;
+    private boolean gameHasEnded = false;
+    private boolean haveSurrendered = false;
+    private double whitePoints;
+    private double blackPoints;
+>>>>>>> jhacker
 
-    public GoModel(int size) {
+    private List<Point> islandPoints = new ArrayList<Point>();
+
+    public GoModel(int size, BoardController controller) {
         boardArray = new int[size][size];
         this.size = size;
+<<<<<<< HEAD
         this.zug = 0;
+=======
+        this.noMoves = 0;
+        this.controller = controller;
+        this.blackPoints = controller.getKomi();
+        this.whitePoints = 0;
+    }
+
+    public StoneColor getTurn() {
+        if (noMoves % 2 == 1) {
+            return StoneColor.BLACK;
+        } else {
+            return StoneColor.WHITE;
+        }
+    }
+
+    public void setStatusText() {
+        if (!gameHasEnded) {
+            if (getTurn() == StoneColor.BLACK) {
+                controller.setStatusText("SCHWARZ ist am Zug");
+            } else {
+                controller.setStatusText("WEIß ist am Zug");
+            }
+        }
+    }
+
+    public void setStatusTextPassed() {
+        if (!gameHasEnded) {
+            noMoves++;
+            if (getTurn() == StoneColor.BLACK) {
+                controller.setStatusText("SCHWARZ passt");
+            } else {
+                controller.setStatusText("WEIß passt");
+            }
+        }
+    }
+
+    public void endGame() {
+        if (haveSurrendered) {
+            if (getTurn() == StoneColor.WHITE) {
+                controller.setStatusText("WEIß gewinnt!");
+            } else {
+                controller.setStatusText("SCHWARZ gewinnt!");
+            }
+        } else if (whitePoints > blackPoints) {
+            controller.setStatusText("WEIß gewinnt!");
+        } else if (blackPoints > whitePoints) {
+            controller.setStatusText("SCHWARZ gewinnt!");
+        } else {
+            controller.setStatusText("Unentschieden!");
+        }
+        controller.disableBtns();
+        gameHasEnded = true;
+>>>>>>> jhacker
     }
 
     public int getSize() {
         return size;
     }
 
+<<<<<<< HEAD
     public long getZug(){return zug;}
 
     public void increaseZug(){
         this.zug++;
+=======
+    public long getNoMoves() {
+        return noMoves;
+    }
+
+    public boolean isGameHasEnded() {
+        return gameHasEnded;
+    }
+
+    public void setHaveSurrendered(boolean haveSurrendered) {
+        this.haveSurrendered = haveSurrendered;
+    }
+
+    public void increaseTurn() {
+        this.noMoves++;
+>>>>>>> jhacker
     }
 
     public void setStone(int id, int color) {
         boardArray[id / size][id % size] = color;
+<<<<<<< HEAD
         this.checkAllStonesIfTheyHaveLiberties();
+=======
+        int x = id / size;
+        int y = id % size;  //TODO: ID in x und y splitten, enum für color
+        controller.setZug(0);
+        setStatusText();
+        //check after each move if somebody captured something / cought stones
+        this.checkAllStonesIfTheyHaveLiberties();
+
+>>>>>>> jhacker
     }
+
+    private void checkAllStonesIfTheyHaveLiberties() {
+        for (int x = 0; x < boardArray.length; x++) {
+            for (int y = 0; y < boardArray[x].length; y++) {
+                int color = boardArray[x][y];
+                islandPoints = new ArrayList<Point>();
+                callBFS(deepCopy(this.boardArray), x, y, color);
+                //now i got island Points
+                int totalLiberties = 0;
+                for (Point p : islandPoints
+                ) {
+                    //check Freiheiten
+                    totalLiberties += getLiberties(p.x, p.y);
+                }
+                if (totalLiberties == 0) {
+                    //remove group - got catched!
+                    for (Point p : islandPoints
+                    ) {
+                        //check Freiheiten
+                        int id = p.x * size + p.y;
+                        this.removeStone(id);
+                        System.out.println(this);
+                        System.out.println("gefangen!");
+                        if (getTurn() == StoneColor.WHITE) {
+                            blackPoints++;
+                        } else {
+                            whitePoints++;
+                        }
+                    }
+                    controller.gridReload();
+                }
+            }
+        }
+    }
+
+    private void callBFS(int[][] grid, int x, int y, int color) {
+        if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] == -color || grid[x][y] == 0)) {
+            return;
+        }
+        islandPoints.add(new Point(x, y));
+        grid[x][y] = -color;
+        callBFS(grid, x + 1, y, color);
+        callBFS(grid, x - 1, y, color);
+        callBFS(grid, x, y + 1, color);
+        callBFS(grid, x, y - 1, color);
+    }
+
+    private int getLiberties(int x, int y) {
+        int liberties = 0;
+        // Check the four neighbors of the stone
+        if (x > 0 && boardArray[x - 1][y] == 0) {
+            liberties++;
+        }
+        if (x < boardArray.length - 1 && boardArray[x + 1][y] == 0) {
+            liberties++;
+        }
+        if (y > 0 && boardArray[x][y - 1] == 0) {
+            liberties++;
+        }
+        if (y < boardArray[x].length - 1 && boardArray[x][y + 1] == 0) {
+            liberties++;
+        }
+        return liberties;
+    }
+
+    public static int[][] deepCopy(int[][] original) {
+        if (original == null) {
+            return null;
+        }
+        int[][] copy = new int[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            copy[i] = Arrays.copyOf(original[i], original[i].length);
+        }
+        return copy;
+    }
+
 
     public String toString() {
         String out = "[\n";
@@ -90,6 +265,7 @@ public class GoModel {
         return Color.TRANSPARENT;
     }
 
+<<<<<<< HEAD
     private void checkAllStonesIfTheyHaveLiberties() {
         for(int x = 0; x<boardArray.length; x++){
             for(int y=0; y<boardArray[x].length; y++){
@@ -162,4 +338,13 @@ public class GoModel {
         return copy;
     }
 
+=======
+    public double getWhitePoints() {
+        return whitePoints;
+    }
+
+    public double getBlackPoints() {
+        return blackPoints;
+    }
+>>>>>>> jhacker
 }

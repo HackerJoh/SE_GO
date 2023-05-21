@@ -1,4 +1,4 @@
-package model.singleComponents;
+package singleComponents;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -31,7 +31,7 @@ public class Stone extends Circle {
         this.setStroke(Color.TRANSPARENT);
         this.setOnMouseClicked(mouseEvent -> {
             if(!isUsed){
-                if(model.getTurn() % 2 == 0){
+                if(model.getNoMoves() % 2 == 0){
                     this.setFill(Color.BLACK);
                     model.setStone(this.id, -1);
                 }else {
@@ -47,7 +47,7 @@ public class Stone extends Circle {
     private void addHoverListener(){
         this.setOnMouseEntered(mouseEvent -> {
             if(!isUsed){
-                if(model.getTurn() % 2 == 0){
+                if(model.getNoMoves() % 2 == 0){
                     this.setFill(hoverColorBlack);
                 }else{
                     this.setFill(hoverColorWhite);

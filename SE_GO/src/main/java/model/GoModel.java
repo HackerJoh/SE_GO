@@ -2,43 +2,89 @@ package model;
 
 import controller.BoardController;
 import javafx.scene.paint.Color;
-import model.singleComponents.Point;
+import singleComponents.Point;
+import singleComponents.StoneColor;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GoModel {
-    private final int[][] boardArray;
+    private final int[][] boardArray; //TODO: Stone-Array
     private final int size;
-    private long turn;
+    private int noMoves; //TODO: kein Zugriff von außen
     private BoardController controller;
+    private boolean gameHasEnded = false;
+    private double whitePoints;
+    private double blackPoints;
 
     private List<Point> islandPoints = new ArrayList<Point>();
 
     public GoModel(int size, BoardController controller) {
         boardArray = new int[size][size];
         this.size = size;
-        this.turn = 0;
+        this.noMoves = 0;
         this.controller = controller;
+        this.blackPoints = controller.getKomi();
+        this.whitePoints = 0;
+    }
+
+    public StoneColor getTurn() {
+        if (noMoves % 2 == 1) {
+            return StoneColor.BLACK;
+        } else {
+            return StoneColor.WHITE;
+        }
+    }
+
+    public void setStatusText() {
+        if (!gameHasEnded) {
+            if (getTurn() == StoneColor.BLACK) {
+                controller.setStatusText("SCHWARZ ist am Zug");
+            } else {
+                controller.setStatusText("WEIß ist am Zug");
+            }
+        }
+    }
+
+    public void setStatusTextPassed() {
+        if (!gameHasEnded) {
+            noMoves++;
+            if (getTurn() == StoneColor.BLACK) {
+                controller.setStatusText("SCHWARZ passt");
+            } else {
+                controller.setStatusText("WEIß passt");
+            }
+        }
+    }
+
+    public void endGame() {
+        if (whitePoints > blackPoints) {
+            controller.setStatusText("WEIß gewinnt!");
+        } else {
+            controller.setStatusText("SCHWARZ gewinnt!");
+        }
+        gameHasEnded = true;
     }
 
     public int getSize() {
         return size;
     }
 
-    public long getTurn() {
-        return turn;
+    public long getNoMoves() {
+        return noMoves;
     }
 
     public void increaseTurn() {
-        this.turn++;
+        this.noMoves++;
     }
 
     public void setStone(int id, int color) {
         boardArray[id / size][id % size] = color;
         int x = id / size;
-        int y = id % size;
+        int y = id % size;  //TODO: ID in x und y splitten, enum für color
+        controller.setZug(0);
+        setStatusText();
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
     }
@@ -65,6 +111,11 @@ public class GoModel {
                         this.removeStone(id);
                         System.out.println(this);
                         System.out.println("gefangen!");
+                        if(getTurn() == StoneColor.WHITE){
+                            blackPoints++;
+                        }else{
+                            whitePoints++;
+                        }
                     }
                     controller.gridReload();
                 }
@@ -168,5 +219,13 @@ public class GoModel {
         if (boardArray[id / size][id % size] > 0) return Color.WHITE;
         if (boardArray[id / size][id % size] < 0) return Color.BLACK;
         return Color.TRANSPARENT;
+    }
+
+    public double getWhitePoints() {
+        return whitePoints;
+    }
+
+    public double getBlackPoints() {
+        return blackPoints;
     }
 }

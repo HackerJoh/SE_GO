@@ -73,7 +73,7 @@
           <Text fx:id="txt_copyright" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-info" text="© 2023 Hacker, Lumetsberger, Neuwirth" GridPane.columnSpan="2" GridPane.rowIndex="2" />
           <VBox alignment="CENTER" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
               <children>
-                  <Text fx:id="txt_heading" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="GO" textAlignment="CENTER" wrappingWidth="180.0">
+                  <Text fx:id="txt_heading" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="h1" text="JKU GO" textAlignment="CENTER" wrappingWidth="180.0">
                       <font>
                           <Font name="System Bold" size="40.0" />
                       </font>

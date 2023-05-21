@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -8,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import model.singleComponents.Settings;
+import singleComponents.Settings;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
@@ -50,6 +51,16 @@ public class MenuController implements Initializable {
     @FXML
     private Text txt_subheading;
 
+    private HostServices hostServices;
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+    }
+
+    public HostServices getHostServices() {
+        return hostServices ;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sp_handicap.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9));
@@ -79,8 +90,8 @@ public class MenuController implements Initializable {
         Scene scene = new Scene(root);
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setScene(scene);
-
         BoardController controller = loader.getController();
+        controller.setHostServices(hostServices);
         controller.initData(s);
 
         primaryStage.show();

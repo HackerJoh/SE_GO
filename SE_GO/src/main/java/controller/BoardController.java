@@ -1,18 +1,26 @@
 package controller;
 
+import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import model.*;
-import model.singleComponents.HLine;
-import model.singleComponents.Settings;
-import model.singleComponents.Stone;
-import model.singleComponents.VLine;
+import javafx.stage.Stage;
+import model.GoModel;
+import singleComponents.HLine;
+import singleComponents.Settings;
+import singleComponents.Stone;
+import singleComponents.VLine;
+
+import java.io.IOException;
 
 public class BoardController {
     private int boardSize;
@@ -21,6 +29,23 @@ public class BoardController {
     int sceneWidth = 0;
     double stoneRatio = 0.8;
     private GoModel model;
+    private HostServices hostServices;
+
+    public void setHostServices(HostServices hostServices) {
+        this.hostServices = hostServices ;
+    }
+
+    public HostServices getHostServices() {
+        return hostServices ;
+    }
+
+    public int getHandicap() {
+        return handicap;
+    }
+
+    public double getKomi() {
+        return komi;
+    }
 
     @FXML
     private Button btn_exit;
@@ -40,7 +65,29 @@ public class BoardController {
     @FXML
     private GridPane gp_boardGrid;
 
-    int zug = 0;
+    @FXML
+    private Text txt_status;
+
+    @FXML
+    private Text txt_blackPoints;
+
+    @FXML
+    private Text txt_blackPointsLabel;
+
+    @FXML
+    private Text txt_heading;
+
+    @FXML
+    private Text txt_whitePoints;
+
+    @FXML
+    private Text txt_whitePointsLabel;
+
+    private int zug = 0;
+
+    public void setZug(int zug) {
+        this.zug = zug;
+    }
 
     public void initData(Settings s) {
         boardSize = s.getBoardSize();
@@ -52,6 +99,7 @@ public class BoardController {
         createAndConfigurePane();
         createAndLayoutControls();
         updateControllerFromListeners();
+        gridReload();
     }
 
     @FXML
@@ -63,8 +111,9 @@ public class BoardController {
     void onPass(ActionEvent event) {
         zug++;
         if(zug == 2){
-            //TODO: Spiel vorbei...
+            model.endGame();
         }
+        model.setStatusTextPassed();
     }
 
     @FXML
@@ -74,7 +123,40 @@ public class BoardController {
 
     @FXML
     void onSurrender(ActionEvent event) {
+        model.endGame();
+    }
 
+    @FXML
+    void newGame(ActionEvent event) {
+
+    }
+
+    @FXML
+    void openRules(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/Rules.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Regeln");
+        stage.setScene(new Scene(root, 300, 200));
+        stage.show();
+    }
+
+    @FXML
+    void openLink(ActionEvent event) {
+        hostServices = this.getHostServices();
+        hostServices.showDocument("https://de.wikipedia.org/wiki/Go_(Spiel)");
+    }
+
+    @FXML
+    void openAbout(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/view/About.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Über");
+        stage.setScene(new Scene(root, 300, 200));
+        stage.show();
+    }
+
+    public void setStatusText(String text){
+        txt_status.setText(text);
     }
 
     private void createAndConfigurePane() {
@@ -213,6 +295,8 @@ public class BoardController {
                 }
             }
         }
+        txt_whitePoints.setText("" + model.getWhitePoints());
+        txt_blackPoints.setText("" + model.getBlackPoints());
     }
 
 

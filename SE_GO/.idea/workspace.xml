@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Changes Workspace">
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Standard Workspace update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/singleComponents/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/singleComponents/Stone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,6 +34,9 @@
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -73,7 +74,30 @@
       <option name="presentableId" value="Default" />
       <updated>1679991152459</updated>
       <workItem from="1679991153243" duration="860000" />
+      <workItem from="1684328586929" duration="1348000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
+      <created>1683620638798</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683620638798</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught">
+      <created>1683620689633</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1683620689633</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Standard Workspace update">
+      <created>1683620718427</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683620718427</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,6 +116,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changes Workspace" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes Workspace" />
+    <MESSAGE value="Updated the Grid Reload function for the new Boardgrid Children structure with Groups" />
+    <MESSAGE value="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught" />
+    <MESSAGE value="Standard Workspace update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Standard Workspace update" />
   </component>
 </project>

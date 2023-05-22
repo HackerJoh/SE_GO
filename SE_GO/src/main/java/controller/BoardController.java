@@ -179,19 +179,22 @@ public class BoardController {
 
         this.sceneWidth = (int) gp_boardGrid.getWidth();
 
+        //create upper letters
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, 2, i + 3);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
+        //create left Numbers
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 3, 2);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
+        //create the Stones and the Lines for the board
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
                 int id = i * boardSize + j;
@@ -226,14 +229,14 @@ public class BoardController {
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, boardSize + 3, i + 3);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 3, boardSize + 3);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
+            gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         ColumnConstraints col = new ColumnConstraints();

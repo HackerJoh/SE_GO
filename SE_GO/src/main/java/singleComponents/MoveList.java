@@ -1,5 +1,6 @@
 package singleComponents;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.FileWriter;
@@ -15,22 +16,22 @@ public class MoveList {
         this.moves = new LinkedList<>();
     }
 
-    void addMove(StoneColor color, int xCord, int yCord){
+    public void addMove(StoneColor color, int xCord, int yCord){
         moves.add(new Move(color, xCord, yCord));
     }
 
-    void addMoveWithDescription(StoneColor color, String description, int xCord, int yCord){
+    public void addMoveWithDescription(StoneColor color, String description, int xCord, int yCord){
         moves.add(new Move(color, description, xCord, yCord));
     }
 
-    void deleteLastMove(){
+    public void deleteLastMove(){
         moves.remove(moves.remove(moves.size()-1));
     }
 
-    void exportMoves(String path){
+    public void exportMoves(String path){
         ObjectMapper mapper = new ObjectMapper();
 
-        try(FileWriter fileWriter = new FileWriter("jsonArray.json")){
+        try(FileWriter fileWriter = new FileWriter(path)){
             String json = mapper.writeValueAsString(moves);
             fileWriter.write(json);
         } catch (IOException e){

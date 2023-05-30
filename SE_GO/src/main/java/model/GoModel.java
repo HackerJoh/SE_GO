@@ -2,6 +2,7 @@ package model;
 
 import controller.BoardController;
 import javafx.scene.paint.Color;
+import singleComponents.MoveList;
 import singleComponents.Point;
 import singleComponents.StoneColor;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class GoModel {
     private final int[][] boardArray; //TODO: Stone-Array
     private final int size;
+    private final MoveList moveList;
     private int noMoves; //TODO: kein Zugriff von außen
     private BoardController controller;
     private boolean gameHasEnded = false;
@@ -28,6 +30,7 @@ public class GoModel {
         this.controller = controller;
         this.blackPoints = controller.getKomi();
         this.whitePoints = 0;
+        this.moveList = new MoveList();
     }
 
     public StoneColor getTurn() {
@@ -103,6 +106,14 @@ public class GoModel {
         int y = id % size;  //TODO: ID in x und y splitten, enum für color
         controller.setZug(0);
         setStatusText();
+        if(color < 0) {
+            moveList.addMove(StoneColor.BLACK, x, y);
+        }else if(color > 0){
+            moveList.addMove(StoneColor.WHITE, x, y);
+        }else {
+            moveList.addMove(StoneColor.NEUTRAL,x, y);
+        }
+        moveList.exportMoves("moveArray.json");
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
 

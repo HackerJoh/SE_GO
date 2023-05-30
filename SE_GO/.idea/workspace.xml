@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Standard Workspace update">
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Centerd the letters for the Board">
+      <change afterPath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/Stone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/Stone.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +81,8 @@
       <updated>1679991152459</updated>
       <workItem from="1679991153243" duration="860000" />
       <workItem from="1684328586929" duration="1348000" />
+      <workItem from="1684749892355" duration="950000" />
+      <workItem from="1685456913482" duration="2893000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -97,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683620718427</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Centerd the letters for the Board">
+      <created>1684750094605</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684750094605</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -119,6 +134,7 @@
     <MESSAGE value="Updated the Grid Reload function for the new Boardgrid Children structure with Groups" />
     <MESSAGE value="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught" />
     <MESSAGE value="Standard Workspace update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Standard Workspace update" />
+    <MESSAGE value="Centerd the letters for the Board" />
+    <option name="LAST_COMMIT_MESSAGE" value="Centerd the letters for the Board" />
   </component>
 </project>

@@ -240,6 +240,10 @@ public class GoModel {
         return Color.TRANSPARENT;
     }
 
+    public boolean getUsedById(int id){
+        return (boardArray[id / size][id % size] != 0);
+    }
+
     public double getWhitePoints() {
         return whitePoints;
     }

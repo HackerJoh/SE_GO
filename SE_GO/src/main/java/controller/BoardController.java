@@ -309,7 +309,10 @@ public class BoardController {
         for (Node n : gp_boardGrid.getChildren()) {
             if (n instanceof Group) {
                 for (Node n2 : ((Group) n).getChildren()) {
-                    if (n2 instanceof Stone) ((Stone) n2).setFill(model.getColorById(((Stone) n2).id));
+                    if (n2 instanceof Stone) {
+                        ((Stone) n2).setFill(model.getColorById(((Stone) n2).id));
+                        ((Stone) n2).setUsed(model.getUsedById(((Stone) n2).id));
+                    }
                 }
             }
         }

@@ -15,12 +15,12 @@ public class MoveList {
         this.moves = new LinkedList<>();
     }
 
-    void addMove(StoneColor color){
-        moves.add(new Move(color));
+    void addMove(StoneColor color, int xCord, int yCord){
+        moves.add(new Move(color, xCord, yCord));
     }
 
-    void addMoveWithDescription(StoneColor color, String description){
-        moves.add(new Move(color, description));
+    void addMoveWithDescription(StoneColor color, String description, int xCord, int yCord){
+        moves.add(new Move(color, description, xCord, yCord));
     }
 
     void deleteLastMove(){

@@ -14,7 +14,7 @@ public class GoModel {
     private final int[][] boardArray; //TODO: Stone-Array
     private final int size;
     private final MoveList moveList;
-    private int noMoves; //TODO: kein Zugriff von außen
+    private int noMoves;
     private BoardController controller;
     private boolean gameHasEnded = false;
     private boolean haveSurrendered = false;
@@ -103,7 +103,7 @@ public class GoModel {
     public void setStone(int id, int color) {
         boardArray[id / size][id % size] = color;
         int x = id / size;
-        int y = id % size;  //TODO: ID in x und y splitten, enum für color
+        int y = id % size;  //TODO: ID in x und y splitten
         controller.setZug(0);
         setStatusText();
         if(color < 0) {
@@ -113,10 +113,13 @@ public class GoModel {
         }else {
             moveList.addMove(StoneColor.NEUTRAL,x, y);
         }
-        moveList.exportMoves("moveArray.json");
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
 
+    }
+
+    public void saveGame(){
+        moveList.exportMoves("list.json");
     }
 
     private void checkAllStonesIfTheyHaveLiberties() {

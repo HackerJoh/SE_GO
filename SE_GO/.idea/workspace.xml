@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added Cordinates to the Moves">
-      <change beforePath="$PROJECT_DIR$/../.idea/SE_GO.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Standard Workspace update">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +76,6 @@
       <updated>1679991152459</updated>
       <workItem from="1679991153243" duration="860000" />
       <workItem from="1684328586929" duration="1348000" />
-      <workItem from="1684749892355" duration="950000" />
-      <workItem from="1685456913482" duration="4252000" />
-      <workItem from="1685461926235" duration="648000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -112,70 +98,7 @@
       <option name="project" value="LOCAL" />
       <updated>1683620718427</updated>
     </task>
-    <task id="LOCAL-00004" summary="Centerd the letters for the Board">
-      <created>1684750094605</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1684750094605</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Added Dependecies for the JSON Writer">
-      <created>1685460740780</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460740780</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added Setter for IsUsed boolean">
-      <created>1685460773795</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460773795</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added Dependencies for the Json Writer">
-      <created>1685460797193</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460797193</updated>
-    </task>
-    <task id="LOCAL-00008" summary="Added a Move Oject!">
-      <created>1685460910774</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460910774</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Added a Object which stores Move Objects and can Export them to a Json File.">
-      <created>1685460955136</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460955136</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Updated Module info for the new Depencies">
-      <created>1685460987451</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460987451</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Made that Removed Stones can setted again">
-      <created>1685461023036</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1685461023036</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Added Cordinates to the Moves">
-      <created>1685461277029</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1685461277029</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -191,21 +114,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changes Workspace" />
     <MESSAGE value="Updated the Grid Reload function for the new Boardgrid Children structure with Groups" />
     <MESSAGE value="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught" />
     <MESSAGE value="Standard Workspace update" />
-    <MESSAGE value="Centerd the letters for the Board" />
-    <MESSAGE value="Added Dependecies for the JSON Writer" />
-    <MESSAGE value="Added Setter for IsUsed boolean" />
-    <MESSAGE value="Added Dependencies for the Json Writer" />
-    <MESSAGE value="Added a Move Oject!" />
-    <MESSAGE value="Added a Object which stores Move Objects and can Export them to a Json File." />
-    <MESSAGE value="Updated Module info for the new Depencies" />
-    <MESSAGE value="Made that Removed Stones can setted again" />
-    <MESSAGE value="Added Cordinates to the Moves" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Cordinates to the Moves" />
+    <option name="LAST_COMMIT_MESSAGE" value="Standard Workspace update" />
   </component>
 </project>

@@ -119,7 +119,7 @@ public class BoardController {
 
     @FXML
     void onSave(ActionEvent event) {
-
+        model.saveGame();
     }
 
     @FXML

@@ -6,6 +6,7 @@ module com.example.se_go {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
+    requires com.fasterxml.jackson.databind;
 
     opens controller;
 

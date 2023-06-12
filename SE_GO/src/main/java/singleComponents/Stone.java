@@ -61,4 +61,8 @@ public class Stone extends Circle {
             }
         });
     }
+
+    public void setUsed(boolean isUsed){
+        this.isUsed = isUsed;
+    }
 }

@@ -2,6 +2,7 @@ package model;
 
 import controller.BoardController;
 import javafx.scene.paint.Color;
+import singleComponents.MoveList;
 import singleComponents.Point;
 import singleComponents.StoneColor;
 
@@ -12,7 +13,8 @@ import java.util.List;
 public class GoModel {
     private final int[][] boardArray; //TODO: Stone-Array
     private final int size;
-    private int noMoves; //TODO: kein Zugriff von außen
+    private final MoveList moveList;
+    private int noMoves;
     private BoardController controller;
     private boolean gameHasEnded = false;
     private boolean haveSurrendered = false;
@@ -28,6 +30,7 @@ public class GoModel {
         this.controller = controller;
         this.blackPoints = controller.getKomi();
         this.whitePoints = 0;
+        this.moveList = new MoveList();
     }
 
     public StoneColor getTurn() {
@@ -100,11 +103,22 @@ public class GoModel {
     public void setStone(int id, int color) {
         boardArray[id / size][id % size] = color;
         int x = id / size;
-        int y = id % size;  //TODO: ID in x und y splitten, enum für color
+        int y = id % size;  //TODO: ID in x und y splitten
         controller.setZug(0);
         setStatusText();
+        if(color < 0) {
+            moveList.addMove(StoneColor.BLACK, x, y);
+        }else if(color > 0){
+            moveList.addMove(StoneColor.WHITE, x, y);
+        }else {
+            moveList.addMove(StoneColor.NEUTRAL,x, y);
+        }
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
+    }
+
+    public void saveGame(){
+        moveList.exportMoves("list.json");
     }
 
     private void checkAllStonesIfTheyHaveLiberties() {
@@ -237,6 +251,10 @@ public class GoModel {
         if (boardArray[id / size][id % size] > 0) return Color.WHITE;
         if (boardArray[id / size][id % size] < 0) return Color.BLACK;
         return Color.TRANSPARENT;
+    }
+
+    public boolean getUsedById(int id){
+        return (boardArray[id / size][id % size] != 0);
     }
 
     public double getWhitePoints() {

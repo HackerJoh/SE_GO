@@ -24,14 +24,19 @@ import singleComponents.VLine;
 import java.io.IOException;
 
 public class BoardController {
-    private int boardSize;
-    private int handicap;
-    private double komi;
-    int sceneWidth = 0;
-    double stoneRatio = 0.8;
-    private GoModel model;
+    protected int boardSize;
+    protected int handicap;
+    protected double komi;
+    protected int sceneWidth = 0;
+    protected double stoneRatio = 0.8;
+    public GoModel model;
     private HostServices hostServices;
 
+    //empty constructor for testing
+    /*public BoardController(){
+        this.txt_status = new Text();
+        this.gp_boardGrid = new GridPane();
+    }*/
     public void setHostServices(HostServices hostServices) {
         this.hostServices = hostServices ;
     }

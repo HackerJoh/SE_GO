@@ -105,7 +105,6 @@ public class GoModel {
         setStatusText();
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
-
     }
 
     private void checkAllStonesIfTheyHaveLiberties() {

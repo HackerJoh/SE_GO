@@ -19,37 +19,37 @@ import java.util.ResourceBundle;
 public class MenuController implements Initializable {
 
     @FXML
-    private ComboBox<String> cbx_boardSize;
+    protected ComboBox<String> cbx_boardSize;
 
     @FXML
-    private Spinner<Integer> sp_handicap;
+    protected Spinner<Integer> sp_handicap;
 
     @FXML
-    private Spinner<Double> sp_komi;
+    protected Spinner<Double> sp_komi;
 
     @FXML
-    private Button btn_loadGame;
+    protected Button btn_loadGame;
 
     @FXML
-    private Button btn_startGame;
+    protected Button btn_startGame;
 
     @FXML
-    private Label lbl_boardSize;
+    protected Label lbl_boardSize;
 
     @FXML
-    private Label lbl_handicap;
+    protected Label lbl_handicap;
 
     @FXML
-    private Label lbl_komi;
+    protected Label lbl_komi;
 
     @FXML
-    private Text txt_copyright;
+    protected Text txt_copyright;
 
     @FXML
-    private Text txt_heading;
+    protected Text txt_heading;
 
     @FXML
-    private Text txt_subheading;
+    protected Text txt_subheading;
 
     private HostServices hostServices;
 

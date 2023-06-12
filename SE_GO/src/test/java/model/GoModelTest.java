@@ -4,10 +4,14 @@ import controller.BoardController;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.kordamp.bootstrapfx.BootstrapFX;
+import singleComponents.Settings;
 
 import java.io.IOException;
 
@@ -21,17 +25,22 @@ public class GoModelTest {
     }
     @BeforeEach
     void setUp() throws Exception {
-        model=new GoModel(9, new BoardController());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board_2.fxml"));
+        loader.load();
+        BoardController controller = loader.getController();
+        Settings s = new Settings();
+        s.setBoardSize(9);
+        s.setKomi(0);
+        s.setHandicap(0);
+        controller.initData(s);
+        model = controller.model;
     }
 
     @Test
     public void testSetStone() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        fxmlLoader.load(getClass().getResource("/view/Board_2.fxml"));
-        BoardController controller = (BoardController) fxmlLoader.getController();
 
-        controller.model.setStone(0, 1);
-        assertEquals(Color.WHITE,controller.model.getColorById(0));
+        model.setStone(0, 1);
+        assertEquals(Color.WHITE,model.getColorById(0));
     }
 
 }

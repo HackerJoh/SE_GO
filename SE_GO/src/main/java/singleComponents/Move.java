@@ -30,6 +30,14 @@ public class Move {
         return id;
     }
 
+    public int getxCord() {
+        return xCord;
+    }
+
+    public int getyCord() {
+        return yCord;
+    }
+
     public StoneColor getColor() {
         return color;
     }

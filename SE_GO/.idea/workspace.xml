@@ -4,26 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added Cordinates to the Moves">
+      <change beforePath="$PROJECT_DIR$/../.idea/SE_GO.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/BoardControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/MenuControllerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/GoModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/GoModelTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CoverageOptionsProvider">
-    <option name="myAddOrReplace" value="0" />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -43,10 +48,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.38965517" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -54,114 +56,24 @@
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\src\main\resources" />
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\src\main\java\model" />
     </key>
-    <key name="CreateTestDialog.Recents.Supers">
-      <recent name="" />
-    </key>
-    <key name="CreateTestDialog.RecentsKey">
-      <recent name="controller" />
-    </key>
   </component>
-  <component name="RunManager" selected="JUnit.GoModelTest">
-    <configuration name="Main" type="Application" factoryName="Application">
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GoApplication.Main" />
       <module name="SE_GO" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BoardControllerTest.checkSize" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE_GO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="GoApplication.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.BoardControllerTest" />
-      <option name="METHOD_NAME" value="checkSize" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GoModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE_GO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.GoModelTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GoModelTest.testSetStone" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE_GO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.GoModelTest" />
-      <option name="METHOD_NAME" value="testSetStone" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MenuControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE_GO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.MenuControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MenuControllerTest.testKomi" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SE_GO" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.MenuControllerTest" />
-      <option name="METHOD_NAME" value="testKomi" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.BoardControllerTest.checkSize" />
-      <item itemvalue="JUnit.GoModelTest.testSetStone" />
-      <item itemvalue="JUnit.MenuControllerTest" />
-      <item itemvalue="JUnit.MenuControllerTest.testKomi" />
-      <item itemvalue="JUnit.GoModelTest" />
-    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.GoModelTest" />
-        <item itemvalue="JUnit.GoModelTest.testSetStone" />
-        <item itemvalue="JUnit.BoardControllerTest.checkSize" />
-        <item itemvalue="JUnit.MenuControllerTest" />
-        <item itemvalue="JUnit.MenuControllerTest.testKomi" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -175,10 +87,9 @@
       <updated>1679991152459</updated>
       <workItem from="1679991153243" duration="860000" />
       <workItem from="1684328586929" duration="1348000" />
-      <workItem from="1684777851011" duration="2347000" />
-      <workItem from="1684780349784" duration="7218000" />
-      <workItem from="1684826680070" duration="57000" />
-      <workItem from="1684826740385" duration="2115000" />
+      <workItem from="1684749892355" duration="950000" />
+      <workItem from="1685456913482" duration="4252000" />
+      <workItem from="1685461926235" duration="648000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -201,7 +112,70 @@
       <option name="project" value="LOCAL" />
       <updated>1683620718427</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Centerd the letters for the Board">
+      <created>1684750094605</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684750094605</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Dependecies for the JSON Writer">
+      <created>1685460740780</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460740780</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added Setter for IsUsed boolean">
+      <created>1685460773795</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460773795</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Added Dependencies for the Json Writer">
+      <created>1685460797193</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460797193</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added a Move Oject!">
+      <created>1685460910774</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460910774</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Added a Object which stores Move Objects and can Export them to a Json File.">
+      <created>1685460955136</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460955136</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated Module info for the new Depencies">
+      <created>1685460987451</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460987451</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Made that Removed Stones can setted again">
+      <created>1685461023036</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685461023036</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added Cordinates to the Moves">
+      <created>1685461277029</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685461277029</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,29 +191,21 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Changes Workspace" />
     <MESSAGE value="Updated the Grid Reload function for the new Boardgrid Children structure with Groups" />
     <MESSAGE value="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught" />
     <MESSAGE value="Standard Workspace update" />
-    <MESSAGE value="minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testKomi.ic" NAME="MenuControllerTest.testKomi Coverage Results" MODIFIED="1684785015702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testComboBoxSize.ic" NAME="MenuControllerTest.testComboBoxSize Coverage Results" MODIFIED="1684784585450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testInitialize.ic" NAME="MenuControllerTest.testInitialize Coverage Results" MODIFIED="1684781310757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>controller.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/SE_GO$Main.ic" NAME="Main Coverage Results" MODIFIED="1684784781832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>GoApplication.*</FILTER>
-    </SUITE>
+    <MESSAGE value="Centerd the letters for the Board" />
+    <MESSAGE value="Added Dependecies for the JSON Writer" />
+    <MESSAGE value="Added Setter for IsUsed boolean" />
+    <MESSAGE value="Added Dependencies for the Json Writer" />
+    <MESSAGE value="Added a Move Oject!" />
+    <MESSAGE value="Added a Object which stores Move Objects and can Export them to a Json File." />
+    <MESSAGE value="Updated Module info for the new Depencies" />
+    <MESSAGE value="Made that Removed Stones can setted again" />
+    <MESSAGE value="Added Cordinates to the Moves" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Cordinates to the Moves" />
   </component>
 </project>

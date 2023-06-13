@@ -1,5 +1,6 @@
 package controller;
 
+
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.GoModel;
 import org.kordamp.bootstrapfx.BootstrapFX;
+
 import singleComponents.HLine;
 import singleComponents.Settings;
 import singleComponents.Stone;

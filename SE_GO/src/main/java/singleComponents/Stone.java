@@ -33,10 +33,10 @@ public class Stone extends Circle {
             if(!isUsed && !model.isGameHasEnded()){
                 if(model.getNoMoves() % 2 == 0){
                     this.setFill(Color.BLACK);
-                    model.setStone(this.id, -1);
+                    model.setStone(this.id, StoneColor.BLACK);
                 }else {
                     this.setFill(Color.WHITE);
-                    model.setStone(this.id, 1);
+                    model.setStone(this.id, StoneColor.WHITE);
                 }
                 model.increaseTurn();
                 this.isUsed = true;

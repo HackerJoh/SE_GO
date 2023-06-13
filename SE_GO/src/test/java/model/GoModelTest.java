@@ -12,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import singleComponents.Settings;
+import singleComponents.StoneColor;
 
 import java.io.IOException;
 
@@ -37,9 +38,9 @@ public class GoModelTest {
     }
 
     @Test
-    public void testSetStone() throws IOException {
+    public void testSetStone() {
 
-        model.setStone(0, 1);
+        model.setStone(0, StoneColor.WHITE);
         assertEquals(Color.WHITE,model.getColorById(0));
     }
 

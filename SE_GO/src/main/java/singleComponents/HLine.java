@@ -10,7 +10,6 @@ public class HLine extends Line {
     private final int id;
 
     /**
-     *
      * @param id: Is the id of the Line, the Line gets the ID when de Lines for de Go-Board are created
      * @param startX: Are for the Superclass
      * @param endX: Also for the Superclass

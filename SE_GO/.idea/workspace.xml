@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Missused the Surrender Button for Import the Json">
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Changed, that the Deleting Move is also saved in the Move where the other stones are deleted">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -87,7 +89,7 @@
       <workItem from="1685461926235" duration="648000" />
       <workItem from="1686604217939" duration="35000" />
       <workItem from="1686604282097" duration="5268000" />
-      <workItem from="1686764024963" duration="8766000" />
+      <workItem from="1686764024963" duration="9436000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -236,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686784333349</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Changed, that the Deleting Move is also saved in the Move where the other stones are deleted">
+      <created>1686784901847</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686784901847</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,6 +285,7 @@
     <MESSAGE value="Removed a Empty line" />
     <MESSAGE value="Added feature so that Set Stone and romve Stone added in the Movelist" />
     <MESSAGE value="Missused the Surrender Button for Import the Json" />
-    <option name="LAST_COMMIT_MESSAGE" value="Missused the Surrender Button for Import the Json" />
+    <MESSAGE value="Changed, that the Deleting Move is also saved in the Move where the other stones are deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed, that the Deleting Move is also saved in the Move where the other stones are deleted" />
   </component>
 </project>

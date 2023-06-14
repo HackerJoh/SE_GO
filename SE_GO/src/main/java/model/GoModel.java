@@ -110,10 +110,10 @@ public class GoModel {
             setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
         }else if(color == StoneColor.WHITE){
             SingleMove[] moves = {new SingleMove(StoneColor.WHITE, xCord, yCord, true)};
-            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
+            setMove = new SingleMove(StoneColor.WHITE, xCord, yCord, true);
         }else {
             SingleMove[] moves = {new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true)};
-            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
+            setMove = new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true);
         }
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties(setMove);
@@ -138,6 +138,7 @@ public class GoModel {
     }
 
     private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove) {
+        boolean noStoneRemoved = true;
         for (int x = 0; x < boardArray.length; x++) {
             for (int y = 0; y < boardArray[x].length; y++) {
                 //The start stone
@@ -174,13 +175,15 @@ public class GoModel {
                             }
                         }
                         moveList.addMove(removeMoves);
+                        noStoneRemoved = false;
                         controller.gridReload();
-                    } else {
-                        SingleMove[] onlySetMove= {setMove};
-                        moveList.addMove(onlySetMove);
                     }
                 }
             }
+        }
+        if(noStoneRemoved){
+            SingleMove[] onlySetMove= {setMove};
+            moveList.addMove(onlySetMove);
         }
     }
 

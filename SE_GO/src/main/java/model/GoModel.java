@@ -4,6 +4,7 @@ import controller.BoardController;
 import javafx.scene.paint.Color;
 import singleComponents.MoveList;
 import singleComponents.Point;
+import singleComponents.SingleMove;
 import singleComponents.StoneColor;
 
 import java.util.ArrayList;
@@ -107,11 +108,14 @@ public class GoModel {
         controller.setZug(0);
         setStatusText();
         if(color == StoneColor.BLACK) {
-            moveList.addMove(StoneColor.BLACK, xCord, yCord);
+            SingleMove[] moves = {new SingleMove(StoneColor.BLACK, xCord, yCord, true)};
+            moveList.addMove(moves);
         }else if(color == StoneColor.WHITE){
-            moveList.addMove(StoneColor.WHITE, xCord, yCord);
+            SingleMove[] moves = {new SingleMove(StoneColor.WHITE, xCord, yCord, true)};
+            moveList.addMove(moves);
         }else {
-            moveList.addMove(StoneColor.NEUTRAL,xCord, yCord);
+            SingleMove[] moves = {new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true)};
+            moveList.addMove(moves);
         }
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
@@ -124,32 +128,41 @@ public class GoModel {
     private void checkAllStonesIfTheyHaveLiberties() {
         for (int x = 0; x < boardArray.length; x++) {
             for (int y = 0; y < boardArray[x].length; y++) {
+                //The start stone
                 StoneColor color = boardArray[x][y];
-                islandPoints = new ArrayList<>();
-                callBFS(deepCopy(this.boardArray), x, y, color);
-                //now i got island Points
-                int totalLiberties = 0;
-                for (Point p : islandPoints
-                ) {
-                    //check Freiheiten
-                    totalLiberties += getLiberties(p.x, p.y);
-                }
-                if (totalLiberties == 0) {
-                    //remove group - got catched!
+                if(color != StoneColor.NEUTRAL) {
+                    islandPoints = new ArrayList<>();
+                    callBFS(deepCopy(this.boardArray), x, y, color);
+                    //now i got Island where the start stone belongs to
+                    int totalLiberties = 0;
                     for (Point p : islandPoints
                     ) {
                         //check Freiheiten
-                        //int id = p.x * size + p.y; Unnötig?
-                        this.removeStone(p.x, p.y);
-                        System.out.println(this);
-                        System.out.println("gefangen!");
-                        if (getTurn() == StoneColor.WHITE) {
-                            blackPoints++;
-                        } else {
-                            whitePoints++;
-                        }
+                        totalLiberties += getLiberties(p.x, p.y);
                     }
-                    controller.gridReload();
+                    if (totalLiberties == 0) {
+                        //remove group - got catched!
+                        SingleMove[] removeMoves = new SingleMove[islandPoints.size()];
+                        System.out.println(islandPoints.size());
+                        int count = 0;
+                        for (Point p : islandPoints
+                        ) {
+                            //check Freiheiten
+                            //int id = p.x * size + p.y; Unnötig?
+                            this.removeStone(p.x, p.y);
+                            removeMoves[count] = new SingleMove(getTurn(), p.x, p.y, false);
+                            count++;
+                            //System.out.println(this);
+                            System.out.println("gefangen!");
+                            if (getTurn() == StoneColor.WHITE) {
+                                blackPoints++;
+                            } else {
+                                whitePoints++;
+                            }
+                        }
+                        moveList.addMove(removeMoves);
+                        controller.gridReload();
+                    }
                 }
             }
         }

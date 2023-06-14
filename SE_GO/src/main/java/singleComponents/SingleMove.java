@@ -1,10 +1,12 @@
 package singleComponents;
 
 public class SingleMove {
-    private final StoneColor color;
-    private final int xCoord;
-    private final int yCoord;
-    private final boolean setStone;
+    private  StoneColor color;
+    private  int xCoord;
+    private  int yCoord;
+    private  boolean setStone;
+
+    public SingleMove(){}
 
     public SingleMove(StoneColor color, int xCoord, int yCoord, boolean setStone){
         this.color = color;
@@ -27,5 +29,25 @@ public class SingleMove {
 
     public boolean isSetStone() {
         return setStone;
+    }
+
+    public void setColor(StoneColor color) {
+        this.color = color;
+    }
+
+    public void setxCoord(int xCoord) {
+        this.xCoord = xCoord;
+    }
+
+    public void setyCoord(int yCoord) {
+        this.yCoord = yCoord;
+    }
+
+    public void setSetStone(boolean setStone) {
+        this.setStone = setStone;
+    }
+
+    public String toString(){
+        return color.toString();
     }
 }

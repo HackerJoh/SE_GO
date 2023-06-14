@@ -26,7 +26,7 @@ public class GoModel {
 
     public GoModel(int size, BoardController controller) {
         this.size = size;
-        this.boardArray = fillBoardArrayNeutral();
+        this.boardArray = createNewNeutralArray();
         this.noMoves = 0;
         this.controller = controller;
         this.blackPoints = controller.getKomi();
@@ -119,10 +119,24 @@ public class GoModel {
         }
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties();
+
+        //moveList.importMoves("list.json");
     }
 
     public void saveGame(){
         moveList.exportMoves("list.json");
+    }
+
+    public void loadGame(String path){
+        moveList.importMoves(path);
+        clearBoardArray();
+        for(SingleMove singleMove : moveList.getAllSingleMoves()){
+            if(singleMove.isSetStone()){
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = singleMove.getColor();
+            }else{
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
+            }
+        }
     }
 
     private void checkAllStonesIfTheyHaveLiberties() {
@@ -210,7 +224,7 @@ public class GoModel {
         return copy;
     }
 
-    public StoneColor[][] fillBoardArrayNeutral() {
+    public StoneColor[][] createNewNeutralArray() {
         StoneColor[][] newArray = new StoneColor[this.size][this.size];
         for(int i = 0; i < size ; i++){
             for (int j = 0; j < size; j++) {
@@ -220,8 +234,16 @@ public class GoModel {
         return newArray;
     }
 
+    public void clearBoardArray() {
+        for(int i = 0; i < size ; i++){
+            for (int j = 0; j < size; j++) {
+                boardArray[i][j] = StoneColor.NEUTRAL;
+            }
+        }
+    }
 
     public String toString() {
+
         String out = "[\n";
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {

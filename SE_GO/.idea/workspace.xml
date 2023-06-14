@@ -4,14 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/singleComponents/SingleMove.java" afterDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added feature so that Set Stone and romve Stone added in the Movelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/HLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/HLine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/SingleMove.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/SingleMove.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +93,7 @@
       <workItem from="1685461926235" duration="648000" />
       <workItem from="1686604217939" duration="35000" />
       <workItem from="1686604282097" duration="5268000" />
-      <workItem from="1686764024963" duration="3400000" />
+      <workItem from="1686764024963" duration="8158000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -193,7 +193,49 @@
       <option name="project" value="LOCAL" />
       <updated>1686642703509</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Minor Changes">
+      <created>1686774186670</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774186670</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added a SingleMove, which represents one Stone in a Move">
+      <created>1686774233187</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774233187</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changed Move list so it can Contains a Array of SingleMoves">
+      <created>1686774287125</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774287125</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Changed Constructor for Movelist">
+      <created>1686774324643</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774324643</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Removed a Empty line">
+      <created>1686774344165</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774344165</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added feature so that Set Stone and romve Stone added in the Movelist">
+      <created>1686774391723</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774391723</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +268,12 @@
     <MESSAGE value="Added Cordinates to the Moves" />
     <MESSAGE value="Class Move added getter vor Coordinates" />
     <MESSAGE value="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this." />
+    <MESSAGE value="Minor Changes" />
+    <MESSAGE value="Added a SingleMove, which represents one Stone in a Move" />
+    <MESSAGE value="Changed Move list so it can Contains a Array of SingleMoves" />
+    <MESSAGE value="Changed Constructor for Movelist" />
+    <MESSAGE value="Removed a Empty line" />
+    <MESSAGE value="Added feature so that Set Stone and romve Stone added in the Movelist" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added feature so that Set Stone and romve Stone added in the Movelist" />
   </component>
 </project>

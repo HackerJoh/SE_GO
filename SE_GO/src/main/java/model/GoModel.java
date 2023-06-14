@@ -2,10 +2,7 @@ package model;
 
 import controller.BoardController;
 import javafx.scene.paint.Color;
-import singleComponents.MoveList;
-import singleComponents.Point;
-import singleComponents.SingleMove;
-import singleComponents.StoneColor;
+import singleComponents.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -107,18 +104,19 @@ public class GoModel {
         boardArray[xCord][yCord] = color;
         controller.setZug(0);
         setStatusText();
+        SingleMove setMove;
         if(color == StoneColor.BLACK) {
             SingleMove[] moves = {new SingleMove(StoneColor.BLACK, xCord, yCord, true)};
-            moveList.addMove(moves);
+            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
         }else if(color == StoneColor.WHITE){
             SingleMove[] moves = {new SingleMove(StoneColor.WHITE, xCord, yCord, true)};
-            moveList.addMove(moves);
+            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
         }else {
             SingleMove[] moves = {new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true)};
-            moveList.addMove(moves);
+            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
         }
         //check after each move if somebody captured something / cought stones
-        this.checkAllStonesIfTheyHaveLiberties();
+        this.checkAllStonesIfTheyHaveLiberties(setMove);
 
         //moveList.importMoves("list.json");
     }
@@ -139,7 +137,7 @@ public class GoModel {
         }
     }
 
-    private void checkAllStonesIfTheyHaveLiberties() {
+    private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove) {
         for (int x = 0; x < boardArray.length; x++) {
             for (int y = 0; y < boardArray[x].length; y++) {
                 //The start stone
@@ -156,9 +154,10 @@ public class GoModel {
                     }
                     if (totalLiberties == 0) {
                         //remove group - got catched!
-                        SingleMove[] removeMoves = new SingleMove[islandPoints.size()];
+                        SingleMove[] removeMoves = new SingleMove[islandPoints.size() + 1];
+                        removeMoves[0] = setMove;
                         System.out.println(islandPoints.size());
-                        int count = 0;
+                        int count = 1;
                         for (Point p : islandPoints
                         ) {
                             //check Freiheiten
@@ -176,6 +175,9 @@ public class GoModel {
                         }
                         moveList.addMove(removeMoves);
                         controller.gridReload();
+                    } else {
+                        SingleMove[] onlySetMove= {setMove};
+                        moveList.addMove(onlySetMove);
                     }
                 }
             }

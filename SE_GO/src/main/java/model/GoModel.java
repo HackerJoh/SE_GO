@@ -2,9 +2,7 @@ package model;
 
 import controller.BoardController;
 import javafx.scene.paint.Color;
-import singleComponents.MoveList;
-import singleComponents.Point;
-import singleComponents.StoneColor;
+import singleComponents.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +23,7 @@ public class GoModel {
 
     public GoModel(int size, BoardController controller) {
         this.size = size;
-        this.boardArray = fillBoardArrayNeutral();
+        this.boardArray = getNeutralBoardArray();
         this.noMoves = 0;
         this.controller = controller;
         this.blackPoints = controller.getKomi();
@@ -106,51 +104,77 @@ public class GoModel {
         boardArray[xCord][yCord] = color;
         controller.setZug(0);
         setStatusText();
+        SingleMove setMove;
         if(color == StoneColor.BLACK) {
-            moveList.addMove(StoneColor.BLACK, xCord, yCord);
+            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
         }else if(color == StoneColor.WHITE){
-            moveList.addMove(StoneColor.WHITE, xCord, yCord);
+            setMove = new SingleMove(StoneColor.WHITE, xCord, yCord, true);
         }else {
-            moveList.addMove(StoneColor.NEUTRAL,xCord, yCord);
+            setMove = new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true);
         }
         //check after each move if somebody captured something / cought stones
-        this.checkAllStonesIfTheyHaveLiberties();
+        this.checkAllStonesIfTheyHaveLiberties(setMove);
     }
 
     public void saveGame(){
         moveList.exportMoves("list.json");
     }
 
-    private void checkAllStonesIfTheyHaveLiberties() {
+    public void loadGame(String path){
+        clearBoardArray();
+        moveList.importMoves(path);
+        for(SingleMove singleMove : moveList.getAllSingleMoves()){
+            if(singleMove.isSetStone()){
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = singleMove.getColor();
+            } else {
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
+            }
+        }
+    }
+
+    private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove) {
+        boolean isOnlySetMove = true;
         for (int x = 0; x < boardArray.length; x++) {
             for (int y = 0; y < boardArray[x].length; y++) {
                 StoneColor color = boardArray[x][y];
-                islandPoints = new ArrayList<>();
-                callBFS(deepCopy(this.boardArray), x, y, color);
-                //now i got island Points
-                int totalLiberties = 0;
-                for (Point p : islandPoints
-                ) {
-                    //check Freiheiten
-                    totalLiberties += getLiberties(p.x, p.y);
-                }
-                if (totalLiberties == 0) {
-                    //remove group - got catched!
+                if(color != StoneColor.NEUTRAL){
+                    islandPoints = new ArrayList<>();
+                    callBFS(deepCopy(this.boardArray), x, y, color);
+                    //now i got island Points
+                    int totalLiberties = 0;
                     for (Point p : islandPoints
                     ) {
                         //check Freiheiten
-                        //int id = p.x * size + p.y; Unnötig?
-                        this.removeStone(p.x, p.y);
-                        System.out.println(this);
-                        if (getTurn() == StoneColor.WHITE) {
-                            blackPoints++;
-                        } else {
-                            whitePoints++;
-                        }
+                        totalLiberties += getLiberties(p.x, p.y);
                     }
-                    controller.gridReload();
+                    if (totalLiberties == 0) {
+                        //remove group - got catched!
+                        isOnlySetMove = false;
+                        SingleMove[] move = new SingleMove[islandPoints.size() + 1];
+                        move[0] = setMove;
+                        int counter = 1;
+                        for (Point p : islandPoints
+                        ) {
+                            //check Freiheiten
+                            //int id = p.x * size + p.y; Unnötig?
+                            this.removeStone(p.x, p.y);
+                            move[counter] = new SingleMove(getTurn(), p.x, p.y, false);
+                            counter++;
+                            System.out.println(this);
+                            if (getTurn() == StoneColor.WHITE) {
+                                blackPoints++;
+                            } else {
+                                whitePoints++;
+                            }
+                        }
+                        moveList.addMove(move);
+                        controller.gridReload();
+                    }
                 }
             }
+        }
+        if(isOnlySetMove){
+            moveList.addMove(new SingleMove[]{setMove});
         }
     }
 
@@ -196,7 +220,7 @@ public class GoModel {
         return copy;
     }
 
-    public StoneColor[][] fillBoardArrayNeutral() {
+    public StoneColor[][] getNeutralBoardArray() {
         StoneColor[][] newArray = new StoneColor[this.size][this.size];
         for(int i = 0; i < size ; i++){
             for (int j = 0; j < size; j++) {
@@ -204,6 +228,14 @@ public class GoModel {
             }
         }
         return newArray;
+    }
+
+    public void clearBoardArray(){
+        for(int i = 0; i < size ; i++){
+            for (int j = 0; j < size; j++) {
+                boardArray[i][j] = StoneColor.NEUTRAL;
+            }
+        }
     }
 
 

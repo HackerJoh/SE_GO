@@ -97,6 +97,7 @@ public class BoardController {
         this.zug = zug;
     }
 
+
     public void initData(Settings s) {
         boardSize = s.getBoardSize();
         handicap = s.getHandicap();

@@ -39,14 +39,15 @@ public class GoModel {
         }
     }
 
-    public void setStatusText() {
+    public String getStatusText() {
         if (!gameHasEnded) {
             if (getTurn() == StoneColor.BLACK) {
-                controller.setStatusText("SCHWARZ ist am Zug");
+                return "SCHWARZ ist am Zug";
             } else {
-                controller.setStatusText("WEIß ist am Zug");
+                return("WEIß ist am Zug");
             }
         }
+        return "Game has Ended";
     }
 
     public void setStatusTextPassed() {
@@ -103,7 +104,6 @@ public class GoModel {
         int yCord = id%size;
         boardArray[xCord][yCord] = color;
         controller.setZug(0);
-        setStatusText();
         SingleMove setMove;
         if(color == StoneColor.BLACK) {
             setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
@@ -113,6 +113,20 @@ public class GoModel {
             setMove = new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true);
         }
         //check after each move if somebody captured something / cought stones
+        this.checkAllStonesIfTheyHaveLiberties(setMove);
+    }
+
+    public void controllerSetsStone(int xCoord, int yCoord){
+        boardArray[xCoord][yCoord] = getTurn();
+        SingleMove setMove;
+        if(getTurn() == StoneColor.BLACK) {
+            setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
+        }else if(getTurn() == StoneColor.WHITE){
+            setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
+        }else {
+            setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
+        }
+        increaseTurn();
         this.checkAllStonesIfTheyHaveLiberties(setMove);
     }
 

@@ -44,7 +44,6 @@ public class MoveList {
         try {
             ObjectMapper mapper = new ObjectMapper();
             moves = mapper.readValue(Paths.get(path).toFile(), new TypeReference<>() {});
-            moves.forEach(System.out::println);
         }catch (Exception ex){
             ex.printStackTrace();
         }

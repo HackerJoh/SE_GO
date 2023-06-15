@@ -18,10 +18,7 @@ import javafx.stage.Stage;
 import model.GoModel;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
-import singleComponents.HLine;
-import singleComponents.Settings;
-import singleComponents.Stone;
-import singleComponents.VLine;
+import singleComponents.*;
 
 import java.io.IOException;
 
@@ -53,6 +50,10 @@ public class BoardController {
 
     public double getKomi() {
         return komi;
+    }
+
+    public int getBoardSize(){
+        return boardSize;
     }
 
     @FXML
@@ -109,6 +110,7 @@ public class BoardController {
         createAndLayoutControls();
         updateControllerFromListeners();
         gridReload();
+        setStatusText(model.getStatusText());
     }
 
     @FXML
@@ -212,7 +214,7 @@ public class BoardController {
                 int id = i * boardSize + j;
                 Group group = new Group();
                 int stoneRadius = sceneWidth / (boardSize + 2) / 2;
-                Stone stone = new Stone(id, stoneRadius * stoneRatio, model);
+                Stone stone = new Stone(id, stoneRadius * stoneRatio, this);
                 HLine newLineH;
                 VLine newLineV;
 
@@ -330,6 +332,20 @@ public class BoardController {
         }
         txt_whitePoints.setText("" + model.getWhitePoints());
         txt_blackPoints.setText("" + model.getBlackPoints());
+    }
+
+    public void setStone(int xCoord, int yCoord){
+        model.controllerSetsStone(xCoord, yCoord);
+        gridReload();
+        setStatusText(model.getStatusText());
+    }
+
+    public StoneColor getTurn(){
+        return model.getTurn();
+    }
+
+    public boolean isGameEnded(){
+        return model.isGameHasEnded();
     }
 
 

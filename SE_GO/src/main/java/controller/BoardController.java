@@ -131,8 +131,12 @@ public class BoardController {
 
     @FXML
     void onSurrender(ActionEvent event) {
-        model.setHaveSurrendered(true);
-        model.endGame();
+        //model.setHaveSurrendered(true);
+        //model.endGame();
+
+        //I've used this to Import the Json to the game LG Mo
+        model.loadGame("list.json");
+        gridReload();
     }
 
     @FXML

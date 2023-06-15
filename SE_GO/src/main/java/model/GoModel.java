@@ -142,7 +142,6 @@ public class GoModel {
                         //int id = p.x * size + p.y; Unnötig?
                         this.removeStone(p.x, p.y);
                         System.out.println(this);
-                        System.out.println("gefangen!");
                         if (getTurn() == StoneColor.WHITE) {
                             blackPoints++;
                         } else {
@@ -252,7 +251,6 @@ public class GoModel {
     public void removeStone(int xCoord, int yCoord) {
         boardArray[xCoord][yCoord] = StoneColor.NEUTRAL;
     }
-
 
     public Color getColorById(int id) {
         if (boardArray[id / size][id % size] == StoneColor.WHITE) return Color.WHITE;

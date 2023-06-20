@@ -4,22 +4,27 @@ public class Move {
     static int idCounter;
      private int id;
      private String description;
+     private int boardSize;
      private SingleMove[] singleMoves;
+
 
      public Move(){}
 
-    public Move (SingleMove[] singleMoves){
+    public Move (SingleMove[] singleMoves, int boardSize){
         this.id = idCounter;
         idCounter++;
         description = "";
         this.singleMoves = singleMoves;
+        this.boardSize = boardSize;
     }
 
-    public Move (SingleMove[] singleMoves, String description){
+    public Move (SingleMove[] singleMoves, String description, int boardSize){
         this.id = idCounter;
         idCounter++;
         this.description = description;
         this.singleMoves = singleMoves;
+        this.boardSize = boardSize;
+
     }
 
     public int getId() {
@@ -33,6 +38,8 @@ public class Move {
     public SingleMove[] getSingleMoves(){
         return singleMoves;
     }
+
+    public int getBoardSize(){ return boardSize; }
 
     public static void setIdCounter(int idCounter) {
         Move.idCounter = idCounter;

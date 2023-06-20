@@ -16,12 +16,12 @@ public class MoveList {
         this.moves = new LinkedList<>();
     }
 
-    public void addMove(SingleMove[] singleMoves){
-        moves.add(new Move(singleMoves));
+    public void addMove(SingleMove[] singleMoves, int boardsize){
+        moves.add(new Move(singleMoves, boardsize));
     }
 
-    public void addMoveWithDescription(SingleMove[] singleMoves, String description){
-        moves.add(new Move(singleMoves, description));
+    public void addMoveWithDescription(SingleMove[] singleMoves, String description, int boardsize){
+        moves.add(new Move(singleMoves, description, boardsize));
     }
 
     public void deleteLastMove(){
@@ -42,7 +42,12 @@ public class MoveList {
     public void importMoves(String path){
         try {
             ObjectMapper mapper = new ObjectMapper();
-            moves = mapper.readValue(Paths.get(path).toFile(), new TypeReference<>() {});
+            List<Move> importMoves = mapper.readValue(Paths.get(path).toFile(), new TypeReference<>() {});
+            if(importMoves.get(0).getBoardSize() == moves.get(0).getBoardSize()){
+                moves = importMoves;
+            }else{
+                System.out.println("Falsche Spielgröße");
+            }
         }catch (Exception ex){
             ex.printStackTrace();
         }

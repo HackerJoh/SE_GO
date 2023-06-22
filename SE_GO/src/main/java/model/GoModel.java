@@ -1,8 +1,10 @@
 package model;
 
-import controller.BoardController;
 import javafx.scene.paint.Color;
-import singleComponents.*;
+import singleComponents.MoveList;
+import singleComponents.Point;
+import singleComponents.SingleMove;
+import singleComponents.StoneColor;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -11,25 +13,26 @@ import java.util.List;
 
 public class GoModel {
     private final StoneColor[][] boardArray;
-    private int size;
+    private final int size;
     private final MoveList moveList;
     private int noMoves;
-    private final BoardController controller;
     private boolean gameHasEnded = false;
-    private boolean haveSurrendered = false;
     private double whitePoints;
     private double blackPoints;
 
     private List<Point> islandPoints = new ArrayList<>();
 
-    public GoModel(int size, BoardController controller) {
+    public GoModel(int size) {
         this.size = size;
         this.boardArray = getNeutralBoardArray();
         this.noMoves = 0;
-        this.controller = controller;
-        this.blackPoints = controller.getKomi();
         this.whitePoints = 0;
+        this.blackPoints = 0;
         this.moveList = new MoveList();
+    }
+
+    public void setNoMoves(int noMoves) {
+        this.noMoves = noMoves;
     }
 
     public StoneColor getTurn() {
@@ -40,60 +43,28 @@ public class GoModel {
         }
     }
 
-    public String getStatusText() {
-        if (!gameHasEnded) {
-            if (getTurn() == StoneColor.BLACK) {
-                return "SCHWARZ ist am Zug";
-            } else {
-                return "WEIß ist am Zug";
-            }
-        }
-        return "Game has Ended";
-    }
-
-    public void setStatusTextPassed() {
-        if (!gameHasEnded) {
-            noMoves++;
-            if (getTurn() == StoneColor.BLACK) {
-                controller.setStatusText("SCHWARZ passt");
-            } else {
-                controller.setStatusText("WEIß passt");
-            }
-        }
-    }
-
-    public void endGame() {
-        if (haveSurrendered) {
-            if (getTurn() == StoneColor.WHITE) {
-                controller.setStatusText("WEIß gewinnt!");
-            } else {
-                controller.setStatusText("SCHWARZ gewinnt!");
-            }
-        } else if (whitePoints > blackPoints) {
-            controller.setStatusText("WEIß gewinnt!");
-        } else if (blackPoints > whitePoints) {
-            controller.setStatusText("SCHWARZ gewinnt!");
-        } else {
-            controller.setStatusText("Unentschieden!");
-        }
-        controller.disableBtns();
-        gameHasEnded = true;
-    }
-
     public int getSize() {
         return size;
     }
 
-    public long getNoMoves() {
+    public int getNoMoves() {
         return noMoves;
+    }
+
+    public void setWhitePoints(double whitePoints) {
+        this.whitePoints = whitePoints;
+    }
+
+    public void setBlackPoints(double blackPoints) {
+        this.blackPoints = blackPoints;
     }
 
     public boolean isGameHasEnded() {
         return gameHasEnded;
     }
 
-    public void setHaveSurrendered(boolean haveSurrendered) {
-        this.haveSurrendered = haveSurrendered;
+    public void setGameHasEnded(boolean gameHasEnded) {
+        this.gameHasEnded = gameHasEnded;
     }
 
     public void increaseTurn() {
@@ -101,45 +72,44 @@ public class GoModel {
     }
 
     public void setStone(int id, StoneColor color) {
-        int xCord = id/size;
-        int yCord = id%size;
+        int xCord = id / size;
+        int yCord = id % size;
         boardArray[xCord][yCord] = color;
-        controller.setZug(0);
         SingleMove setMove;
-        if(color == StoneColor.BLACK) {
+        if (color == StoneColor.BLACK) {
             setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
-        }else if(color == StoneColor.WHITE){
+        } else if (color == StoneColor.WHITE) {
             setMove = new SingleMove(StoneColor.WHITE, xCord, yCord, true);
-        }else {
+        } else {
             setMove = new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true);
         }
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties(setMove);
     }
 
-    public void controllerSetsStone(int xCoord, int yCoord){
+    public void controllerSetsStone(int xCoord, int yCoord) {
         boardArray[xCoord][yCoord] = getTurn();
         SingleMove setMove;
-        if(getTurn() == StoneColor.BLACK) {
+        if (getTurn() == StoneColor.BLACK) {
             setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
-        }else if(getTurn() == StoneColor.WHITE){
+        } else if (getTurn() == StoneColor.WHITE) {
             setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
-        }else {
+        } else {
             setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
         }
         increaseTurn();
         this.checkAllStonesIfTheyHaveLiberties(setMove);
     }
 
-    public void saveGame(){
+    public void saveGame() {
         moveList.exportMoves("list.json");
     }
 
-    public void loadGame(File loadedFile){
+    public void loadGame(File loadedFile) {
         clearBoardArray();
         moveList.importMoves(loadedFile);
-        for(SingleMove singleMove : moveList.getAllSingleMoves()){
-            if(singleMove.isSetStone()){
+        for (SingleMove singleMove : moveList.getAllSingleMoves()) {
+            if (singleMove.isSetStone()) {
                 boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = singleMove.getColor();
             } else {
                 boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
@@ -152,7 +122,7 @@ public class GoModel {
         for (int x = 0; x < boardArray.length; x++) {
             for (int y = 0; y < boardArray[x].length; y++) {
                 StoneColor color = boardArray[x][y];
-                if(color != StoneColor.NEUTRAL){
+                if (color != StoneColor.NEUTRAL) {
                     islandPoints = new ArrayList<>();
                     callBFS(deepCopy(this.boardArray), x, y, color);
                     //now i got island Points
@@ -183,12 +153,12 @@ public class GoModel {
                             }
                         }
                         moveList.addMove(move, size);
-                        controller.gridReload();
+                        //controller.gridReload();
                     }
                 }
             }
         }
-        if(isOnlySetMove){
+        if (isOnlySetMove) {
             moveList.addMove(new SingleMove[]{setMove}, size);
         }
     }
@@ -237,7 +207,7 @@ public class GoModel {
 
     public StoneColor[][] getNeutralBoardArray() {
         StoneColor[][] newArray = new StoneColor[this.size][this.size];
-        for(int i = 0; i < size ; i++){
+        for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 newArray[i][j] = StoneColor.NEUTRAL;
             }
@@ -245,8 +215,8 @@ public class GoModel {
         return newArray;
     }
 
-    public void clearBoardArray(){
-        for(int i = 0; i < size ; i++){
+    public void clearBoardArray() {
+        for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 boardArray[i][j] = StoneColor.NEUTRAL;
             }
@@ -277,11 +247,11 @@ public class GoModel {
         if (yCoord > 0 && yCoord < size - 1 && xCoord > 0 && xCoord < size - 1) {
             if (color == StoneColor.WHITE && isCatchedWhiteInnerStone(xCoord, yCoord)) {
                 removeStone(xCoord, yCoord);
-                System.out.println(xCoord +" "+ yCoord);
+                System.out.println(xCoord + " " + yCoord);
             }
             if (color == StoneColor.BLACK && isCatchedBlackInnerStone(xCoord, yCoord)) {
                 removeStone(xCoord, yCoord);
-                System.out.println(xCoord +" "+ yCoord);
+                System.out.println(xCoord + " " + yCoord);
             }
         }
     }
@@ -305,7 +275,7 @@ public class GoModel {
         return Color.TRANSPARENT;
     }
 
-    public boolean getUsedById(int id){
+    public boolean getUsedById(int id) {
         return (boardArray[id / size][id % size] != StoneColor.NEUTRAL);
     }
 

@@ -61,9 +61,6 @@ public class Move {
         this.singleMoves = singleMoves;
     }
 
-    public void setBoardSize(int boardSize){
-         this.boardSize = boardSize;
-    }
 
     public String toString(){
         String out = ""+id+" ";

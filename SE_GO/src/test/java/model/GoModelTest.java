@@ -52,11 +52,6 @@ public class GoModelTest {
         assertEquals(StoneColor.BLACK,model.getTurn());
     }
 
-    @Test
-    public void testEndGame() {
-        model.endGame();
-        assertEquals(model.isGameHasEnded(),true);
-    }
 
     @Test
     public void testGetSize() {
@@ -69,13 +64,6 @@ public class GoModelTest {
         model.setStone(1, StoneColor.BLACK);
         model.setStone(2, StoneColor.WHITE);
         assertEquals(3,model.getNoMoves());
-    }
-
-    @Test
-    public void testSurrender() {
-        model.setHaveSurrendered(true);
-        model.endGame();
-        assertEquals(true,model.isGameHasEnded());
     }
 
     @Test

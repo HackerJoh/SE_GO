@@ -13,8 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-  <GridPane style="-fx-background-color: #FAEBD7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+<GridPane style="-fx-background-color: #FAEBD7;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
       <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="318.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="282.0" />
@@ -59,7 +58,7 @@
           </VBox>
           <VBox alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <children>
-                  <Button fx:id="btn_loadGame" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Spiel laden...">
+                  <Button fx:id="btn_loadGame" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onLoad" text="Spiel laden...">
                       <styleClass>
                           <String fx:value="btn" />
                           <String fx:value="btn-primary" />

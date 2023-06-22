@@ -1,9 +1,12 @@
 package singleComponents;
 
+import java.io.File;
+
 public class Settings {
     private int boardSize;
     private int handicap;
     private double komi;
+    private File loadedFile;
 
     public int getBoardSize() {
         return boardSize;
@@ -15,6 +18,14 @@ public class Settings {
 
     public int getHandicap() {
         return handicap;
+    }
+
+    public File getLoadedFile() {
+        return loadedFile;
+    }
+
+    public void setLoadedFile(File loadedFile) {
+        this.loadedFile = loadedFile;
     }
 
     public void setHandicap(int handicap) {

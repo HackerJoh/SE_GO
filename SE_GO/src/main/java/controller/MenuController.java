@@ -8,10 +8,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import singleComponents.MoveList;
 import singleComponents.Settings;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -52,13 +55,15 @@ public class MenuController implements Initializable {
     protected Text txt_subheading;
 
     private HostServices hostServices;
+    private Settings s = new Settings();
+    private boolean fileLoaded = false;
 
     public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices ;
+        this.hostServices = hostServices;
     }
 
     public HostServices getHostServices() {
-        return hostServices ;
+        return hostServices;
     }
 
     @Override
@@ -72,16 +77,29 @@ public class MenuController implements Initializable {
 
     }
 
+    public void onLoad() throws IOException {
+        Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        File loadedFile = fileChooser.showOpenDialog(primaryStage);
+        MoveList list = new MoveList();
+        int size = list.getSizeFromFile(loadedFile);
+        s.setLoadedFile(loadedFile);
+        s.setBoardSize(size);
+        fileLoaded = true;
+        startGame();
+    }
+
     public void startGame() throws IOException {
-        Settings s = new Settings();
-        String boardSize = cbx_boardSize.getValue();
-        switch (boardSize) {
-            case "19x19" -> s.setBoardSize(19);
-            case "13x13" -> s.setBoardSize(13);
-            default -> s.setBoardSize(9);
+        if (!fileLoaded) {
+            String boardSize = cbx_boardSize.getValue();
+            switch (boardSize) {
+                case "19x19" -> s.setBoardSize(19);
+                case "13x13" -> s.setBoardSize(13);
+                default -> s.setBoardSize(9);
+            }
+            s.setHandicap(sp_handicap.getValue());
+            s.setKomi(sp_komi.getValue());
         }
-        s.setHandicap(sp_handicap.getValue());
-        s.setKomi(sp_komi.getValue());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board_2.fxml"));
         Parent root = loader.load();

@@ -41,6 +41,10 @@ public class Move {
 
     public int getBoardSize(){ return boardSize; }
 
+    public void setBoardSize(int boardSize) {
+        this.boardSize = boardSize;
+    }
+
     public static void setIdCounter(int idCounter) {
         Move.idCounter = idCounter;
     }

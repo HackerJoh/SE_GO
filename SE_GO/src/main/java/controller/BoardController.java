@@ -20,28 +20,25 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 
 import singleComponents.*;
 
+import java.io.File;
 import java.io.IOException;
 
 public class BoardController {
     protected int boardSize;
     protected int handicap;
     protected double komi;
+    protected File loadedFile;
     protected int sceneWidth = 0;
     protected double stoneRatio = 0.8;
     public GoModel model;
     private HostServices hostServices;
 
-    //empty constructor for testing
-    /*public BoardController(){
-        this.txt_status = new Text();
-        this.gp_boardGrid = new GridPane();
-    }*/
     public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices ;
+        this.hostServices = hostServices;
     }
 
     public HostServices getHostServices() {
-        return hostServices ;
+        return hostServices;
     }
 
     public int getHandicap() {
@@ -52,7 +49,7 @@ public class BoardController {
         return komi;
     }
 
-    public int getBoardSize(){
+    public int getBoardSize() {
         return boardSize;
     }
 
@@ -103,12 +100,15 @@ public class BoardController {
         boardSize = s.getBoardSize();
         handicap = s.getHandicap();
         komi = s.getKomi();
+        loadedFile = s.getLoadedFile();
 
         model = new GoModel(boardSize, this);
 
         createAndConfigurePane();
-        createAndLayoutControls();
         updateControllerFromListeners();
+        if (loadedFile != null) {
+            model.loadGame(loadedFile);
+        }
         gridReload();
         setStatusText(model.getStatusText());
     }
@@ -121,7 +121,7 @@ public class BoardController {
     @FXML
     void onPass(ActionEvent event) {
         zug++;
-        if(zug == 2){
+        if (zug == 2) {
             model.endGame();
         }
         model.setStatusTextPassed();
@@ -134,12 +134,8 @@ public class BoardController {
 
     @FXML
     void onSurrender(ActionEvent event) {
-        //model.setHaveSurrendered(true);
-        //model.endGame();
-
-        //I've used this to Import the Json to the game LG Mo
-        model.loadGame("list.json");
-        gridReload();
+        model.setHaveSurrendered(true);
+        model.endGame();
     }
 
     @FXML
@@ -179,11 +175,11 @@ public class BoardController {
         stage.show();
     }
 
-    public void setStatusText(String text){
+    public void setStatusText(String text) {
         txt_status.setText(text);
     }
 
-    public void disableBtns(){
+    public void disableBtns() {
         btn_pass.setDisable(true);
         btn_surrender.setDisable(true);
     }
@@ -211,7 +207,7 @@ public class BoardController {
         //create the Stones and the Lines for the board
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                int id = i * boardSize + j;
+                int id = i * boardSize + j; //TODO: View ID aufsplitten
                 Group group = new Group();
                 int stoneRadius = sceneWidth / (boardSize + 2) / 2;
                 Stone stone = new Stone(id, stoneRadius * stoneRatio, this);
@@ -259,11 +255,6 @@ public class BoardController {
         gp_boardGrid.getColumnConstraints().set(1, col);
     }
 
-    private void createAndLayoutControls() {
-        //gp_bigGrid.add(gp_boardGrid, 1, 0);
-        //btn_cstones = new Button("CSTONES");
-        //bigGrid.add(btn_cstones, 0, 0);
-    }
 
     private void updateControllerFromListeners() {
         /*btn_cstones.setOnMouseClicked(mouseEvent -> {
@@ -334,17 +325,17 @@ public class BoardController {
         txt_blackPoints.setText("" + model.getBlackPoints());
     }
 
-    public void setStone(int xCoord, int yCoord){
+    public void setStone(int xCoord, int yCoord) {
         model.controllerSetsStone(xCoord, yCoord);
         gridReload();
         setStatusText(model.getStatusText());
     }
 
-    public StoneColor getTurn(){
+    public StoneColor getTurn() {
         return model.getTurn();
     }
 
-    public boolean isGameEnded(){
+    public boolean isGameEnded() {
         return model.isGameHasEnded();
     }
 

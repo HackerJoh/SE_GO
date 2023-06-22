@@ -1,9 +1,11 @@
 package singleComponents;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,15 +41,22 @@ public class MoveList {
         }
     }
 
-    public void importMoves(String path){
+    public int getSizeFromFile(File loadedFile) throws IOException { //TODO: einheitliche Fehlerbehandlung
+        ObjectMapper mapper = new ObjectMapper();
+        List<Move> importMoves = mapper.readValue(loadedFile, new TypeReference<>() {});
+        return importMoves.get(0).getBoardSize();
+    }
+
+    public void importMoves(File loadedFile){ //TODO: getsizeFromFile und importMoves zusammenlegen -- mit Moritz absprechen
         try {
             ObjectMapper mapper = new ObjectMapper();
-            List<Move> importMoves = mapper.readValue(Paths.get(path).toFile(), new TypeReference<>() {});
+            List<Move> importMoves = mapper.readValue(loadedFile, new TypeReference<>() {});
             if(importMoves.get(0).getBoardSize() == moves.get(0).getBoardSize()){
                 moves = importMoves;
             }else{
                 System.out.println("Falsche Spielgröße");
             }
+
         }catch (Exception ex){
             ex.printStackTrace();
         }

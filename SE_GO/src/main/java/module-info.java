@@ -9,6 +9,7 @@ module com.example.se_go {
     requires com.fasterxml.jackson.databind;
 
     opens controller;
+    opens singleComponents;
 
     exports model;
     exports controller;

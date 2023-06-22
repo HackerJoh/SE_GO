@@ -4,13 +4,14 @@ import controller.BoardController;
 import javafx.scene.paint.Color;
 import singleComponents.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class GoModel {
     private final StoneColor[][] boardArray;
-    private final int size;
+    private int size;
     private final MoveList moveList;
     private int noMoves;
     private final BoardController controller;
@@ -44,7 +45,7 @@ public class GoModel {
             if (getTurn() == StoneColor.BLACK) {
                 return "SCHWARZ ist am Zug";
             } else {
-                return("WEIß ist am Zug");
+                return "WEIß ist am Zug";
             }
         }
         return "Game has Ended";
@@ -134,9 +135,9 @@ public class GoModel {
         moveList.exportMoves("list.json");
     }
 
-    public void loadGame(String path){
+    public void loadGame(File loadedFile){
         clearBoardArray();
-        moveList.importMoves(path);
+        moveList.importMoves(loadedFile);
         for(SingleMove singleMove : moveList.getAllSingleMoves()){
             if(singleMove.isSetStone()){
                 boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = singleMove.getColor();

@@ -14,57 +14,46 @@ import java.util.List;
 public class MoveList {
     private List<Move> moves;
 
-    public MoveList(){
+    public MoveList() {
         this.moves = new LinkedList<>();
     }
 
-    public void addMove(SingleMove[] singleMoves, int boardsize){
+    public void addMove(SingleMove[] singleMoves, int boardsize) {
         moves.add(new Move(singleMoves, boardsize));
     }
 
-    public void addMoveWithDescription(SingleMove[] singleMoves, String description, int boardsize){
+    public void addMoveWithDescription(SingleMove[] singleMoves, String description, int boardsize) {
         moves.add(new Move(singleMoves, description, boardsize));
     }
 
-    public void deleteLastMove(){
-        moves.remove(moves.size()-1);
-    }
 
-    public void exportMoves(String path){
+    public void exportMoves(String path) {
         ObjectMapper mapper = new ObjectMapper();
 
-        try(FileWriter fileWriter = new FileWriter(path)){
+        try (FileWriter fileWriter = new FileWriter(path)) {
             String json = mapper.writeValueAsString(moves);
             fileWriter.write(json);
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public int getSizeFromFile(File loadedFile) throws IOException { //TODO: einheitliche Fehlerbehandlung
+    public static int getSizeFromFile(File loadedFile) throws IOException { //TODO: einheitliche Fehlerbehandlung
         ObjectMapper mapper = new ObjectMapper();
-        List<Move> importMoves = mapper.readValue(loadedFile, new TypeReference<>() {});
+        List<Move> importMoves = mapper.readValue(loadedFile, new TypeReference<>() {
+        });
         return importMoves.get(0).getBoardSize();
     }
 
-    public void importMoves(File loadedFile){ //TODO: getsizeFromFile und importMoves zusammenlegen -- mit Moritz absprechen
-        try {
-            ObjectMapper mapper = new ObjectMapper();
-            List<Move> importMoves = mapper.readValue(loadedFile, new TypeReference<>() {});
-            if(importMoves.get(0).getBoardSize() == moves.get(0).getBoardSize()){
-                moves = importMoves;
-            }else{
-                System.out.println("Falsche Spielgröße");
-            }
-
-        }catch (Exception ex){
-            ex.printStackTrace();
-        }
+    public void importMoves(File loadedFile) throws IOException { //TODO: getsizeFromFile und importMoves zusammenlegen -- mit Moritz absprechen
+        ObjectMapper mapper = new ObjectMapper();
+        moves = mapper.readValue(loadedFile, new TypeReference<>() {
+        });
     }
 
-    public SingleMove[] getAllSingleMoves(){
+    public SingleMove[] getAllSingleMoves() {
         List<SingleMove> allSingleMovesList = new LinkedList<>();
-        for(Move move : moves){
+        for (Move move : moves) {
             Collections.addAll(allSingleMovesList, move.getSingleMoves());
         }
         SingleMove[] allSingleMoves = new SingleMove[allSingleMovesList.size()];

@@ -24,11 +24,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class BoardController {
-    protected int boardSize;
-    protected int handicap;
-    protected File loadedFile;
-    protected int sceneWidth = 0;
-    protected double stoneRatio = 0.8;
+    private int boardSize;
+    private int handicap;
+    private final double stoneRatio = 0.8;
     public GoModel model;
     private HostServices hostServices;
 
@@ -87,10 +85,10 @@ public class BoardController {
     }
 
 
-    public void initData(Settings s) {
+    public void initData(Settings s) throws IOException {
         boardSize = s.getBoardSize();
         handicap = s.getHandicap();
-        loadedFile = s.getLoadedFile();
+        File loadedFile = s.getLoadedFile();
 
         model = new GoModel(boardSize);
 
@@ -117,29 +115,20 @@ public class BoardController {
         if (zug == 2) {
             endGame();
         } else {
-            if (getTurn() == StoneColor.BLACK) {
-                setStatusText("SCHWARZ passt");
-            } else {
-                setStatusText("WEIß passt");
-            }
-            increaseMoves();
+            setStatusText(model.getPassColor());
         }
+        model.setNoMoves(model.getNoMoves() + 1);
     }
 
     @FXML
-    void onSave(ActionEvent event) {
+    void onSave(ActionEvent event) { //TODO: FileChooser für Speicherung
         model.saveGame();
     }
 
     @FXML
     void onSurrender(ActionEvent event) {
-        if (getTurn() == StoneColor.BLACK){
-            setStatusText("WEIß gewinnt");
-        } else {
-            setStatusText("SCHWARZ gewinnt");
-        }
+        setStatusText(model.getSurrenderer());
         disableBtns();
-        model.setGameHasEnded(true);
     }
 
     @FXML
@@ -189,24 +178,14 @@ public class BoardController {
     }
 
     public void endGame() {
-        double blackPoints = model.getBlackPoints();
-        double whitePoints = model.getWhitePoints();
-
-        if (whitePoints > blackPoints) {
-            setStatusText("WEIß gewinnt!");
-        } else if (blackPoints > whitePoints) {
-            setStatusText("SCHWARZ gewinnt!");
-        } else {
-            setStatusText("Unentschieden!");
-        }
+        setStatusText(model.getWinner());
         disableBtns();
-        model.setGameHasEnded(true);
     }
 
     private void createAndConfigurePane() {
         gp_boardGrid.setGridLinesVisible(false);
 
-        this.sceneWidth = (int) gp_boardGrid.getWidth();
+        int sceneWidth = (int) gp_boardGrid.getWidth();
 
         //create upper letters
         for (int i = 0; i < boardSize; i++) {
@@ -226,7 +205,7 @@ public class BoardController {
         //create the Stones and the Lines for the board
         for (int i = 0; i < boardSize; i++) {
             for (int j = 0; j < boardSize; j++) {
-                int id = i * boardSize + j; //TODO: View ID aufsplitten
+                int id = i * boardSize + j;
                 Group group = new Group();
                 int stoneRadius = sceneWidth / (boardSize + 2) / 2;
                 Stone stone = new Stone(id, stoneRadius * stoneRatio, this);
@@ -347,11 +326,7 @@ public class BoardController {
     public void setStone(int xCoord, int yCoord) {
         model.controllerSetsStone(xCoord, yCoord);
         gridReload();
-        if (getTurn() == StoneColor.BLACK) {
-            setStatusText("SCHWARZ ist am Zug");
-        } else {
-            setStatusText("WEIß ist am Zug");
-        }
+        setStatusText(model.getTurnColor());
         zug = 0;
     }
 
@@ -361,10 +336,6 @@ public class BoardController {
 
     public boolean isGameEnded() {
         return model.isGameHasEnded();
-    }
-
-    private void increaseMoves() {
-        model.setNoMoves(model.getNoMoves() + 1);
     }
 
 

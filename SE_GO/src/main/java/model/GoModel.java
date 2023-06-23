@@ -7,6 +7,7 @@ import singleComponents.SingleMove;
 import singleComponents.StoneColor;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -101,12 +102,48 @@ public class GoModel {
         this.checkAllStonesIfTheyHaveLiberties(setMove);
     }
 
+    public String getWinner(){
+        setGameHasEnded(true);
+        if (whitePoints > blackPoints) {
+            return "WEIß gewinnt!";
+        } else if (blackPoints > whitePoints) {
+            return "SCHWARZ gewinnt!";
+        } else {
+            return "Unentschieden!";
+        }
+    }
+
+    public String getSurrenderer(){
+        setGameHasEnded(true);
+        if (getTurn() == StoneColor.BLACK){
+            return "WEIß gewinnt";
+        } else {
+            return "SCHWARZ gewinnt";
+        }
+    }
+
+    public String getTurnColor(){
+        if (getTurn() == StoneColor.BLACK) {
+            return "SCHWARZ ist am Zug";
+        } else {
+            return "WEIß ist am Zug";
+        }
+    }
+
+    public String getPassColor(){
+        if (getTurn() == StoneColor.BLACK) {
+            return "SCHWARZ passt";
+        } else {
+            return "WEIß passt";
+        }
+    }
+
     public void saveGame() {
         moveList.exportMoves("list.json");
     }
 
-    public void loadGame(File loadedFile) {
-        clearBoardArray();
+    public void loadGame(File loadedFile) throws IOException {
+        //clearBoardArray();
         moveList.importMoves(loadedFile);
         for (SingleMove singleMove : moveList.getAllSingleMoves()) {
             if (singleMove.isSetStone()) {

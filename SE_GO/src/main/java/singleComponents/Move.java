@@ -2,15 +2,16 @@ package singleComponents;
 
 public class Move {
     static int idCounter;
-     private int id;
-     private String description;
-     private int boardSize;
-     private SingleMove[] singleMoves;
+    private int id;
+    private String description;
+    private int boardSize;
+    private SingleMove[] singleMoves;
 
 
-     public Move(){}
+    public Move() {
+    }
 
-    public Move (SingleMove[] singleMoves, int boardSize){
+    public Move(SingleMove[] singleMoves, int boardSize) {
         this.id = idCounter;
         idCounter++;
         description = "";
@@ -18,7 +19,7 @@ public class Move {
         this.boardSize = boardSize;
     }
 
-    public Move (SingleMove[] singleMoves, String description, int boardSize){
+    public Move(SingleMove[] singleMoves, String description, int boardSize) {
         this.id = idCounter;
         idCounter++;
         this.description = description;
@@ -35,11 +36,13 @@ public class Move {
         return description;
     }
 
-    public SingleMove[] getSingleMoves(){
+    public SingleMove[] getSingleMoves() {
         return singleMoves;
     }
 
-    public int getBoardSize(){ return boardSize; }
+    public int getBoardSize() {
+        return boardSize;
+    }
 
     public void setBoardSize(int boardSize) {
         this.boardSize = boardSize;
@@ -62,9 +65,9 @@ public class Move {
     }
 
 
-    public String toString(){
-        String out = ""+id+" ";
-        for(SingleMove singleMove : singleMoves) out += singleMove.getColor();
+    public String toString() {
+        String out = "" + id + " ";
+        for (SingleMove singleMove : singleMoves) out += singleMove.getColor();
         return out;
     }
 }

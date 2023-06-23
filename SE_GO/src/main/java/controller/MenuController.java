@@ -81,8 +81,7 @@ public class MenuController implements Initializable {
         Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         File loadedFile = fileChooser.showOpenDialog(primaryStage);
-        MoveList list = new MoveList();
-        int size = list.getSizeFromFile(loadedFile);
+        int size = MoveList.getSizeFromFile(loadedFile);
         s.setLoadedFile(loadedFile);
         s.setBoardSize(size);
         fileLoaded = true;

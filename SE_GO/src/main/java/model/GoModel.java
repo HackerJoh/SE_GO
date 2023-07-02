@@ -152,6 +152,8 @@ public class GoModel {
                 boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
             }
         }
+        blackPoints = moveList.getLastMove().getBlackPoints();
+        whitePoints = moveList.getLastMove().getWhitePoints();
     }
 
     private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove) {
@@ -189,14 +191,14 @@ public class GoModel {
                                 whitePoints++;
                             }
                         }
-                        moveList.addMove(move, size);
+                        moveList.addMove(move, size, (int)blackPoints, (int)whitePoints);
                         //controller.gridReload();
                     }
                 }
             }
         }
         if (isOnlySetMove) {
-            moveList.addMove(new SingleMove[]{setMove}, size);
+            moveList.addMove(new SingleMove[]{setMove}, size, (int)blackPoints, (int)whitePoints);
         }
     }
 
@@ -252,22 +254,13 @@ public class GoModel {
         return newArray;
     }
 
-    public void clearBoardArray() {
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                boardArray[i][j] = StoneColor.NEUTRAL;
-            }
-        }
-    }
-
-
     public String toString() {
-        String out = "[\n";
+        StringBuilder out = new StringBuilder("[\n");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                out += boardArray[i][j] + " ";
+                out.append(boardArray[i][j]).append(" ");
             }
-            out += "\n";
+            out.append("\n");
         }
         return out + "]";
     }

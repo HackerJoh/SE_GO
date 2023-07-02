@@ -1,35 +1,29 @@
 package singleComponents;
 
 public class Move {
-    static int idCounter;
-    private int id;
     private String description;
     private int boardSize;
     private SingleMove[] singleMoves;
-
+    private int blackPoints;
+    private int whitePoints;
 
     public Move() {
     }
 
-    public Move(SingleMove[] singleMoves, int boardSize) {
-        this.id = idCounter;
-        idCounter++;
+    public Move(SingleMove[] singleMoves, int boardSize, int blackPoints, int whitePoints) {
         description = "";
         this.singleMoves = singleMoves;
         this.boardSize = boardSize;
+        this.blackPoints = blackPoints;
+        this.whitePoints = whitePoints;
     }
 
-    public Move(SingleMove[] singleMoves, String description, int boardSize) {
-        this.id = idCounter;
-        idCounter++;
+    public Move(SingleMove[] singleMoves, String description, int boardSize, int blackPoints, int whitePoints) {
         this.description = description;
         this.singleMoves = singleMoves;
         this.boardSize = boardSize;
-
-    }
-
-    public int getId() {
-        return id;
+        this.blackPoints = blackPoints;
+        this.whitePoints = whitePoints;
     }
 
     public String getDescription() {
@@ -48,14 +42,6 @@ public class Move {
         this.boardSize = boardSize;
     }
 
-    public static void setIdCounter(int idCounter) {
-        Move.idCounter = idCounter;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -64,10 +50,25 @@ public class Move {
         this.singleMoves = singleMoves;
     }
 
+    public void setBlackPoints(int blackPoints) {
+        this.blackPoints = blackPoints;
+    }
+
+    public void setWhitePoints(int whitePoints) {
+        this.whitePoints = whitePoints;
+    }
+
+    public int getBlackPoints() {
+        return blackPoints;
+    }
+
+    public int getWhitePoints() {
+        return whitePoints;
+    }
 
     public String toString() {
-        String out = "" + id + " ";
-        for (SingleMove singleMove : singleMoves) out += singleMove.getColor();
-        return out;
+        StringBuilder out = new StringBuilder();
+        for (SingleMove singleMove : singleMoves) out.append(singleMove.getColor()).append(" ");
+        return out.toString();
     }
 }

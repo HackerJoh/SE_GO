@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Deleted Unnecessary import">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
@@ -25,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -48,6 +53,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">

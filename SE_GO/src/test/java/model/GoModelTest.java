@@ -40,7 +40,7 @@ public class GoModelTest {
         model = controller.model;
     }
 
-    @Test
+    /*@Test
     public void testSetStone() {
         model.setStone(0, StoneColor.WHITE);
         assertEquals(Color.WHITE,model.getColorById(0));
@@ -93,6 +93,6 @@ public class GoModelTest {
         model.setStone(0, StoneColor.WHITE);
         model.removeStone(0,0);
         assertEquals(Color.TRANSPARENT,model.getColorById(0));
-    }
+    }*/
 
 }

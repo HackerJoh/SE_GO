@@ -71,7 +71,7 @@ public class GoModel {
         this.noMoves++;
     }
 
-    public void setStone(int id, StoneColor color) {
+    /*protected void setStone(int id, StoneColor color) {
         turnOffJumpModeIfOn();
         int xCord = id / size;
         int yCord = id % size;
@@ -86,9 +86,10 @@ public class GoModel {
         }
         //check after each move if somebody captured something / cought stones
         this.checkAllStonesIfTheyHaveLiberties(setMove);
-    }
+    }*/
 
-    public void controllerSetsStone(int xCoord, int yCoord) {
+    public void controllerSetsStone(int xCoord, int yCoord, String description) {
+        turnOffJumpModeIfOn();
         boardArray[xCoord][yCoord] = getTurn();
         SingleMove setMove;
         if (getTurn() == StoneColor.BLACK) {
@@ -99,7 +100,7 @@ public class GoModel {
             setMove = new SingleMove(getTurn(), xCoord, yCoord, true);
         }
         increaseTurn();
-        this.checkAllStonesIfTheyHaveLiberties(setMove);
+        this.checkAllStonesIfTheyHaveLiberties(setMove, description);
     }
 
     public String getWinner(){
@@ -156,7 +157,7 @@ public class GoModel {
         whitePoints = moveList.getLastMove().getWhitePoints();
     }
 
-    private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove) {
+    private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove, String description) {
         boolean isOnlySetMove = true;
         for (int x = 0; x < boardArray.length; x++) {
             for (int y = 0; y < boardArray[x].length; y++) {
@@ -191,14 +192,14 @@ public class GoModel {
                                 whitePoints++;
                             }
                         }
-                        moveList.addMove(move, size, (int)blackPoints, (int)whitePoints);
+                        moveList.addMoveWithDescription(move, description, size, (int)blackPoints, (int)whitePoints);
                         //controller.gridReload();
                     }
                 }
             }
         }
         if (isOnlySetMove) {
-            moveList.addMove(new SingleMove[]{setMove}, size, (int)blackPoints, (int)whitePoints);
+            moveList.addMoveWithDescription(new SingleMove[]{setMove}, description, size, (int)blackPoints, (int)whitePoints);
         }
     }
 
@@ -317,8 +318,12 @@ public class GoModel {
         return blackPoints;
     }
 
-    private void turnOffJumpModeIfOn(){
-        if(jumpModeOn) turnOfJumpMode();
+    public boolean turnOffJumpModeIfOn(){
+        if(jumpModeOn) {
+            turnOfJumpMode();
+            return true;
+        }
+        return false;
     }
 
     private void turnOfJumpMode(){
@@ -353,8 +358,8 @@ public class GoModel {
                 boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
             }
         }
-        blackPoints = moveList.getLastMove().getBlackPoints();
-        whitePoints = moveList.getLastMove().getWhitePoints();
+        blackPoints = forwardMove.getBlackPoints();
+        whitePoints = forwardMove.getWhitePoints();
     }
 
     private void doBackwardJump(){
@@ -376,5 +381,12 @@ public class GoModel {
             blackPoints = 0;
             whitePoints = 0;
         }
+    }
+
+    public String getDescriptionFromJump(){
+        if (jumpCounter < 0){
+            return "Beginn";
+        }
+        return moveList.getMoveByIndex(jumpCounter).getDescription();
     }
 }

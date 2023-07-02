@@ -11,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -61,7 +62,7 @@ public class BoardController {
     private GridPane gp_boardGrid;
 
     @FXML
-    private Text txt_status;
+    private TextField txt_status;
 
     @FXML
     private Text txt_blackPoints;
@@ -127,8 +128,9 @@ public class BoardController {
 
     @FXML
     void onSurrender(ActionEvent event) {
-        setStatusText(model.getSurrenderer());
-        disableBtns();
+        model.enterJumpMode();
+        //setStatusText(model.getSurrenderer());
+        //disableBtns();
     }
 
     @FXML
@@ -324,7 +326,10 @@ public class BoardController {
     }
 
     public void setStone(int xCoord, int yCoord) {
-        model.controllerSetsStone(xCoord, yCoord);
+        if (model.turnOffJumpModeIfOn()) {
+            disableJump();
+        }
+        model.controllerSetsStone(xCoord, yCoord, txt_status.getText());
         gridReload();
         setStatusText(model.getTurnColor());
         zug = 0;
@@ -338,5 +343,20 @@ public class BoardController {
         return model.isGameHasEnded();
     }
 
+    public void jumpForward() {
+        model.jumpForward();
+        setStatusText(model.getDescriptionFromJump());
+        gridReload();
+    }
+
+    public void jumpBackward() {
+        model.jumpBackward();
+        setStatusText(model.getDescriptionFromJump());
+        gridReload();
+    }
+
+    private void disableJump() {
+        //TODO: Pfeile setVisible false, ImageViews statt Buttons
+    }
 
 }

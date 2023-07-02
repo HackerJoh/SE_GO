@@ -18,12 +18,12 @@ public class MoveList {
         this.moves = new LinkedList<>();
     }
 
-    public void addMove(SingleMove[] singleMoves, int boardsize) {
-        moves.add(new Move(singleMoves, boardsize));
+    public void addMove(SingleMove[] singleMoves, int boardsize, int blackPoints, int whitePoints) {
+        moves.add(new Move(singleMoves, boardsize, blackPoints, whitePoints));
     }
 
-    public void addMoveWithDescription(SingleMove[] singleMoves, String description, int boardsize) {
-        moves.add(new Move(singleMoves, description, boardsize));
+    public void addMoveWithDescription(SingleMove[] singleMoves, String description, int boardsize, int blackPoints, int whitePoints) {
+        moves.add(new Move(singleMoves, description, boardsize, blackPoints, whitePoints));
     }
 
 
@@ -59,5 +59,9 @@ public class MoveList {
         SingleMove[] allSingleMoves = new SingleMove[allSingleMovesList.size()];
         allSingleMovesList.toArray(allSingleMoves);
         return allSingleMoves;
+    }
+
+    public Move getLastMove(){
+        return moves.get(moves.size()-1);
     }
 }

@@ -1,10 +1,7 @@
 package model;
 
 import javafx.scene.paint.Color;
-import singleComponents.MoveList;
-import singleComponents.Point;
-import singleComponents.SingleMove;
-import singleComponents.StoneColor;
+import singleComponents.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,6 +17,8 @@ public class GoModel {
     private boolean gameHasEnded = false;
     private double whitePoints;
     private double blackPoints;
+    private boolean jumpModeOn = false;
+    private int jumpCounter;
 
     private List<Point> islandPoints = new ArrayList<>();
 
@@ -73,6 +72,7 @@ public class GoModel {
     }
 
     public void setStone(int id, StoneColor color) {
+        turnOffJumpModeIfOn();
         int xCord = id / size;
         int yCord = id % size;
         boardArray[xCord][yCord] = color;
@@ -315,5 +315,66 @@ public class GoModel {
 
     public double getBlackPoints() {
         return blackPoints;
+    }
+
+    private void turnOffJumpModeIfOn(){
+        if(jumpModeOn) turnOfJumpMode();
+    }
+
+    private void turnOfJumpMode(){
+        moveList.deleteMovesAfterIndex(jumpCounter);
+        jumpModeOn = false;
+    }
+
+    public void enterJumpMode(){
+        jumpModeOn = true;
+        jumpCounter = moveList.getIndexOfLastMove();
+    }
+
+    public void jumpForward(){
+        if(jumpModeOn){
+            if(jumpCounter < moveList.getIndexOfLastMove()) doForwardJump();
+        }
+    }
+
+    public void jumpBackward(){
+        if(jumpModeOn){
+            if(jumpCounter >= 0) doBackwardJump();
+        }
+    }
+
+    private void doForwardJump(){
+        jumpCounter++;
+        Move forwardMove = moveList.getMoveByIndex(jumpCounter);
+        for (SingleMove singleMove : forwardMove.getSingleMoves()) {
+            if (singleMove.isSetStone()) {
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = singleMove.getColor();
+            } else {
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
+            }
+        }
+        blackPoints = moveList.getLastMove().getBlackPoints();
+        whitePoints = moveList.getLastMove().getWhitePoints();
+    }
+
+    private void doBackwardJump(){
+        Move backwardMove = moveList.getMoveByIndex(jumpCounter);
+        for (SingleMove singleMove : backwardMove.getSingleMoves()) {
+            if (!singleMove.isSetStone()) {
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = singleMove.getColor();
+            } else {
+                boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
+            }
+        }
+        if(jumpCounter > 0) {
+            jumpCounter--;
+            Move newCurrentMove = moveList.getMoveByIndex(jumpCounter);
+            blackPoints = newCurrentMove.getBlackPoints();
+            whitePoints = newCurrentMove.getWhitePoints();
+        }else{
+            jumpCounter--;
+            blackPoints = 0;
+            whitePoints = 0;
+        }
     }
 }

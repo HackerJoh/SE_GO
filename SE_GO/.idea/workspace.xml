@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Deleted Unnecessary import">
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Minor Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -283,7 +281,42 @@
       <option name="project" value="LOCAL" />
       <updated>1686830148341</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Changed loadGame(), that Points were Imported from the JSON">
+      <created>1688318707304</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318707304</updated>
+    </task>
+    <task id="LOCAL-00028" summary="New List">
+      <created>1688318715725</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318715725</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added Points to the Moves and deleted unnacessary ID">
+      <created>1688318840792</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318840792</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Changend Contructors for saving of the Points">
+      <created>1688318874509</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318874509</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Minor Changes">
+      <created>1688318888501</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318888501</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,10 +334,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught" />
-    <MESSAGE value="Standard Workspace update" />
-    <MESSAGE value="Centerd the letters for the Board" />
-    <MESSAGE value="Added Dependecies for the JSON Writer" />
     <MESSAGE value="Added Setter for IsUsed boolean" />
     <MESSAGE value="Added Dependencies for the Json Writer" />
     <MESSAGE value="Added a Move Oject!" />
@@ -314,7 +343,6 @@
     <MESSAGE value="Added Cordinates to the Moves" />
     <MESSAGE value="Class Move added getter vor Coordinates" />
     <MESSAGE value="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this." />
-    <MESSAGE value="Minor Changes" />
     <MESSAGE value="Added a SingleMove, which represents one Stone in a Move" />
     <MESSAGE value="Changed Move list so it can Contains a Array of SingleMoves" />
     <MESSAGE value="Changed Constructor for Movelist" />
@@ -326,6 +354,11 @@
     <MESSAGE value="Updated the latest Version for the Moves, because the last Commit doesn't worked" />
     <MESSAGE value="MVC changes" />
     <MESSAGE value="Deleted Unnecessary import" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted Unnecessary import" />
+    <MESSAGE value="Changed loadGame(), that Points were Imported from the JSON" />
+    <MESSAGE value="New List" />
+    <MESSAGE value="Added Points to the Moves and deleted unnacessary ID" />
+    <MESSAGE value="Changend Contructors for saving of the Points" />
+    <MESSAGE value="Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
   </component>
 </project>

@@ -64,4 +64,18 @@ public class MoveList {
     public Move getLastMove(){
         return moves.get(moves.size()-1);
     }
+
+    public void deleteMovesAfterIndex(int index){
+        if (moves.size() > index + 1) {
+            moves.subList(index + 1, moves.size()).clear();
+        }
+    }
+
+    public int getIndexOfLastMove(){
+      return moves.size()-1;
+    }
+
+    public Move getMoveByIndex(int index){
+        return moves.get(index);
+    }
 }

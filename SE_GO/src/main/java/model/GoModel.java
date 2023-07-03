@@ -140,7 +140,7 @@ public class GoModel {
     }
 
     public void saveGame() {
-        moveList.exportMoves("list.json");
+        moveList.exportMoves("list.json", size);
     }
 
     public void loadGame(File loadedFile) throws IOException {

@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Implementing Jump Mode">
-      <change afterPath="$PROJECT_DIR$/src/main/java/singleComponents/SaveGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/MoveList.java" afterDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added the boardsize as Parameter for the ExportGame function">
+      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/Move.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +101,7 @@
       <workItem from="1686825406756" duration="4780000" />
       <workItem from="1687294156883" duration="1084000" />
       <workItem from="1688326928032" duration="3122000" />
-      <workItem from="1688407305432" duration="577000" />
+      <workItem from="1688407305432" duration="986000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -331,7 +327,42 @@
       <option name="project" value="LOCAL" />
       <updated>1688321490394</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Added a record for the Savegame">
+      <created>1688408139245</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408139246</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Minor Changes">
+      <created>1688408149575</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408149575</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Changed Import/Export from JSON to a Record">
+      <created>1688408178600</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408178600</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added the boardsize as Parameter for the ExportGame function">
+      <created>1688408230105</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408230105</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Added the boardsize as Parameter for the ExportGame function">
+      <created>1688408235620</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408235620</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -349,9 +380,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Dependencies for the Json Writer" />
-    <MESSAGE value="Added a Move Oject!" />
-    <MESSAGE value="Added a Object which stores Move Objects and can Export them to a Json File." />
     <MESSAGE value="Updated Module info for the new Depencies" />
     <MESSAGE value="Made that Removed Stones can setted again" />
     <MESSAGE value="Added Cordinates to the Moves" />
@@ -372,8 +400,11 @@
     <MESSAGE value="New List" />
     <MESSAGE value="Added Points to the Moves and deleted unnacessary ID" />
     <MESSAGE value="Changend Contructors for saving of the Points" />
-    <MESSAGE value="Minor Changes" />
     <MESSAGE value="Implementing Jump Mode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementing Jump Mode" />
+    <MESSAGE value="Added a record for the Savegame" />
+    <MESSAGE value="Minor Changes" />
+    <MESSAGE value="Changed Import/Export from JSON to a Record" />
+    <MESSAGE value="Added the boardsize as Parameter for the ExportGame function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the boardsize as Parameter for the ExportGame function" />
   </component>
 </project>

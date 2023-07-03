@@ -192,14 +192,14 @@ public class GoModel {
                                 whitePoints++;
                             }
                         }
-                        moveList.addMoveWithDescription(move, description, size, (int)blackPoints, (int)whitePoints);
+                        moveList.addMoveWithDescription(move, description, (int)blackPoints, (int)whitePoints);
                         //controller.gridReload();
                     }
                 }
             }
         }
         if (isOnlySetMove) {
-            moveList.addMoveWithDescription(new SingleMove[]{setMove}, description, size, (int)blackPoints, (int)whitePoints);
+            moveList.addMoveWithDescription(new SingleMove[]{setMove}, description, (int)blackPoints, (int)whitePoints);
         }
     }
 

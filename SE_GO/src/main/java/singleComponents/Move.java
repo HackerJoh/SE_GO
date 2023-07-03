@@ -2,7 +2,6 @@ package singleComponents;
 
 public class Move {
     private String description;
-    private int boardSize;
     private SingleMove[] singleMoves;
     private int blackPoints;
     private int whitePoints;
@@ -10,18 +9,16 @@ public class Move {
     public Move() {
     }
 
-    public Move(SingleMove[] singleMoves, int boardSize, int blackPoints, int whitePoints) {
+    public Move(SingleMove[] singleMoves, int blackPoints, int whitePoints) {
         description = "";
         this.singleMoves = singleMoves;
-        this.boardSize = boardSize;
         this.blackPoints = blackPoints;
         this.whitePoints = whitePoints;
     }
 
-    public Move(SingleMove[] singleMoves, String description, int boardSize, int blackPoints, int whitePoints) {
+    public Move(SingleMove[] singleMoves, String description, int blackPoints, int whitePoints) {
         this.description = description;
         this.singleMoves = singleMoves;
-        this.boardSize = boardSize;
         this.blackPoints = blackPoints;
         this.whitePoints = whitePoints;
     }
@@ -32,14 +29,6 @@ public class Move {
 
     public SingleMove[] getSingleMoves() {
         return singleMoves;
-    }
-
-    public int getBoardSize() {
-        return boardSize;
-    }
-
-    public void setBoardSize(int boardSize) {
-        this.boardSize = boardSize;
     }
 
     public void setDescription(String description) {

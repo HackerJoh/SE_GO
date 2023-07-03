@@ -27,11 +27,11 @@ public class MoveList {
     }
 
 
-    public void exportMoves(String path) {
+    public void exportMoves(String path, int size) {
         ObjectMapper mapper = new ObjectMapper();
-
+        SaveGame saveGame = new SaveGame(size, moves);
         try (FileWriter fileWriter = new FileWriter(path)) {
-            String json = mapper.writeValueAsString(moves);
+            String json = mapper.writeValueAsString(saveGame);
             fileWriter.write(json);
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,15 +40,16 @@ public class MoveList {
 
     public static int getSizeFromFile(File loadedFile) throws IOException { //TODO: einheitliche Fehlerbehandlung
         ObjectMapper mapper = new ObjectMapper();
-        List<Move> importMoves = mapper.readValue(loadedFile, new TypeReference<>() {
+        SaveGame importSaveGame = mapper.readValue(loadedFile, new TypeReference<>() {
         });
-        return importMoves.get(0).getBoardSize();
+        return importSaveGame.boardsize();
     }
 
     public void importMoves(File loadedFile) throws IOException { //TODO: getsizeFromFile und importMoves zusammenlegen -- mit Moritz absprechen
         ObjectMapper mapper = new ObjectMapper();
-        moves = mapper.readValue(loadedFile, new TypeReference<>() {
+        SaveGame importSavegame = mapper.readValue(loadedFile, new TypeReference<>() {
         });
+        moves = importSavegame.moves();
     }
 
     public SingleMove[] getAllSingleMoves() {

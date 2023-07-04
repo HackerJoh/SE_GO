@@ -1,7 +1,6 @@
-package gameStatistics;
+package model.gameStatistics;
 
-import singleComponents.Move;
-import singleComponents.MoveList;
+import model.modelComponents.MoveList;
 import singleComponents.StoneColor;
 
 public class GameEvalutation {

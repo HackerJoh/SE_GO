@@ -1,7 +1,9 @@
-package singleComponents;
+package model.modelComponents;
+
+import singleComponents.StoneColor;
 
 public class SingleMove {
-    private  StoneColor color;
+    private StoneColor color;
     private  int xCoord;
     private  int yCoord;
     private  boolean setStone;

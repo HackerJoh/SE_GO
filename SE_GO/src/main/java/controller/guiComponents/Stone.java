@@ -1,9 +1,10 @@
-package singleComponents;
+package controller.guiComponents;
 
 import controller.BoardController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import model.GoModel;
+import singleComponents.StoneColor;
 
 public class Stone extends Circle {
     private static final Color hoverColorBlack = Color.gray(0.3, 0.7);

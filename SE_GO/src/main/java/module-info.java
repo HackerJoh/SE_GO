@@ -15,6 +15,10 @@ module com.example.se_go {
     exports controller;
     exports GoApplication;
     exports singleComponents;
+    exports model.modelComponents;
+    opens model.modelComponents;
+    exports controller.guiComponents;
+    opens controller.guiComponents;
 
 
 }

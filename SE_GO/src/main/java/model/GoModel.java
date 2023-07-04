@@ -1,6 +1,10 @@
 package model;
 
 import javafx.scene.paint.Color;
+import model.modelComponents.Move;
+import model.modelComponents.MoveList;
+import model.modelComponents.Point;
+import model.modelComponents.SingleMove;
 import singleComponents.*;
 
 import java.io.File;

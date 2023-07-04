@@ -1,6 +1,9 @@
 package controller;
 
 
+import controller.guiComponents.HLine;
+import controller.guiComponents.Stone;
+import controller.guiComponents.VLine;
 import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

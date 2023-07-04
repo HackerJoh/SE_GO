@@ -1,4 +1,4 @@
-package singleComponents;
+package model.modelComponents;
 
 public class Point {
     public int x,y;

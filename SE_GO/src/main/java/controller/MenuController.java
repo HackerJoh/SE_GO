@@ -10,7 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import singleComponents.MoveList;
+import model.modelComponents.MoveList;
 import singleComponents.Settings;
 import org.kordamp.bootstrapfx.BootstrapFX;
 

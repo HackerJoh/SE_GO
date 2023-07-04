@@ -1,4 +1,4 @@
-package singleComponents;
+package model.modelComponents;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

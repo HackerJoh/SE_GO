@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Deleted Boardsize Attribute in the Move Class">
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameStatistics/GameEvalutation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gameStatistics/GameStatistics.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
-    </list>
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added classes for game statistics at the end" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -105,7 +100,7 @@
       <workItem from="1687294156883" duration="1084000" />
       <workItem from="1688326928032" duration="3122000" />
       <workItem from="1688407305432" duration="2390000" />
-      <workItem from="1688410362695" duration="2280000" />
+      <workItem from="1688410362695" duration="2500000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -373,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1688408520024</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Added classes for game statistics at the end">
+      <created>1688484660279</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1688484660279</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +393,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Made that Removed Stones can setted again" />
     <MESSAGE value="Added Cordinates to the Moves" />
     <MESSAGE value="Class Move added getter vor Coordinates" />
     <MESSAGE value="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this." />
@@ -416,6 +417,7 @@
     <MESSAGE value="Changed Import/Export from JSON to a Record" />
     <MESSAGE value="Added the boardsize as Parameter for the ExportGame function" />
     <MESSAGE value="Deleted Boardsize Attribute in the Move Class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted Boardsize Attribute in the Move Class" />
+    <MESSAGE value="Added classes for game statistics at the end" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added classes for game statistics at the end" />
   </component>
 </project>

@@ -1,21 +1,21 @@
-package singleComponents;
+package controller.guiComponents;
 
 import javafx.scene.shape.Line;
 
 /**
- * This Class represents a horizontal Line for the Go-View, every Java-FX-Group with a Stone in it has one.
+ * This Class represents a vertical Line for the Go-View, every Java-FX-Group with a Stone in it has one.
  */
-public class HLine extends Line {
-    //The id is primarily intended for easier assignment in the GoView
+public class VLine extends Line {
     private final int id;
 
     /**
+     *
      * @param id: Is the id of the Line, the Line gets the ID when de Lines for de Go-Board are created
-     * @param startX: Are for the Superclass
-     * @param endX: Also for the Superclass
+     * @param startY: Are for the Superclass
+     * @param endY: Also for the Superclass
      */
-    public HLine(int id, double startX, double endX){
-        super(startX, 0, endX, 0);
+    public VLine(int id, double startY, double endY){
+        super(0, startY, 0, endY);
         this.id = id;
     }
 

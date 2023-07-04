@@ -1,4 +1,4 @@
-package singleComponents;
+package model.modelComponents;
 
 public class Move {
     private String description;

@@ -1,10 +1,9 @@
 package model;
 
 import javafx.scene.paint.Color;
-import model.modelComponents.Move;
-import model.modelComponents.MoveList;
-import model.modelComponents.Point;
-import model.modelComponents.SingleMove;
+import model.gameStatistics.GameEvalutation;
+import model.gameStatistics.GameStatistics;
+import model.modelComponents.*;
 import singleComponents.*;
 
 import java.io.File;
@@ -389,5 +388,10 @@ public class GoModel {
             return "Beginn";
         }
         return moveList.getMoveByIndex(jumpCounter).getDescription();
+    }
+
+    public GameStatistics evaluateGame(){
+        GameEvalutation evalutation = new GameEvalutation(deepCopy(boardArray), moveList);
+        return evalutation.evaluateEndGameStatistics();
     }
 }

@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Changed Project Structure">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added some Algos for calculating the Game Points">
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameEvalutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameEvalutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/singleComponents/StoneColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/singleComponents/StoneColor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
       <workItem from="1688407305432" duration="2390000" />
       <workItem from="1688410362695" duration="2500000" />
       <workItem from="1688503880868" duration="373000" />
-      <workItem from="1688586040456" duration="3640000" />
+      <workItem from="1688586040456" duration="4368000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -389,7 +387,28 @@
       <option name="project" value="LOCAL" />
       <updated>1688504203331</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Changed callBFS to Static so it can be Used in de Evaluation, and deleted islandPoints List as Class Field">
+      <created>1688589812378</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1688589812379</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Added Undefined for de Evaluation of Neutral Areas (So that NumberOfIslands Algorithm works also on Neutral)">
+      <created>1688589846281</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1688589846281</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added some Algos for calculating the Game Points">
+      <created>1688590030658</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1688590030658</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,9 +426,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Class Move added getter vor Coordinates" />
-    <MESSAGE value="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this." />
-    <MESSAGE value="Added a SingleMove, which represents one Stone in a Move" />
     <MESSAGE value="Changed Move list so it can Contains a Array of SingleMoves" />
     <MESSAGE value="Changed Constructor for Movelist" />
     <MESSAGE value="Removed a Empty line" />
@@ -432,6 +448,9 @@
     <MESSAGE value="Deleted Boardsize Attribute in the Move Class" />
     <MESSAGE value="Added classes for game statistics at the end" />
     <MESSAGE value="Changed Project Structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed Project Structure" />
+    <MESSAGE value="Changed callBFS to Static so it can be Used in de Evaluation, and deleted islandPoints List as Class Field" />
+    <MESSAGE value="Added Undefined for de Evaluation of Neutral Areas (So that NumberOfIslands Algorithm works also on Neutral)" />
+    <MESSAGE value="Added some Algos for calculating the Game Points" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some Algos for calculating the Game Points" />
   </component>
 </project>

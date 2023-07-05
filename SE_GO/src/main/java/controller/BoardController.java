@@ -131,7 +131,8 @@ public class BoardController {
 
     @FXML
     void onSurrender(ActionEvent event) {
-        model.enterJumpMode();
+        //model.enterJumpMode();
+        System.out.println(model.evaluateGame());
         //setStatusText(model.getSurrenderer());
         //disableBtns();
     }

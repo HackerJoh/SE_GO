@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added some Algos for calculating the Game Points">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameEvalutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameEvalutation.java" afterDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added toString()">
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +105,7 @@
       <workItem from="1688407305432" duration="2390000" />
       <workItem from="1688410362695" duration="2500000" />
       <workItem from="1688503880868" duration="373000" />
-      <workItem from="1688586040456" duration="4368000" />
+      <workItem from="1688586040456" duration="4811000" />
     </task>
     <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
       <created>1683620638798</created>
@@ -408,7 +408,21 @@
       <option name="project" value="LOCAL" />
       <updated>1688590030658</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added GameEvaluate Function!">
+      <created>1688590506674</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1688590506674</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added toString()">
+      <created>1688590616788</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1688590616789</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,8 +440,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Changed Move list so it can Contains a Array of SingleMoves" />
-    <MESSAGE value="Changed Constructor for Movelist" />
     <MESSAGE value="Removed a Empty line" />
     <MESSAGE value="Added feature so that Set Stone and romve Stone added in the Movelist" />
     <MESSAGE value="Missused the Surrender Button for Import the Json" />
@@ -451,6 +463,8 @@
     <MESSAGE value="Changed callBFS to Static so it can be Used in de Evaluation, and deleted islandPoints List as Class Field" />
     <MESSAGE value="Added Undefined for de Evaluation of Neutral Areas (So that NumberOfIslands Algorithm works also on Neutral)" />
     <MESSAGE value="Added some Algos for calculating the Game Points" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added some Algos for calculating the Game Points" />
+    <MESSAGE value="Added GameEvaluate Function!" />
+    <MESSAGE value="Added toString()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added toString()" />
   </component>
 </project>

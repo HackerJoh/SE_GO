@@ -24,8 +24,6 @@ public class GoModel {
     private boolean jumpModeOn = false;
     private int jumpCounter;
 
-    private List<Point> islandPoints = new ArrayList<>();
-
     public GoModel(int size) {
         this.size = size;
         this.boardArray = getNeutralBoardArray();
@@ -167,8 +165,8 @@ public class GoModel {
             for (int y = 0; y < boardArray[x].length; y++) {
                 StoneColor color = boardArray[x][y];
                 if (color != StoneColor.NEUTRAL) {
-                    islandPoints = new ArrayList<>();
-                    callBFS(deepCopy(this.boardArray), x, y, color);
+                    List<Point> islandPoints = new ArrayList<>();
+                    callBFS(deepCopy(this.boardArray), x, y, color, islandPoints);
                     //now i got island Points
                     int totalLiberties = 0;
                     for (Point p : islandPoints
@@ -197,7 +195,6 @@ public class GoModel {
                             }
                         }
                         moveList.addMoveWithDescription(move, description, (int)blackPoints, (int)whitePoints);
-                        //controller.gridReload();
                     }
                 }
             }
@@ -207,17 +204,17 @@ public class GoModel {
         }
     }
 
-    private void callBFS(StoneColor[][] grid, int x, int y, StoneColor color) {
+    public static void callBFS(StoneColor[][] grid, int x, int y, StoneColor color, List<Point> islandPoints) {
         if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] != color || grid[x][y] == StoneColor.NEUTRAL)) {
             return;
         }
         islandPoints.add(new Point(x, y));
         grid[x][y] = StoneColor.NEUTRAL; // Test mit neutral?
 
-        callBFS(grid, x + 1, y, color);
-        callBFS(grid, x - 1, y, color);
-        callBFS(grid, x, y + 1, color);
-        callBFS(grid, x, y - 1, color);
+        callBFS(grid, x + 1, y, color, islandPoints);
+        callBFS(grid, x - 1, y, color, islandPoints);
+        callBFS(grid, x, y + 1, color, islandPoints);
+        callBFS(grid, x, y - 1, color, islandPoints);
     }
 
     private int getLiberties(int x, int y) {

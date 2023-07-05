@@ -91,7 +91,7 @@ public class GameEvalutation {
         return x >= 0 && x < array.length && y >= 0 && y < array[x].length;
     }
 
-    public static void callNeutralBFS(StoneColor[][] grid, int x, int y, List<Point> neutralIsland) {
+    private static void callNeutralBFS(StoneColor[][] grid, int x, int y, List<Point> neutralIsland) {
         if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || grid[x][y] != StoneColor.NEUTRAL){
             return;
         }
@@ -102,6 +102,13 @@ public class GameEvalutation {
         callNeutralBFS(grid, x - 1, y, neutralIsland);
         callNeutralBFS(grid, x, y + 1, neutralIsland);
         callNeutralBFS(grid, x, y - 1, neutralIsland);
+    }
+
+    public String toString(){
+        StringBuilder out = new StringBuilder("GameStats\n----------------------------------\n");
+        out.append("BlackPoints: ").append(blackPoints).append("\n");
+        out.append("WhitePoints: ").append(whitePoints).append("\n");
+        return out.toString();
     }
 
 }

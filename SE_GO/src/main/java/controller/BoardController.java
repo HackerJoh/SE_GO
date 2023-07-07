@@ -37,15 +37,6 @@ public class BoardController {
     private int handicap;
     private final double stoneRatio = 0.8;
     public GoModel model;
-    private HostServices hostServices;
-
-    public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices;
-    }
-
-    public HostServices getHostServices() {
-        return hostServices;
-    }
 
     public int getBoardSize() {
         return boardSize;
@@ -140,7 +131,7 @@ public class BoardController {
     }
 
     @FXML
-    private void onSave(ActionEvent event) { //TODO: FileChooser für Speicherung
+    private void onSave(ActionEvent event) {
         Stage primaryStage = (Stage) btn_surrender.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("JSON File", "*.json");
@@ -389,7 +380,6 @@ public class BoardController {
     public boolean isGameEnded() {
         return model.isGameHasEnded();
     }
-
 
     private void disableJump() {
         img_forward.setVisible(false);

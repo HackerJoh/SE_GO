@@ -22,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.GoModel;
 import org.kordamp.bootstrapfx.BootstrapFX;
@@ -140,7 +141,13 @@ public class BoardController {
 
     @FXML
     private void onSave(ActionEvent event) { //TODO: FileChooser für Speicherung
-        model.saveGame();
+        Stage primaryStage = (Stage) btn_surrender.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("JSON File", "*.json");
+        fileChooser.getExtensionFilters().addAll(extensionFilter);
+        File saveFile = fileChooser.showSaveDialog(primaryStage);
+        if (saveFile != null)
+            model.saveGame(saveFile);
     }
 
     @FXML
@@ -151,12 +158,12 @@ public class BoardController {
     }
 
     @FXML
-    private void onJumpMenu(){
-        if(!model.isJumpModeOn()){
+    private void onJumpMenu() {
+        if (!model.isJumpModeOn()) {
             model.enterJumpMode();
             img_forward.setVisible(true);
             img_backward.setVisible(true);
-        }else{
+        } else {
             model.turnOffJumpModeIfOn();
             disableJump();
         }
@@ -382,7 +389,6 @@ public class BoardController {
     public boolean isGameEnded() {
         return model.isGameHasEnded();
     }
-
 
 
     private void disableJump() {

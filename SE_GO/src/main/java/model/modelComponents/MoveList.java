@@ -27,10 +27,10 @@ public class MoveList {
     }
 
 
-    public void exportMoves(String path, int size) {
+    public void exportMoves(File saveFile, int size) {
         ObjectMapper mapper = new ObjectMapper();
         SaveGame saveGame = new SaveGame(size, moves);
-        try (FileWriter fileWriter = new FileWriter(path)) {
+        try (FileWriter fileWriter = new FileWriter(saveFile)) {
             String json = mapper.writeValueAsString(saveGame);
             fileWriter.write(json);
         } catch (IOException e) {

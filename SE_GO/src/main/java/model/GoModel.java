@@ -1,12 +1,15 @@
 package model;
 
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import model.gameStatistics.GameEvalutation;
 import model.gameStatistics.GameStatistics;
 import model.modelComponents.*;
 import singleComponents.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -140,8 +143,8 @@ public class GoModel {
         }
     }
 
-    public void saveGame() {
-        moveList.exportMoves("list.json", size);
+    public void saveGame(File saveFile) {
+        moveList.exportMoves(saveFile, size);
     }
 
     public void loadGame(File loadedFile) throws IOException {

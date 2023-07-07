@@ -320,13 +320,17 @@ public class GoModel {
 
     public boolean turnOffJumpModeIfOn(){
         if(jumpModeOn) {
-            turnOfJumpMode();
+            turnOffJumpMode();
             return true;
         }
         return false;
     }
 
-    private void turnOfJumpMode(){
+    public boolean isJumpModeOn() {
+        return jumpModeOn;
+    }
+
+    private void turnOffJumpMode(){
         moveList.deleteMovesAfterIndex(jumpCounter);
         jumpModeOn = false;
     }
@@ -388,6 +392,18 @@ public class GoModel {
             return "Beginn";
         }
         return moveList.getMoveByIndex(jumpCounter).getDescription();
+    }
+
+    public void setDescriptionFromForward(String description){
+        if (jumpCounter > 0){
+            moveList.getMoveByIndex(jumpCounter).setDescription(description);
+        }
+    }
+
+    public void setDescriptionFromBackward(String description){
+        if (jumpCounter > 0) {
+            moveList.getMoveByIndex(jumpCounter).setDescription(description);
+        }
     }
 
     public GameStatistics evaluateGame(){

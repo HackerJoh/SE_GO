@@ -3,11 +3,14 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckMenuItem?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -119,6 +122,7 @@
                     <items>
                         <MenuItem fx:id="menu_newGame" mnemonicParsing="false" onAction="#newGame" text="Neues Spiel" />
                         <MenuItem mnemonicParsing="false" onAction="#onSave" text="Speichern..." />
+                  <CheckMenuItem fx:id="cmi_inspection" mnemonicParsing="false" onAction="#onJumpMenu" text="Inspektionsmodus" />
                         <SeparatorMenuItem mnemonicParsing="false" />
                         <MenuItem mnemonicParsing="false" onAction="#onExit" text="Beenden" />
                     </items>
@@ -131,7 +135,15 @@
                 </Menu>
             </menus>
         </MenuBar>
-      <Button mnemonicParsing="false" onAction="#jumpBackward" text="&lt;&lt;" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-      <Button mnemonicParsing="false" onAction="#jumpForward" text="&gt;&gt;" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+      <ImageView fx:id="img_forward" fitHeight="52.0" fitWidth="84.0" onMouseClicked="#jumpForward" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@arrow_right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_backward" fitHeight="52.0" fitWidth="84.0" onMouseClicked="#jumpBackward" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@arrow_right.png" />
+         </image>
+      </ImageView>
     </children>
 </GridPane>

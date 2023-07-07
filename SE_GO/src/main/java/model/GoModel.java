@@ -392,6 +392,8 @@ public class GoModel {
 
     public GameStatistics evaluateGame(){
         GameEvalutation evalutation = new GameEvalutation(deepCopy(boardArray), moveList);
-        return evalutation.evaluateEndGameStatistics();
+        GameStatistics endgame = evalutation.evaluateEndGameStatistics();
+        System.out.println(endgame);
+        return endgame;
     }
 }

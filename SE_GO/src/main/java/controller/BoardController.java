@@ -108,7 +108,7 @@ public class BoardController {
             model.loadGame(loadedFile);
         }
         gridReload();
-        setStatusText("WEIß ist am Zug");
+        setStatusText("Schwarz ist am Zug");
     }
 
     @FXML

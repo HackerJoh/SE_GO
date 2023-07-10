@@ -1,15 +1,12 @@
 package model;
 
 import javafx.scene.paint.Color;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import model.gameStatistics.GameEvalutation;
 import model.gameStatistics.GameStatistics;
 import model.modelComponents.*;
 import singleComponents.*;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,9 +38,9 @@ public class GoModel {
 
     public StoneColor getTurn() {
         if (noMoves % 2 == 1) {
-            return StoneColor.BLACK;
-        } else {
             return StoneColor.WHITE;
+        } else {
+            return StoneColor.BLACK;
         }
     }
 
@@ -74,6 +71,7 @@ public class GoModel {
     public void increaseTurn() {
         this.noMoves++;
     }
+
 
     public void controllerSetsStone(int xCoord, int yCoord, String description) {
         turnOffJumpModeIfOn();
@@ -397,5 +395,17 @@ public class GoModel {
         GameStatistics endgame = evalutation.evaluateEndGameStatistics();
         System.out.println(endgame);
         return endgame;
+    }
+
+    public void setHandicap(int handicap){
+        switch(size){
+            case 9:
+
+                break;
+            case 13:
+                break;
+            case 19:
+                break;
+        }
     }
 }

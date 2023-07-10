@@ -4,10 +4,7 @@ package controller;
 import controller.guiComponents.HLine;
 import controller.guiComponents.Stone;
 import controller.guiComponents.VLine;
-import javafx.application.HostServices;
-import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -26,8 +23,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.GoModel;
 import org.kordamp.bootstrapfx.BootstrapFX;
-
-import singleComponents.*;
+import singleComponents.Settings;
+import singleComponents.StoneColor;
 
 import java.io.File;
 import java.io.IOException;
@@ -173,7 +170,7 @@ public class BoardController {
 
         primaryStage.show();
     }
-
+    //TODO: auf Alert umbauen
     @FXML
     private void openRules(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Rules.fxml"));

@@ -75,23 +75,6 @@ public class GoModel {
         this.noMoves++;
     }
 
-    /*protected void setStone(int id, StoneColor color) {
-        turnOffJumpModeIfOn();
-        int xCord = id / size;
-        int yCord = id % size;
-        boardArray[xCord][yCord] = color;
-        SingleMove setMove;
-        if (color == StoneColor.BLACK) {
-            setMove = new SingleMove(StoneColor.BLACK, xCord, yCord, true);
-        } else if (color == StoneColor.WHITE) {
-            setMove = new SingleMove(StoneColor.WHITE, xCord, yCord, true);
-        } else {
-            setMove = new SingleMove(StoneColor.NEUTRAL, xCord, yCord, true);
-        }
-        //check after each move if somebody captured something / cought stones
-        this.checkAllStonesIfTheyHaveLiberties(setMove);
-    }*/
-
     public void controllerSetsStone(int xCoord, int yCoord, String description) {
         turnOffJumpModeIfOn();
         boardArray[xCoord][yCoord] = getTurn();

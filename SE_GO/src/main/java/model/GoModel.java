@@ -1,5 +1,6 @@
 package model;
 
+import controller.guiComponents.Stone;
 import javafx.scene.paint.Color;
 import model.gameStatistics.GameEvalutation;
 import model.gameStatistics.GameStatistics;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GoModel {
@@ -388,9 +390,8 @@ public class GoModel {
         return endgame;
     }
 
-    public void setHandicap(int handicap){
+    public void setHandicap(int handicap, int komi){
         if(handicap > 9 || handicap < 0) throw new IllegalArgumentException("Invalid Input!");
-        if(handicap == 0) return;
 
         switch(size){
             case 9:
@@ -427,5 +428,16 @@ public class GoModel {
                 if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
                 break;
         }
+
+        List<SingleMove> singleMoves = new LinkedList<>();
+        for (int x = 0; x < boardArray.length; x++) {
+            for(int y = 0; y < boardArray[x].length; y++){
+                if(boardArray[x][y] == StoneColor.BLACK){
+                    singleMoves.add(new SingleMove(StoneColor.BLACK, x, y, true)){
+                    }
+                }
+            }
+        }
+        moveList.addMove(singleMoves.toArray(SingleMove[]::new), komi, 0);
     }
 }

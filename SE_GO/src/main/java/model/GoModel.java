@@ -1,12 +1,15 @@
 package model;
 
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import model.gameStatistics.GameEvalutation;
 import model.gameStatistics.GameStatistics;
 import model.modelComponents.*;
 import singleComponents.*;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,7 +107,7 @@ public class GoModel {
         this.checkAllStonesIfTheyHaveLiberties(setMove, description);
     }
 
-    public String getWinner(){
+    public String getWinner() {
         setGameHasEnded(true);
         if (whitePoints > blackPoints) {
             return "WEIß gewinnt!";
@@ -115,16 +118,16 @@ public class GoModel {
         }
     }
 
-    public String getSurrenderer(){
+    public String getSurrenderer() {
         setGameHasEnded(true);
-        if (getTurn() == StoneColor.BLACK){
+        if (getTurn() == StoneColor.BLACK) {
             return "WEIß gewinnt";
         } else {
             return "SCHWARZ gewinnt";
         }
     }
 
-    public String getTurnColor(){
+    public String getTurnColor() {
         if (getTurn() == StoneColor.BLACK) {
             return "SCHWARZ ist am Zug";
         } else {
@@ -132,7 +135,7 @@ public class GoModel {
         }
     }
 
-    public String getPassColor(){
+    public String getPassColor() {
         if (getTurn() == StoneColor.BLACK) {
             return "SCHWARZ passt";
         } else {
@@ -140,8 +143,8 @@ public class GoModel {
         }
     }
 
-    public void saveGame() {
-        moveList.exportMoves("list.json", size);
+    public void saveGame(File saveFile) {
+        moveList.exportMoves(saveFile, size);
     }
 
     public void loadGame(File loadedFile) throws IOException {
@@ -193,13 +196,13 @@ public class GoModel {
                                 whitePoints++;
                             }
                         }
-                        moveList.addMoveWithDescription(move, description, (int)blackPoints, (int)whitePoints);
+                        moveList.addMoveWithDescription(move, description, (int) blackPoints, (int) whitePoints);
                     }
                 }
             }
         }
         if (isOnlySetMove) {
-            moveList.addMoveWithDescription(new SingleMove[]{setMove}, description, (int)blackPoints, (int)whitePoints);
+            moveList.addMoveWithDescription(new SingleMove[]{setMove}, description, (int) blackPoints, (int) whitePoints);
         }
     }
 
@@ -318,37 +321,41 @@ public class GoModel {
         return blackPoints;
     }
 
-    public boolean turnOffJumpModeIfOn(){
-        if(jumpModeOn) {
-            turnOfJumpMode();
+    public boolean turnOffJumpModeIfOn() {
+        if (jumpModeOn) {
+            turnOffJumpMode();
             return true;
         }
         return false;
     }
 
-    private void turnOfJumpMode(){
+    public boolean isJumpModeOn() {
+        return jumpModeOn;
+    }
+
+    private void turnOffJumpMode() {
         moveList.deleteMovesAfterIndex(jumpCounter);
         jumpModeOn = false;
     }
 
-    public void enterJumpMode(){
+    public void enterJumpMode() {
         jumpModeOn = true;
         jumpCounter = moveList.getIndexOfLastMove();
     }
 
-    public void jumpForward(){
-        if(jumpModeOn){
-            if(jumpCounter < moveList.getIndexOfLastMove()) doForwardJump();
+    public void jumpForward() {
+        if (jumpModeOn) {
+            if (jumpCounter < moveList.getIndexOfLastMove()) doForwardJump();
         }
     }
 
-    public void jumpBackward(){
-        if(jumpModeOn){
-            if(jumpCounter >= 0) doBackwardJump();
+    public void jumpBackward() {
+        if (jumpModeOn) {
+            if (jumpCounter >= 0) doBackwardJump();
         }
     }
 
-    private void doForwardJump(){
+    private void doForwardJump() {
         jumpCounter++;
         Move forwardMove = moveList.getMoveByIndex(jumpCounter);
         for (SingleMove singleMove : forwardMove.getSingleMoves()) {
@@ -362,7 +369,7 @@ public class GoModel {
         whitePoints = forwardMove.getWhitePoints();
     }
 
-    private void doBackwardJump(){
+    private void doBackwardJump() {
         Move backwardMove = moveList.getMoveByIndex(jumpCounter);
         for (SingleMove singleMove : backwardMove.getSingleMoves()) {
             if (!singleMove.isSetStone()) {
@@ -371,26 +378,38 @@ public class GoModel {
                 boardArray[singleMove.getxCoord()][singleMove.getyCoord()] = StoneColor.NEUTRAL;
             }
         }
-        if(jumpCounter > 0) {
+        if (jumpCounter > 0) {
             jumpCounter--;
             Move newCurrentMove = moveList.getMoveByIndex(jumpCounter);
             blackPoints = newCurrentMove.getBlackPoints();
             whitePoints = newCurrentMove.getWhitePoints();
-        }else{
+        } else {
             jumpCounter--;
             blackPoints = 0;
             whitePoints = 0;
         }
     }
 
-    public String getDescriptionFromJump(){
-        if (jumpCounter < 0){
+    public String getDescriptionFromJump() {
+        if (jumpCounter < 0) {
             return "Beginn";
         }
         return moveList.getMoveByIndex(jumpCounter).getDescription();
     }
 
-    public GameStatistics evaluateGame(){
+    public void setDescriptionFromForward(String description) {
+        if (jumpCounter > 0) {
+            moveList.getMoveByIndex(jumpCounter).setDescription(description);
+        }
+    }
+
+    public void setDescriptionFromBackward(String description) {
+        if (jumpCounter > 0) {
+            moveList.getMoveByIndex(jumpCounter).setDescription(description);
+        }
+    }
+
+    public GameStatistics evaluateGame() {
         GameEvalutation evalutation = new GameEvalutation(deepCopy(boardArray), moveList);
         GameStatistics endgame = evalutation.evaluateEndGameStatistics();
         System.out.println(endgame);

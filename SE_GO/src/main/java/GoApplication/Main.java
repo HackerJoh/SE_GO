@@ -10,6 +10,8 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 
+import java.util.Objects;
+
 
 public class Main extends Application {
 
@@ -20,8 +22,6 @@ public class Main extends Application {
         // Load the FXML file that defines the GUI layout
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
         Parent root = loader.load();
-        MenuController controller = loader.getController();
-        controller.setHostServices(getHostServices());
 
         // Create a new scene and add the GUI layout to it
         Scene scene = new Scene(root);
@@ -31,7 +31,7 @@ public class Main extends Application {
 
         // Set the scene on the primary stage and display it
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(new Image("file:go_logo.png"));
+        primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/img/go_logo.png"))));
         primaryStage.show();
 
     }

@@ -53,18 +53,8 @@ public class MenuController implements Initializable {
 
     @FXML
     protected Text txt_subheading;
-
-    private HostServices hostServices;
     private Settings s = new Settings();
     private boolean fileLoaded = false;
-
-    public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices;
-    }
-
-    public HostServices getHostServices() {
-        return hostServices;
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -108,7 +98,6 @@ public class MenuController implements Initializable {
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         primaryStage.setScene(scene);
         BoardController controller = loader.getController();
-        controller.setHostServices(hostServices);
         controller.initData(s);
 
         primaryStage.show();

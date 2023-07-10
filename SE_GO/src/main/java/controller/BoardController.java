@@ -5,7 +5,9 @@ import controller.guiComponents.HLine;
 import controller.guiComponents.Stone;
 import controller.guiComponents.VLine;
 import javafx.application.HostServices;
+import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -14,10 +16,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.GoModel;
 import org.kordamp.bootstrapfx.BootstrapFX;
@@ -32,15 +37,6 @@ public class BoardController {
     private int handicap;
     private final double stoneRatio = 0.8;
     public GoModel model;
-    private HostServices hostServices;
-
-    public void setHostServices(HostServices hostServices) {
-        this.hostServices = hostServices;
-    }
-
-    public HostServices getHostServices() {
-        return hostServices;
-    }
 
     public int getBoardSize() {
         return boardSize;
@@ -48,6 +44,12 @@ public class BoardController {
 
     @FXML
     private Button btn_exit;
+
+    @FXML
+    private ImageView img_forward;
+
+    @FXML
+    private ImageView img_backward;
 
     @FXML
     private Button btn_pass;
@@ -82,6 +84,10 @@ public class BoardController {
     @FXML
     private Text txt_whitePointsLabel;
 
+    @FXML
+    private CheckMenuItem cmi_inspection;
+
+
     private int zug = 0;
 
     public void setZug(int zug) {
@@ -109,12 +115,12 @@ public class BoardController {
     }
 
     @FXML
-    void onExit(ActionEvent event) {
+    private void onExit(ActionEvent event) {
         System.exit(0);
     }
 
     @FXML
-    void onPass(ActionEvent event) {
+    private void onPass(ActionEvent event) {
         zug++;
         if (zug == 2) {
             endGame();
@@ -125,20 +131,38 @@ public class BoardController {
     }
 
     @FXML
-    void onSave(ActionEvent event) { //TODO: FileChooser für Speicherung
-        model.saveGame();
+    private void onSave(ActionEvent event) {
+        Stage primaryStage = (Stage) btn_surrender.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("JSON File", "*.json");
+        fileChooser.getExtensionFilters().addAll(extensionFilter);
+        File saveFile = fileChooser.showSaveDialog(primaryStage);
+        if (saveFile != null)
+            model.saveGame(saveFile);
     }
 
     @FXML
-    void onSurrender(ActionEvent event) {
-        //model.enterJumpMode();
+    private void onSurrender(ActionEvent event) {
         System.out.println(model.evaluateGame());
-        //setStatusText(model.getSurrenderer());
-        //disableBtns();
+        setStatusText(model.getSurrenderer());
+        disableBtns();
     }
 
     @FXML
-    void newGame(ActionEvent event) throws IOException {
+    private void onJumpMenu() {
+        if (!model.isJumpModeOn()) {
+            model.enterJumpMode();
+            img_forward.setVisible(true);
+            img_backward.setVisible(true);
+        } else {
+            model.turnOffJumpModeIfOn();
+            disableJump();
+        }
+
+    }
+
+    @FXML
+    private void newGame(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
         Parent root = loader.load();
 
@@ -151,7 +175,7 @@ public class BoardController {
     }
 
     @FXML
-    void openRules(ActionEvent event) throws IOException {
+    private void openRules(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Rules.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Regeln");
@@ -160,13 +184,7 @@ public class BoardController {
     }
 
     @FXML
-    void openLink(ActionEvent event) {
-        hostServices = this.getHostServices();
-        hostServices.showDocument("https://de.wikipedia.org/wiki/Go_(Spiel)");
-    }
-
-    @FXML
-    void openAbout(ActionEvent event) throws IOException {
+    private void openAbout(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/About.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Über");
@@ -174,16 +192,36 @@ public class BoardController {
         stage.show();
     }
 
-    public void setStatusText(String text) {
+    @FXML
+    private void jumpForward() {
+        model.setDescriptionFromForward(txt_status.getText());
+        model.jumpForward();
+        setStatusText(model.getDescriptionFromJump());
+        gridReload();
+    }
+
+    @FXML
+    private void jumpBackward() {
+        model.setDescriptionFromBackward(txt_status.getText());
+        model.jumpBackward();
+        setStatusText(model.getDescriptionFromJump());
+        gridReload();
+    }
+
+    private void setStatusText(String text) {
         txt_status.setText(text);
     }
 
-    public void disableBtns() {
+    private void disableBtns() {
+        onJumpMenu();
+        cmi_inspection.setSelected(true);
         btn_pass.setDisable(true);
         btn_surrender.setDisable(true);
+        txt_status.setFocusTraversable(false);
     }
 
-    public void endGame() {
+    private void endGame() {
+        System.out.println(model.evaluateGame());
         setStatusText(model.getWinner());
         disableBtns();
     }
@@ -261,11 +299,6 @@ public class BoardController {
 
 
     private void updateControllerFromListeners() {
-        /*btn_cstones.setOnMouseClicked(mouseEvent -> {
-            model.removeCatchedStones();
-            gridReload();
-        });*/
-
         gp_boardGrid.widthProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(gp_boardGrid.getHeight(), newVal.doubleValue());
             radius = radius / (boardSize + 2) / 2;
@@ -314,7 +347,7 @@ public class BoardController {
         });
     }
 
-    public void gridReload() {
+    private void gridReload() {
         for (Node n : gp_boardGrid.getChildren()) {
             if (n instanceof Group) {
                 for (Node n2 : ((Group) n).getChildren()) {
@@ -332,6 +365,7 @@ public class BoardController {
     public void setStone(int xCoord, int yCoord) {
         if (model.turnOffJumpModeIfOn()) {
             disableJump();
+            cmi_inspection.setSelected(false);
         }
         model.controllerSetsStone(xCoord, yCoord, txt_status.getText());
         gridReload();
@@ -347,20 +381,9 @@ public class BoardController {
         return model.isGameHasEnded();
     }
 
-    public void jumpForward() {
-        model.jumpForward();
-        setStatusText(model.getDescriptionFromJump());
-        gridReload();
-    }
-
-    public void jumpBackward() {
-        model.jumpBackward();
-        setStatusText(model.getDescriptionFromJump());
-        gridReload();
-    }
-
     private void disableJump() {
-        //TODO: Pfeile setVisible false, ImageViews statt Buttons
+        img_forward.setVisible(false);
+        img_backward.setVisible(false);
     }
 
 }

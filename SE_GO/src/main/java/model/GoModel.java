@@ -400,11 +400,25 @@ public class GoModel {
     public void setHandicap(int handicap){
         switch(size){
             case 9:
-
+                if(handicap > 4) throw new IllegalArgumentException("Zu hohe Anzahl an Handicap-Steinen");
+                if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
+                if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
                 break;
             case 13:
+                if(handicap > 9) throw new IllegalArgumentException("Zu hohe Anzahl an Handicap-Steinen");
+                if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
+                if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
                 break;
             case 19:
+                if(handicap > 4) break;
+                if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
+                if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
                 break;
         }
     }

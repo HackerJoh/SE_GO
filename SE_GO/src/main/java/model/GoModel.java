@@ -398,23 +398,32 @@ public class GoModel {
     }
 
     public void setHandicap(int handicap){
+        if(handicap > 9 || handicap < 1) throw new IllegalArgumentException("Invalid Input!");
         switch(size){
             case 9:
-                if(handicap > 4) throw new IllegalArgumentException("Zu hohe Anzahl an Handicap-Steinen");
-                if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap > 4) throw new IllegalArgumentException("Invalid Input!");
+                if(handicap ==4) boardArray[6][6] = StoneColor.BLACK;
                 if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
                 if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
                 if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
                 break;
             case 13:
-                if(handicap > 9) throw new IllegalArgumentException("Zu hohe Anzahl an Handicap-Steinen");
+                if(handicap ==9) boardArray[2][2] = StoneColor.BLACK;
+                if(handicap >=8) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap >=7) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap >=6) boardArray[6][2] = StoneColor.BLACK;
+                if(handicap >=5) boardArray[2][2] = StoneColor.BLACK;
                 if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
-                if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
-                if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
-                if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[4][6] = StoneColor.BLACK;
+                if(handicap >=2) boardArray[9][3] = StoneColor.BLACK;
+                if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
                 break;
             case 19:
-                if(handicap > 4) break;
+                if(handicap ==9) boardArray[2][2] = StoneColor.BLACK;
+                if(handicap >=8) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap >=7) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap >=6) boardArray[6][2] = StoneColor.BLACK;
+                if(handicap >=5) boardArray[2][2] = StoneColor.BLACK;
                 if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
                 if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
                 if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;

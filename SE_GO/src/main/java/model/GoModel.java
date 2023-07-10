@@ -389,7 +389,9 @@ public class GoModel {
     }
 
     public void setHandicap(int handicap){
-        if(handicap > 9 || handicap < 1) throw new IllegalArgumentException("Invalid Input!");
+        if(handicap > 9 || handicap < 0) throw new IllegalArgumentException("Invalid Input!");
+        if(handicap == 0) return;
+
         switch(size){
             case 9:
                 if(handicap ==9) boardArray[4][4] = StoneColor.BLACK;
@@ -415,14 +417,14 @@ public class GoModel {
                 break;
             case 19:
                 if(handicap ==9) boardArray[9][9] = StoneColor.BLACK;
-                if(handicap >=8) boardArray[4][9] = StoneColor.BLACK;
-                if(handicap >=7) boardArray[9][14] = StoneColor.BLACK;
-                if(handicap >=6) boardArray[14][9] = StoneColor.BLACK;
-                if(handicap >=5) boardArray[9][4] = StoneColor.BLACK;
-                if(handicap >=4) boardArray[4][14] = StoneColor.BLACK;
-                if(handicap >=3) boardArray[14][14] = StoneColor.BLACK;
-                if(handicap >=2) boardArray[14][4] = StoneColor.BLACK;
-                if(handicap >=1) boardArray[4][4] = StoneColor.BLACK;
+                if(handicap >=8) boardArray[3][9] = StoneColor.BLACK;
+                if(handicap >=7) boardArray[9][15] = StoneColor.BLACK;
+                if(handicap >=6) boardArray[15][9] = StoneColor.BLACK;
+                if(handicap >=5) boardArray[9][3] = StoneColor.BLACK;
+                if(handicap >=4) boardArray[3][15] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[15][15] = StoneColor.BLACK;
+                if(handicap >=2) boardArray[15][3] = StoneColor.BLACK;
+                if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
                 break;
         }
     }

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Added toString()">
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" afterDir="false" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Minor Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/list.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
         <option value="FxmlFile" />
         <option value="Record" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -105,21 +106,8 @@
       <workItem from="1688407305432" duration="2390000" />
       <workItem from="1688410362695" duration="2500000" />
       <workItem from="1688503880868" duration="373000" />
-      <workItem from="1688586040456" duration="4811000" />
-    </task>
-    <task id="LOCAL-00001" summary="Updated the Grid Reload function for the new Boardgrid Children structure with Groups">
-      <created>1683620638798</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1683620638798</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Linked the Boardcontroller to the Model the reload the Controller if Stones get caught">
-      <created>1683620689633</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1683620689633</updated>
+      <workItem from="1688586040456" duration="6507000" />
+      <workItem from="1688664542245" duration="9850000" />
     </task>
     <task id="LOCAL-00003" summary="Standard Workspace update">
       <created>1683620718427</created>
@@ -422,7 +410,49 @@
       <option name="project" value="LOCAL" />
       <updated>1688590616789</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Missused Surrender Button for printing Gamestatistics in the Console again, srry Mr. Surrender :(">
+      <created>1688591033242</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1688591033242</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Can be used to Make a view for the ResultBoard.">
+      <created>1688671705953</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1688671705953</updated>
+    </task>
+    <task id="LOCAL-00048" summary="+ Endgameboard and deactivated death Stone Rule (works not really good)">
+      <created>1688671853454</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1688671853455</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Added the Endgameboard to the Record">
+      <created>1688671873015</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1688671873015</updated>
+    </task>
+    <task id="LOCAL-00050" summary="Added to String to Point class">
+      <created>1688671991617</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1688671991618</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Minor Changes">
+      <created>1688740248161</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1688740248161</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -440,12 +470,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Removed a Empty line" />
-    <MESSAGE value="Added feature so that Set Stone and romve Stone added in the Movelist" />
-    <MESSAGE value="Missused the Surrender Button for Import the Json" />
-    <MESSAGE value="Changed, that the Deleting Move is also saved in the Move where the other stones are deleted" />
-    <MESSAGE value="Bug Fixes" />
-    <MESSAGE value="Updated the latest Version for the Moves, because the last Commit doesn't worked" />
     <MESSAGE value="MVC changes" />
     <MESSAGE value="Deleted Unnecessary import" />
     <MESSAGE value="Changed loadGame(), that Points were Imported from the JSON" />
@@ -454,7 +478,6 @@
     <MESSAGE value="Changend Contructors for saving of the Points" />
     <MESSAGE value="Implementing Jump Mode" />
     <MESSAGE value="Added a record for the Savegame" />
-    <MESSAGE value="Minor Changes" />
     <MESSAGE value="Changed Import/Export from JSON to a Record" />
     <MESSAGE value="Added the boardsize as Parameter for the ExportGame function" />
     <MESSAGE value="Deleted Boardsize Attribute in the Move Class" />
@@ -465,6 +488,13 @@
     <MESSAGE value="Added some Algos for calculating the Game Points" />
     <MESSAGE value="Added GameEvaluate Function!" />
     <MESSAGE value="Added toString()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added toString()" />
+    <MESSAGE value="Missused Surrender Button for printing Gamestatistics in the Console again, srry Mr. Surrender :(" />
+    <MESSAGE value="Can be used to Make a view for the ResultBoard." />
+    <MESSAGE value="+ Endgameboard and deactivated death Stone Rule (works not really good)" />
+    <MESSAGE value="Added the Endgameboard to the Record" />
+    <MESSAGE value="Prints the endgame" />
+    <MESSAGE value="Added to String to Point class" />
+    <MESSAGE value="Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor Changes" />
   </component>
 </project>

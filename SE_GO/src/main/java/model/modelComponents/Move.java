@@ -3,20 +3,20 @@ package model.modelComponents;
 public class Move {
     private String description;
     private SingleMove[] singleMoves;
-    private int blackPoints;
-    private int whitePoints;
+    private double blackPoints;
+    private double whitePoints;
 
     public Move() {
     }
 
-    public Move(SingleMove[] singleMoves, int blackPoints, int whitePoints) {
+    public Move(SingleMove[] singleMoves, double blackPoints, double whitePoints) {
         description = "";
         this.singleMoves = singleMoves;
         this.blackPoints = blackPoints;
         this.whitePoints = whitePoints;
     }
 
-    public Move(SingleMove[] singleMoves, String description, int blackPoints, int whitePoints) {
+    public Move(SingleMove[] singleMoves, String description, double blackPoints, double whitePoints) {
         this.description = description;
         this.singleMoves = singleMoves;
         this.blackPoints = blackPoints;
@@ -47,11 +47,11 @@ public class Move {
         this.whitePoints = whitePoints;
     }
 
-    public int getBlackPoints() {
+    public double getBlackPoints() {
         return blackPoints;
     }
 
-    public int getWhitePoints() {
+    public double getWhitePoints() {
         return whitePoints;
     }
 

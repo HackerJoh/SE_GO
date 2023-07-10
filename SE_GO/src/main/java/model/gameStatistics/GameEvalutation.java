@@ -13,8 +13,8 @@ import java.util.List;
 public class GameEvalutation {
     private final StoneColor[][] board;
     private final MoveList moveList;
-    private int blackPoints;
-    private int whitePoints;
+    private double blackPoints;
+    private double whitePoints;
     private final EndgameColors[][] endBoard;
 
     public GameEvalutation(StoneColor[][] board, MoveList moveList){

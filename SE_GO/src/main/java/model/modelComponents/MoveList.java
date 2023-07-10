@@ -18,11 +18,11 @@ public class MoveList {
         this.moves = new LinkedList<>();
     }
 
-    public void addMove(SingleMove[] singleMoves, int blackPoints, int whitePoints) {
+    public void addMove(SingleMove[] singleMoves, double blackPoints, double whitePoints) {
         moves.add(new Move(singleMoves, blackPoints, whitePoints));
     }
 
-    public void addMoveWithDescription(SingleMove[] singleMoves, String description, int blackPoints, int whitePoints) {
+    public void addMoveWithDescription(SingleMove[] singleMoves, String description, double blackPoints, double whitePoints) {
         moves.add(new Move(singleMoves, description, blackPoints, whitePoints));
     }
 

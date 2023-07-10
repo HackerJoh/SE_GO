@@ -390,7 +390,7 @@ public class GoModel {
         return endgame;
     }
 
-    public void setHandicap(int handicap, int komi){
+    public void setHandicap(int handicap, double komi){
         if(handicap > 9 || handicap < 0) throw new IllegalArgumentException("Invalid Input!");
 
         switch(size){
@@ -437,6 +437,7 @@ public class GoModel {
                 }
             }
         }
-        moveList.addMove(singleMoves.toArray(SingleMove[]::new), komi, 0);
+        moveList.addMove(singleMoves.toArray(SingleMove[]::new), 0, komi);
+        whitePoints = komi;
     }
 }

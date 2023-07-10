@@ -96,12 +96,13 @@ public class BoardController {
     public void initData(Settings s) throws IOException {
         boardSize = s.getBoardSize();
         handicap = s.getHandicap();
+        double komi = s.getKomi();
         File loadedFile = s.getLoadedFile();
 
         model = new GoModel(boardSize);
 
-        model.setBlackPoints(s.getKomi());
-        model.setHandicap(handicap);
+        model.setWhitePoints(komi);
+        model.setHandicap(handicap, komi);
 
         createAndConfigurePane();
         updateControllerFromListeners();

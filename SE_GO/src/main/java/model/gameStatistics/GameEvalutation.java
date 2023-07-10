@@ -1,6 +1,5 @@
 package model.gameStatistics;
 
-import controller.guiComponents.Stone;
 import model.GoModel;
 import model.modelComponents.MoveList;
 import model.modelComponents.Point;
@@ -27,7 +26,7 @@ public class GameEvalutation {
     }
 
     public GameStatistics evaluateEndGameStatistics(){
-        //lifeOfTwoStones();
+        lifeOfTwoStones();
         syncEndBoard();
         checkAllNeutralAreas();
         int whiteMoves = countMovesByColor(StoneColor.WHITE);
@@ -59,10 +58,27 @@ public class GameEvalutation {
 
     private void checkSingleStoneGroupTwoStones(int x, int y){
         List<Point> islandPoints = new ArrayList<>();
-        GoModel.callBFS(GoModel.deepCopy(this.board), x, y, this.board[x][y], islandPoints);
+        callBFS(GoModel.deepCopy(this.board), x, y, this.board[x][y], islandPoints);
         if(islandPoints.size() < 2){
             islandPoints.forEach(p -> this.board[p.x][p.y] = StoneColor.NEUTRAL);
         }
+    }
+
+    public void callBFS(StoneColor[][] grid, int x, int y, StoneColor color, List<Point> islandPoints) {
+        if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] != color || grid[x][y] == StoneColor.NEUTRAL)) {
+            return;
+        }
+        islandPoints.add(new Point(x, y));
+        grid[x][y] = StoneColor.NEUTRAL; // Test mit neutral?
+
+        callBFS(grid, x + 1, y, color, islandPoints);
+        callBFS(grid, x - 1, y, color, islandPoints);
+        callBFS(grid, x, y + 1, color, islandPoints);
+        callBFS(grid, x, y - 1, color, islandPoints);
+        callBFS(grid, x + 1, y + 1, color, islandPoints);
+        callBFS(grid, x + 1, y -1, color, islandPoints);
+        callBFS(grid, x - 1, y + 1, color, islandPoints);
+        callBFS(grid, x - 1, y - 1, color, islandPoints);
     }
 
 

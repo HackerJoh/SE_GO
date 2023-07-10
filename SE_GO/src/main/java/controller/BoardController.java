@@ -32,7 +32,6 @@ import java.io.IOException;
 
 public class BoardController {
     private int boardSize;
-    private int handicap;
     private final double stoneRatio = 0.8;
     public GoModel model;
 
@@ -95,14 +94,11 @@ public class BoardController {
 
     public void initData(Settings s) throws IOException {
         boardSize = s.getBoardSize();
-        handicap = s.getHandicap();
-        double komi = s.getKomi();
         File loadedFile = s.getLoadedFile();
 
         model = new GoModel(boardSize);
 
-        model.setWhitePoints(komi);
-        model.setHandicap(handicap, komi);
+        model.setHandicap(s.getHandicap(), s.getKomi());
 
         createAndConfigurePane();
         updateControllerFromListeners();

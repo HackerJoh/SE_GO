@@ -392,33 +392,37 @@ public class GoModel {
         if(handicap > 9 || handicap < 1) throw new IllegalArgumentException("Invalid Input!");
         switch(size){
             case 9:
-                if(handicap > 4) throw new IllegalArgumentException("Invalid Input!");
-                if(handicap ==4) boardArray[6][6] = StoneColor.BLACK;
-                if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap ==9) boardArray[4][4] = StoneColor.BLACK;
+                if(handicap >=8) boardArray[2][4] = StoneColor.BLACK;
+                if(handicap >=7) boardArray[4][6] = StoneColor.BLACK;
+                if(handicap >=6) boardArray[6][4] = StoneColor.BLACK;
+                if(handicap >=5) boardArray[4][2] = StoneColor.BLACK;
+                if(handicap >=4) boardArray[2][6] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[6][6] = StoneColor.BLACK;
                 if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
                 if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
                 break;
             case 13:
-                if(handicap ==9) boardArray[2][2] = StoneColor.BLACK;
-                if(handicap >=8) boardArray[6][6] = StoneColor.BLACK;
-                if(handicap >=7) boardArray[2][6] = StoneColor.BLACK;
-                if(handicap >=6) boardArray[6][2] = StoneColor.BLACK;
-                if(handicap >=5) boardArray[2][2] = StoneColor.BLACK;
-                if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
-                if(handicap >=3) boardArray[4][6] = StoneColor.BLACK;
+                if(handicap ==9) boardArray[6][6] = StoneColor.BLACK;
+                if(handicap >=8) boardArray[3][6] = StoneColor.BLACK;
+                if(handicap >=7) boardArray[6][9] = StoneColor.BLACK;
+                if(handicap >=6) boardArray[9][6] = StoneColor.BLACK;
+                if(handicap >=5) boardArray[6][3] = StoneColor.BLACK;
+                if(handicap >=4) boardArray[3][9] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[9][9] = StoneColor.BLACK;
                 if(handicap >=2) boardArray[9][3] = StoneColor.BLACK;
                 if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
                 break;
             case 19:
-                if(handicap ==9) boardArray[2][2] = StoneColor.BLACK;
-                if(handicap >=8) boardArray[6][6] = StoneColor.BLACK;
-                if(handicap >=7) boardArray[2][6] = StoneColor.BLACK;
-                if(handicap >=6) boardArray[6][2] = StoneColor.BLACK;
-                if(handicap >=5) boardArray[2][2] = StoneColor.BLACK;
-                if(handicap >=4) boardArray[6][6] = StoneColor.BLACK;
-                if(handicap >=3) boardArray[2][6] = StoneColor.BLACK;
-                if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
-                if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
+                if(handicap ==9) boardArray[9][9] = StoneColor.BLACK;
+                if(handicap >=8) boardArray[4][9] = StoneColor.BLACK;
+                if(handicap >=7) boardArray[9][14] = StoneColor.BLACK;
+                if(handicap >=6) boardArray[14][9] = StoneColor.BLACK;
+                if(handicap >=5) boardArray[9][4] = StoneColor.BLACK;
+                if(handicap >=4) boardArray[4][14] = StoneColor.BLACK;
+                if(handicap >=3) boardArray[14][14] = StoneColor.BLACK;
+                if(handicap >=2) boardArray[14][4] = StoneColor.BLACK;
+                if(handicap >=1) boardArray[4][4] = StoneColor.BLACK;
                 break;
         }
     }

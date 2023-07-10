@@ -38,7 +38,6 @@ public class Main extends Application {
 
     // The main() method is the entry point of the Java application
     public static void main(String[] args) {
-
         // Launch the JavaFX application
         launch(args);
     }

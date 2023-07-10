@@ -34,7 +34,15 @@ public class GameEvalutation {
         int blackMoves = countMovesByColor(StoneColor.BLACK);
         int capturedWhiteStones = countCapturedStoneByColor(StoneColor.WHITE);
         int capturedBlackStones = countCapturedStoneByColor(StoneColor.BLACK);
-        return new GameStatistics(blackPoints, whitePoints, blackMoves, whiteMoves, capturedBlackStones, capturedWhiteStones, endBoard);
+        StoneColor winner;
+        if (whitePoints > blackPoints) {
+            winner = StoneColor.WHITE;
+        } else if (blackPoints > whitePoints) {
+            winner = StoneColor.BLACK;
+        } else {
+            winner = StoneColor.NEUTRAL;
+        }
+        return new GameStatistics(blackPoints, whitePoints, blackMoves, whiteMoves, capturedBlackStones, capturedWhiteStones, winner, endBoard);
     }
 
     private void syncEndBoard(){

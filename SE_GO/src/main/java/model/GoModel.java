@@ -88,17 +88,6 @@ public class GoModel {
         this.checkAllStonesIfTheyHaveLiberties(setMove, description);
     }
 
-    public String getWinner() {
-        setGameHasEnded(true);
-        if (whitePoints > blackPoints) {
-            return "WEIß gewinnt!";
-        } else if (blackPoints > whitePoints) {
-            return "SCHWARZ gewinnt!";
-        } else {
-            return "Unentschieden!";
-        }
-    }
-
     public String getSurrenderer() {
         setGameHasEnded(true);
         if (getTurn() == StoneColor.BLACK) {
@@ -391,9 +380,11 @@ public class GoModel {
     }
 
     public GameStatistics evaluateGame() {
+        setGameHasEnded(true);
         GameEvalutation evalutation = new GameEvalutation(deepCopy(boardArray), moveList);
         GameStatistics endgame = evalutation.evaluateEndGameStatistics();
         System.out.println(endgame);
+
         return endgame;
     }
 

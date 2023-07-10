@@ -160,7 +160,7 @@ public class GoModel {
                             move[counter] = new SingleMove(getTurn(), p.x, p.y, false);
                             counter++;
                             System.out.println(this);
-                            if (getTurn() == StoneColor.WHITE) {
+                            if (color == StoneColor.WHITE) {
                                 blackPoints++;
                             } else {
                                 whitePoints++;

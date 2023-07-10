@@ -101,7 +101,7 @@ public class BoardController {
         model = new GoModel(boardSize);
 
         model.setBlackPoints(s.getKomi());
-        //TODO: Handicap
+        model.setHandicap(handicap);
 
         createAndConfigurePane();
         updateControllerFromListeners();

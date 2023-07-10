@@ -433,8 +433,7 @@ public class GoModel {
         for (int x = 0; x < boardArray.length; x++) {
             for(int y = 0; y < boardArray[x].length; y++){
                 if(boardArray[x][y] == StoneColor.BLACK){
-                    singleMoves.add(new SingleMove(StoneColor.BLACK, x, y, true)){
-                    }
+                    singleMoves.add(new SingleMove(StoneColor.BLACK, x, y, true));
                 }
             }
         }

@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.GoModel;
+import model.gameStatistics.GameStatistics;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import singleComponents.Settings;
 import singleComponents.StoneColor;
@@ -218,8 +219,14 @@ public class BoardController {
     }
 
     private void endGame() {
-        System.out.println(model.evaluateGame());
-        setStatusText(model.getWinner());
+        GameStatistics endGame = model.evaluateGame();
+        System.out.println(endGame);
+        if(endGame.winner() == StoneColor.BLACK)
+            setStatusText("SCHWARZ gewinnt!");
+        else if (endGame.winner() == StoneColor.WHITE)
+            setStatusText("WEIß gewinnt!");
+        else
+            setStatusText("Unentschieden!");
         disableBtns();
     }
 

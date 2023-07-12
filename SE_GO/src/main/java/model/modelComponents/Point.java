@@ -1,5 +1,9 @@
 package model.modelComponents;
 
+/**
+ * Class represents the Coordinates of a stone.
+ * Is needed for example in the calculation of Stonegroups
+ */
 public class Point {
     public int x,y;
 

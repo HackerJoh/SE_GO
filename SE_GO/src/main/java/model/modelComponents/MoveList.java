@@ -10,7 +10,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * Class saves all Moves of the Gameplay
+ */
 public class MoveList {
     private List<Move> moves;
 
@@ -25,7 +27,6 @@ public class MoveList {
     public void addMoveWithDescription(SingleMove[] singleMoves, String description, double blackPoints, double whitePoints) {
         moves.add(new Move(singleMoves, description, blackPoints, whitePoints));
     }
-
 
     public void exportMoves(File saveFile, int size) {
         ObjectMapper mapper = new ObjectMapper();

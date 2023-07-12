@@ -35,6 +35,15 @@ public class Move {
         this.description = description;
     }
 
+    public double getBlackPoints() {
+        return blackPoints;
+    }
+
+    public double getWhitePoints() {
+        return whitePoints;
+    }
+
+    //Setter are Used by the Jackson Object Mapper (they are necassary)
     public void setSingleMoves(SingleMove[] singleMoves) {
         this.singleMoves = singleMoves;
     }
@@ -45,14 +54,6 @@ public class Move {
 
     public void setWhitePoints(int whitePoints) {
         this.whitePoints = whitePoints;
-    }
-
-    public double getBlackPoints() {
-        return blackPoints;
-    }
-
-    public double getWhitePoints() {
-        return whitePoints;
     }
 
     public String toString() {

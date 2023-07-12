@@ -2,19 +2,22 @@ package model.modelComponents;
 
 import singleComponents.StoneColor;
 
+/**
+ * Class which stores the set/delete of a Single Stone in a Move
+ */
 public class SingleMove {
     private StoneColor color;
     private  int xCoord;
     private  int yCoord;
-    private  boolean setStone;
+    private  boolean isSetStone;
 
     public SingleMove(){}
 
-    public SingleMove(StoneColor color, int xCoord, int yCoord, boolean setStone){
+    public SingleMove(StoneColor color, int xCoord, int yCoord, boolean isSetStone){
         this.color = color;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-        this.setStone = setStone;
+        this.isSetStone = isSetStone;
     }
 
     public StoneColor getColor() {
@@ -30,9 +33,10 @@ public class SingleMove {
     }
 
     public boolean isSetStone() {
-        return setStone;
+        return isSetStone;
     }
 
+    //Setter are needed for the Jackson Object Mapper (they are necassary)
     public void setColor(StoneColor color) {
         this.color = color;
     }
@@ -46,7 +50,7 @@ public class SingleMove {
     }
 
     public void setSetStone(boolean setStone) {
-        this.setStone = setStone;
+        this.isSetStone = setStone;
     }
 
     public String toString(){

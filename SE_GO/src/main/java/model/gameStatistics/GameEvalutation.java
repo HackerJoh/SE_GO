@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Class for Evaluating the EndGame Statistics
+ */
 public class GameEvalutation {
     private final StoneColor[][] board;
     private final MoveList moveList;
@@ -119,18 +122,13 @@ public class GameEvalutation {
         }
 
         if(hasBlackStoneNeighbour && !hasWhiteStoneNeighbour){
-            //System.out.println("BlackNeutral: ");
-            //neutralIsland.stream().forEach(System.out::println);
             blackPoints += neutralIsland.size();
             neutralIsland.forEach(p -> endBoard[p.x][p.y] = EndgameColors.BLACKAREA);
         }
         if(hasWhiteStoneNeighbour && !hasBlackStoneNeighbour){
-            //System.out.println("WhiteNeutral: ");
-            //neutralIsland.stream().forEach(System.out::println);
             whitePoints += neutralIsland.size();
             neutralIsland.forEach(p -> endBoard[p.x][p.y] = EndgameColors.WHITEAREA);
         }
-
         neutralIsland.forEach(p -> dummyArray[p.x][p.y] = StoneColor.UNDEFINED);
     }
 
@@ -166,10 +164,11 @@ public class GameEvalutation {
         return (int)Arrays.stream(moveList.getAllSingleMoves()).filter(m -> !m.isSetStone() && m.getColor() == color).count();
     }
 
+    @Override
     public String toString(){
         StringBuilder out = new StringBuilder("GameStats\n----------------------------------\n");
         out.append("BlackPoints: ").append(blackPoints).append("\n");
-        out.append("WhitePoints: ").append(whitePoints).append("\n");
+        out.append("WhitePoints: ").append(whitePoints).append("\n")
         return out.toString();
     }
 

@@ -6,7 +6,6 @@ import javafx.scene.shape.Line;
  * This Class represents a horizontal Line for the Go-View, every Java-FX-Group with a Stone in it has one.
  */
 public class HLine extends Line {
-    //The id is primarily intended for easier assignment in the GoView
     private final int id;
 
     /**

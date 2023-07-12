@@ -1,21 +1,24 @@
 package controller;
 
 
+import GoApplication.Main;
 import controller.guiComponents.HLine;
 import controller.guiComponents.Stone;
 import controller.guiComponents.VLine;
+import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -27,6 +30,7 @@ import singleComponents.StoneColor;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Optional;
 
 public class BoardController {
     private int boardSize;
@@ -63,6 +67,12 @@ public class BoardController {
 
     @FXML
     private CheckMenuItem cmi_inspection;
+
+    @FXML
+    private Hyperlink hyperlink;
+
+    @FXML
+    private MenuItem mi_rules;
 
     /**
      * When exit-Button is pressed, quit the program.
@@ -148,29 +158,39 @@ public class BoardController {
     /**
      * Open a new Stage to display the Rules FXML.
      *
-     * @throws IOException: load()-method IOException gets thrown towards Main-class.
+     * @throws Exception: Exception gets thrown towards Main-class.
      */
     @FXML
-    private void openRules() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/Rules.fxml"));
+    private void openRules() throws Exception {
         Stage stage = new Stage();
-        stage.setTitle("Regeln");
-        stage.setScene(new Scene(root, 300, 200));
-        stage.show();
+        Application application = new Application() {
+            @Override
+            public void start(Stage stage) {
+                ButtonType open = new ButtonType("Open", ButtonBar.ButtonData.OK_DONE);
+                ButtonType close = new ButtonType("Close", ButtonBar.ButtonData.CANCEL_CLOSE);
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION, "Regeln", open, close);
+                a.setTitle("Regeln");
+                a.setHeaderText("Alle Regeln im Überblick:");
+                a.setContentText("https://de.wikipedia.org/wiki/Go-Regeln");
+                Optional<ButtonType> result = a.showAndWait();
+                if (result.get() == open){
+                    getHostServices().showDocument("https://de.wikipedia.org/wiki/Go-Regeln");
+                }
+            }
+        };
+        application.start(stage);
     }
 
     /**
      * Open a new Stage to display the About FXML.
-     *
-     * @throws IOException: load()-method IOException gets thrown towards Main-class.
      */
     @FXML
-    private void openAbout() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/view/About.fxml"));
-        Stage stage = new Stage();
-        stage.setTitle("Über");
-        stage.setScene(new Scene(root, 300, 200));
-        stage.show();
+    private void openAbout(){
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setTitle("Über");
+        a.setHeaderText("JKU GO");
+        a.setContentText("Developed 2023 by:\n\nJohannes Hacker\nMoritz Neuwirth\nJulian Lumetsberger\n\nKurs: PR Software Engineering");
+        a.show();
     }
 
     /**

@@ -16,6 +16,6 @@
   </rowConstraints>
    <children>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alle Regeln im Überblick:" />
-      <Hyperlink text="https://de.wikipedia.org/wiki/Go_(Spiel)" GridPane.rowIndex="1" />
+      <Hyperlink fx:id="hyperlink" text="https://de.wikipedia.org/wiki/Go_(Spiel)" GridPane.rowIndex="1" />
    </children>
 </GridPane>

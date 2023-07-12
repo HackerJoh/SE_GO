@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Changed GetTurn">
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Minor Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GoApplication/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GoApplication/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Board.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Board.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Rules.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Rules.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +22,6 @@
         <option value="FxmlFile" />
         <option value="Record" />
         <option value="Class" />
-        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -56,6 +58,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -106,8 +109,14 @@
       <workItem from="1688407305432" duration="2390000" />
       <workItem from="1688410362695" duration="2500000" />
       <workItem from="1688503880868" duration="373000" />
-      <workItem from="1688586040456" duration="6507000" />
-      <workItem from="1688664542245" duration="12331000" />
+      <workItem from="1688586040456" duration="4811000" />
+    </task>
+    <task id="LOCAL-00004" summary="Centerd the letters for the Board">
+      <created>1684750094605</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1684750094605</updated>
     </task>
     <task id="LOCAL-00005" summary="Added Dependecies for the JSON Writer">
       <created>1685460740780</created>
@@ -396,63 +405,56 @@
       <option name="project" value="LOCAL" />
       <updated>1688590616789</updated>
     </task>
-    <task id="LOCAL-00046" summary="Missused Surrender Button for printing Gamestatistics in the Console again, srry Mr. Surrender :(">
-      <created>1688591033242</created>
+    <task id="LOCAL-00046" summary="changed endGame logic">
+      <created>1689017543422</created>
       <option name="number" value="00046" />
       <option name="presentableId" value="LOCAL-00046" />
       <option name="project" value="LOCAL" />
-      <updated>1688591033242</updated>
+      <updated>1689017543422</updated>
     </task>
-    <task id="LOCAL-00047" summary="Can be used to Make a view for the ResultBoard.">
-      <created>1688671705953</created>
+    <task id="LOCAL-00047" summary="bugfix endGame">
+      <created>1689018650153</created>
       <option name="number" value="00047" />
       <option name="presentableId" value="LOCAL-00047" />
       <option name="project" value="LOCAL" />
-      <updated>1688671705953</updated>
+      <updated>1689018650153</updated>
     </task>
-    <task id="LOCAL-00048" summary="+ Endgameboard and deactivated death Stone Rule (works not really good)">
-      <created>1688671853454</created>
+    <task id="LOCAL-00048" summary="handicap">
+      <created>1689019561294</created>
       <option name="number" value="00048" />
       <option name="presentableId" value="LOCAL-00048" />
       <option name="project" value="LOCAL" />
-      <updated>1688671853455</updated>
+      <updated>1689019561294</updated>
     </task>
-    <task id="LOCAL-00049" summary="Added the Endgameboard to the Record">
-      <created>1688671873015</created>
+    <task id="LOCAL-00049" summary="bug fixing">
+      <created>1689021904101</created>
       <option name="number" value="00049" />
       <option name="presentableId" value="LOCAL-00049" />
       <option name="project" value="LOCAL" />
-      <updated>1688671873015</updated>
+      <updated>1689021904101</updated>
     </task>
-    <task id="LOCAL-00050" summary="Added to String to Point class">
-      <created>1688671991617</created>
+    <task id="LOCAL-00050" summary="bug fixing">
+      <created>1689022156140</created>
       <option name="number" value="00050" />
       <option name="presentableId" value="LOCAL-00050" />
       <option name="project" value="LOCAL" />
-      <updated>1688671991618</updated>
+      <updated>1689022156141</updated>
     </task>
-    <task id="LOCAL-00051" summary="Minor Changes">
-      <created>1688740248161</created>
+    <task id="LOCAL-00051" summary="Code-cleanup/javadoc">
+      <created>1689181859353</created>
       <option name="number" value="00051" />
       <option name="presentableId" value="LOCAL-00051" />
       <option name="project" value="LOCAL" />
-      <updated>1688740248161</updated>
+      <updated>1689181859353</updated>
     </task>
-    <task id="LOCAL-00052" summary="Minor Changes">
-      <created>1689014168817</created>
+    <task id="LOCAL-00052" summary="Code cleanup, javadoc, structural changes">
+      <created>1689186427132</created>
       <option name="number" value="00052" />
       <option name="presentableId" value="LOCAL-00052" />
       <option name="project" value="LOCAL" />
-      <updated>1689014168817</updated>
+      <updated>1689186427132</updated>
     </task>
-    <task id="LOCAL-00053" summary="Changed GetTurn">
-      <created>1689016042299</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1689016042299</updated>
-    </task>
-    <option name="localTasksCounter" value="54" />
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,8 +470,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="MVC changes" />
     <MESSAGE value="Deleted Unnecessary import" />
     <MESSAGE value="Changed loadGame(), that Points were Imported from the JSON" />
     <MESSAGE value="New List" />
@@ -477,6 +481,7 @@
     <MESSAGE value="Changend Contructors for saving of the Points" />
     <MESSAGE value="Implementing Jump Mode" />
     <MESSAGE value="Added a record for the Savegame" />
+    <MESSAGE value="Minor Changes" />
     <MESSAGE value="Changed Import/Export from JSON to a Record" />
     <MESSAGE value="Added the boardsize as Parameter for the ExportGame function" />
     <MESSAGE value="Deleted Boardsize Attribute in the Move Class" />
@@ -487,14 +492,26 @@
     <MESSAGE value="Added some Algos for calculating the Game Points" />
     <MESSAGE value="Added GameEvaluate Function!" />
     <MESSAGE value="Added toString()" />
-    <MESSAGE value="Missused Surrender Button for printing Gamestatistics in the Console again, srry Mr. Surrender :(" />
-    <MESSAGE value="Can be used to Make a view for the ResultBoard." />
-    <MESSAGE value="+ Endgameboard and deactivated death Stone Rule (works not really good)" />
-    <MESSAGE value="Added the Endgameboard to the Record" />
-    <MESSAGE value="Prints the endgame" />
-    <MESSAGE value="Added to String to Point class" />
-    <MESSAGE value="Minor Changes" />
-    <MESSAGE value="Changed GetTurn" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed GetTurn" />
+    <MESSAGE value="changed endGame logic" />
+    <MESSAGE value="bugfix endGame" />
+    <MESSAGE value="handicap" />
+    <MESSAGE value="bug fixing" />
+    <MESSAGE value="Code-cleanup/javadoc" />
+    <MESSAGE value="Code cleanup, javadoc, structural changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup, javadoc, structural changes" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testKomi.ic" NAME="MenuControllerTest.testKomi Coverage Results" MODIFIED="1684785015702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testComboBoxSize.ic" NAME="MenuControllerTest.testComboBoxSize Coverage Results" MODIFIED="1684784585450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testInitialize.ic" NAME="MenuControllerTest.testInitialize Coverage Results" MODIFIED="1684781310757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SE_GO$Main.ic" NAME="Main Coverage Results" MODIFIED="1684784781832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>GoApplication.*</FILTER>
+    </SUITE>
   </component>
 </project>

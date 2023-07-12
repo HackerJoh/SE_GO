@@ -129,7 +129,7 @@
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hilfe">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#openRules" text="Regeln" />
+                        <MenuItem fx:id="mi_rules" mnemonicParsing="false" onAction="#openRules" text="Regeln" />
                         <MenuItem mnemonicParsing="false" onAction="#openAbout" text="Über" />
                     </items>
                 </Menu>

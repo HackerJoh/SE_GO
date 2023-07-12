@@ -19,7 +19,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
-
+    private final Settings s = new Settings();
+    private boolean fileLoaded = false;
+    /**
+     * Define the GUI elements as FXML-variables.
+     */
     @FXML
     protected ComboBox<String> cbx_boardSize;
 
@@ -53,9 +57,13 @@ public class MenuController implements Initializable {
     @FXML
     protected Text txt_subheading;
 
-    private final Settings s = new Settings();
-    private boolean fileLoaded = false;
-
+    /**
+     * On startup set the min, max and step parameters from the spinner fields.
+     * Further set the options for the boardSize-dropdown and select as default 13x13.
+     *
+     * @param location:  default parameter from super method
+     * @param resources: default parameter from super method
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         sp_handicap.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 9));
@@ -67,17 +75,34 @@ public class MenuController implements Initializable {
 
     }
 
-    public void onLoad() throws IOException {
+    /**
+     * Open a FileChooser to let the user select a game file (.json) to load the specified game.
+     *
+     * @throws IOException: Throw given Exception towards Main.
+     */
+    @FXML
+    private void onLoad() throws IOException {
         Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("JSON File", "*.json");
+        fileChooser.getExtensionFilters().addAll(extensionFilter);
         File loadedFile = fileChooser.showOpenDialog(primaryStage);
-        int size = MoveList.getSizeFromFile(loadedFile);
-        s.setLoadedFile(loadedFile);
-        s.setBoardSize(size);
-        fileLoaded = true;
-        startGame();
+
+        //start game only if a correct file is chosen
+        if (loadedFile != null) {
+            int size = MoveList.getSizeFromFile(loadedFile);
+            s.setLoadedFile(loadedFile);
+            s.setBoardSize(size);
+            fileLoaded = true;
+            startGame();
+        }
     }
 
+    /**
+     * Save chosen boardSize, handicap and komi into settings object and load it into BoardController, finally start the board Stage.
+     *
+     * @throws IOException: Throw given Exception towards Main.
+     */
     public void startGame() throws IOException {
         if (!fileLoaded) {
             String boardSize = cbx_boardSize.getValue();

@@ -13,7 +13,11 @@ import java.util.Objects;
 
 public class Main extends Application {
 
-    // The start() method is called when the JavaFX application is launched
+    /**
+     * The start() method is called when the JavaFX application is launched.
+     * @param primaryStage: Transports the actual stage which will be displayed.
+     * @throws Exception: Throw exception towards main-method.
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -34,9 +38,10 @@ public class Main extends Application {
 
     }
 
-    // The main() method is the entry point of the Java application
+    /**
+     * Launch the JavaFX application
+     */
     public static void main(String[] args) {
-        // Launch the JavaFX application
         launch(args);
     }
 

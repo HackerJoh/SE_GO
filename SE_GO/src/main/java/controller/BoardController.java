@@ -6,7 +6,6 @@ import controller.guiComponents.Stone;
 import controller.guiComponents.VLine;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -36,9 +35,8 @@ public class BoardController {
     private int zug = 0;
 
     /**
-     * Define the GUI elements as FXML-variables
+     * Define the GUI elements as FXML-variables.
      */
-
     @FXML
     private ImageView img_forward;
 
@@ -117,18 +115,19 @@ public class BoardController {
      */
     @FXML
     private void onJumpMenu() {
-        if (!model.isJumpModeOn()) {
-            model.enterJumpMode();
+        if (!model.isInspectionModeOn()) {
+            model.enterInspectionMode();
             img_forward.setVisible(true);
             img_backward.setVisible(true);
         } else {
-            model.turnOffJumpModeIfOn();
+            model.turnOffInspectionModeIfOn();
             disableJump();
         }
     }
 
     /**
      * Stage will be changed to menu when user wants to play a new game.
+     *
      * @throws IOException: load()-method IOException gets thrown towards Main-class.
      */
     @FXML
@@ -148,6 +147,7 @@ public class BoardController {
 
     /**
      * Open a new Stage to display the Rules FXML.
+     *
      * @throws IOException: load()-method IOException gets thrown towards Main-class.
      */
     @FXML
@@ -161,6 +161,7 @@ public class BoardController {
 
     /**
      * Open a new Stage to display the About FXML.
+     *
      * @throws IOException: load()-method IOException gets thrown towards Main-class.
      */
     @FXML
@@ -177,7 +178,7 @@ public class BoardController {
      */
     @FXML
     private void jumpForward() {
-        model.setDescriptionFromForward(txt_status.getText());
+        model.setDescriptionWhenJumping(txt_status.getText());
         model.jumpForward();
         setStatusText(model.getDescriptionFromJump());
         gridReload();
@@ -188,7 +189,7 @@ public class BoardController {
      */
     @FXML
     private void jumpBackward() {
-        model.setDescriptionFromBackward(txt_status.getText());
+        model.setDescriptionWhenJumping(txt_status.getText());
         model.jumpBackward();
         setStatusText(model.getDescriptionFromJump());
         gridReload();
@@ -196,6 +197,7 @@ public class BoardController {
 
     /**
      * Method to create the board and model and configure the game settings for the BoardController.
+     *
      * @param s: Settings from the menu get transferred to the BoardController.
      * @throws IOException: Exception from loadGame gets thrown to Main.
      */
@@ -226,12 +228,13 @@ public class BoardController {
 
     /**
      * When clicked on a point at the grid, place a stone in the color of the actual player.
+     *
      * @param xCoord: x-coordinate where stone will be placed in the grid.
      * @param yCoord: y-coordinate where stone will be placed in the grid.
      */
     public void setStone(int xCoord, int yCoord) {
         // Stones can only be set when inspection mode is turned off
-        if (model.turnOffJumpModeIfOn()) {
+        if (model.turnOffInspectionModeIfOn()) {
             disableJump();
             cmi_inspection.setSelected(false);
         }
@@ -243,6 +246,7 @@ public class BoardController {
 
     /**
      * Change the status text on the mid bottom of the board.
+     *
      * @param text: Text which will be displayed
      */
     private void setStatusText(String text) {
@@ -277,6 +281,7 @@ public class BoardController {
 
     /**
      * Stone class must know which player turn it is to give the right hover effect.
+     *
      * @return: StoneColor enum from actual player.
      */
     public StoneColor getTurn() {
@@ -285,6 +290,7 @@ public class BoardController {
 
     /**
      * Stone class must know when game has ended to stop hover and set actions.
+     *
      * @return: boolean if game is still active.
      */
     public boolean isGameNotEnded() {
@@ -300,7 +306,7 @@ public class BoardController {
     }
 
     /**
-     *
+     * Draw the basic go-board based on the board size set in the menu.
      */
     private void createAndConfigurePane() {
         gp_boardGrid.setGridLinesVisible(false);
@@ -374,6 +380,9 @@ public class BoardController {
     }
 
 
+    /**
+     * Adjust the height and the with of the GUI-elements when resizing the window
+     */
     private void updateControllerFromListeners() {
         gp_boardGrid.widthProperty().addListener((obs, oldVal, newVal) -> {
             double radius = Math.min(gp_boardGrid.getHeight(), newVal.doubleValue());
@@ -382,8 +391,7 @@ public class BoardController {
                 if (n instanceof Group) {
                     for (Node n2 : ((Group) n).getChildren()) {
                         if (n2 instanceof Stone) ((Stone) n2).setRadius(radius * stoneRatio);
-                        if (n2 instanceof HLine) {
-                            HLine l = (HLine) n2;
+                        if (n2 instanceof HLine l) {
                             if (l.getGoLineId() % boardSize == 0) {
                                 l.setEndX(radius);
                             } else if (l.getGoLineId() % boardSize == boardSize - 1) {
@@ -423,6 +431,9 @@ public class BoardController {
         });
     }
 
+    /**
+     * Update the View when changes are made on the board.
+     */
     private void gridReload() {
         for (Node n : gp_boardGrid.getChildren()) {
             if (n instanceof Group) {

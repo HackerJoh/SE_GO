@@ -2,6 +2,9 @@ package singleComponents;
 
 import java.io.File;
 
+/**
+ * Class to store and transmit the given settings from the menu to the board.
+ */
 public class Settings {
     private int boardSize;
     private int handicap;

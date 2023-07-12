@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.application.HostServices;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,8 +10,8 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.modelComponents.MoveList;
-import singleComponents.Settings;
 import org.kordamp.bootstrapfx.BootstrapFX;
+import singleComponents.Settings;
 
 import java.io.File;
 import java.io.IOException;
@@ -53,7 +52,8 @@ public class MenuController implements Initializable {
 
     @FXML
     protected Text txt_subheading;
-    private Settings s = new Settings();
+
+    private final Settings s = new Settings();
     private boolean fileLoaded = false;
 
     @Override
@@ -90,7 +90,7 @@ public class MenuController implements Initializable {
             s.setKomi(sp_komi.getValue());
         }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board_2.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
         Parent root = loader.load();
 
         Stage primaryStage = (Stage) btn_startGame.getScene().getWindow();

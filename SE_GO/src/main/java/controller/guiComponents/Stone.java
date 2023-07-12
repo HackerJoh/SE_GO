@@ -3,7 +3,6 @@ package controller.guiComponents;
 import controller.BoardController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import model.GoModel;
 import singleComponents.StoneColor;
 
 public class Stone extends Circle {
@@ -27,7 +26,7 @@ public class Stone extends Circle {
     private void addSetListener(){
         this.setStroke(Color.TRANSPARENT);
         this.setOnMouseClicked(mouseEvent -> {
-            if(!isUsed && !controller.isGameEnded()){
+            if(!isUsed && controller.isGameNotEnded()){
                 controller.setStone(id/controller.getBoardSize(), id%controller.getBoardSize());
             }
         });
@@ -35,7 +34,7 @@ public class Stone extends Circle {
 
     private void addHoverListener(){
         this.setOnMouseEntered(mouseEvent -> {
-            if(!isUsed && !controller.isGameEnded()){
+            if(!isUsed && controller.isGameNotEnded()){
                 if(controller.getTurn() == StoneColor.BLACK){
                     this.setFill(hoverColorBlack);
                 }else{

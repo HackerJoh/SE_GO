@@ -1,7 +1,5 @@
 package GoApplication;
 
-import controller.BoardController;
-import controller.MenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

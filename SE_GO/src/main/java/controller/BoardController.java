@@ -4,7 +4,6 @@ package controller;
 import controller.guiComponents.HLine;
 import controller.guiComponents.Stone;
 import controller.guiComponents.VLine;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
@@ -34,13 +33,11 @@ public class BoardController {
     private int boardSize;
     private final double stoneRatio = 0.8;
     public GoModel model;
+    private int zug = 0;
 
-    public int getBoardSize() {
-        return boardSize;
-    }
-
-    @FXML
-    private Button btn_exit;
+    /**
+     * Define the GUI elements as FXML-variables
+     */
 
     @FXML
     private ImageView img_forward;
@@ -52,13 +49,7 @@ public class BoardController {
     private Button btn_pass;
 
     @FXML
-    private Button btn_saveGame;
-
-    @FXML
     private Button btn_surrender;
-
-    @FXML
-    private GridPane gp_bigGrid;
 
     @FXML
     private GridPane gp_boardGrid;
@@ -70,52 +61,24 @@ public class BoardController {
     private Text txt_blackPoints;
 
     @FXML
-    private Text txt_blackPointsLabel;
-
-    @FXML
-    private Text txt_heading;
-
-    @FXML
     private Text txt_whitePoints;
-
-    @FXML
-    private Text txt_whitePointsLabel;
 
     @FXML
     private CheckMenuItem cmi_inspection;
 
-
-    private int zug = 0;
-
-    public void setZug(int zug) {
-        this.zug = zug;
-    }
-
-
-    public void initData(Settings s) throws IOException {
-        boardSize = s.getBoardSize();
-        File loadedFile = s.getLoadedFile();
-
-        model = new GoModel(boardSize);
-
-        model.setHandicap(s.getHandicap(), s.getKomi());
-
-        createAndConfigurePane();
-        updateControllerFromListeners();
-        if (loadedFile != null) {
-            model.loadGame(loadedFile);
-        }
-        gridReload();
-        setStatusText("Schwarz ist am Zug");
-    }
-
+    /**
+     * When exit-Button is pressed, quit the program.
+     */
     @FXML
-    private void onExit(ActionEvent event) {
+    private void onExit() {
         System.exit(0);
     }
 
+    /**
+     * Check if the users passed right behind each other and let the game end if this is the case.
+     */
     @FXML
-    private void onPass(ActionEvent event) {
+    private void onPass() {
         zug++;
         if (zug == 2) {
             endGame();
@@ -125,8 +88,11 @@ public class BoardController {
         model.setNoMoves(model.getNoMoves() + 1);
     }
 
+    /**
+     * Open a FileChooser to select where the file should be saved when clicking on save-button (only .json allowed).
+     */
     @FXML
-    private void onSave(ActionEvent event) {
+    private void onSave() {
         Stage primaryStage = (Stage) btn_surrender.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("JSON File", "*.json");
@@ -136,13 +102,19 @@ public class BoardController {
             model.saveGame(saveFile);
     }
 
+    /**
+     * When surrender-Button is clicked, the opponent wins. Game points gets still counted.
+     */
     @FXML
-    private void onSurrender(ActionEvent event) {
+    private void onSurrender() {
         System.out.println(model.evaluateGame());
         setStatusText(model.getSurrenderer());
         disableBtns();
     }
 
+    /**
+     * Method handles the menu item "Inspektionsmodus" which contains a check.
+     */
     @FXML
     private void onJumpMenu() {
         if (!model.isJumpModeOn()) {
@@ -153,11 +125,14 @@ public class BoardController {
             model.turnOffJumpModeIfOn();
             disableJump();
         }
-
     }
 
+    /**
+     * Stage will be changed to menu when user wants to play a new game.
+     * @throws IOException: load()-method IOException gets thrown towards Main-class.
+     */
     @FXML
-    private void newGame(ActionEvent event) throws IOException {
+    private void newGame() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Menu.fxml"));
         Parent root = loader.load();
 
@@ -168,9 +143,15 @@ public class BoardController {
 
         primaryStage.show();
     }
+
     //TODO: auf Alert umbauen
+
+    /**
+     * Open a new Stage to display the Rules FXML.
+     * @throws IOException: load()-method IOException gets thrown towards Main-class.
+     */
     @FXML
-    private void openRules(ActionEvent event) throws IOException {
+    private void openRules() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/Rules.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Regeln");
@@ -178,8 +159,12 @@ public class BoardController {
         stage.show();
     }
 
+    /**
+     * Open a new Stage to display the About FXML.
+     * @throws IOException: load()-method IOException gets thrown towards Main-class.
+     */
     @FXML
-    private void openAbout(ActionEvent event) throws IOException {
+    private void openAbout() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/view/About.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Über");
@@ -187,6 +172,9 @@ public class BoardController {
         stage.show();
     }
 
+    /**
+     * Change status text and game progress to one step forward.
+     */
     @FXML
     private void jumpForward() {
         model.setDescriptionFromForward(txt_status.getText());
@@ -195,6 +183,9 @@ public class BoardController {
         gridReload();
     }
 
+    /**
+     * Change status text and game progress to one step backward.
+     */
     @FXML
     private void jumpBackward() {
         model.setDescriptionFromBackward(txt_status.getText());
@@ -203,22 +194,68 @@ public class BoardController {
         gridReload();
     }
 
+    /**
+     * Method to create the board and model and configure the game settings for the BoardController.
+     * @param s: Settings from the menu get transferred to the BoardController.
+     * @throws IOException: Exception from loadGame gets thrown to Main.
+     */
+    public void initData(Settings s) throws IOException {
+        boardSize = s.getBoardSize();
+        model = new GoModel(boardSize);
+        model.setHandicap(s.getHandicap(), s.getKomi());
+
+        createAndConfigurePane();
+        updateControllerFromListeners();
+
+        //If User loads a game from a file then we call the load method from the model
+        File loadedFile = s.getLoadedFile();
+        if (loadedFile != null) {
+            model.loadGame(loadedFile);
+        }
+
+        gridReload();
+        setStatusText(model.getTurnColor());
+    }
+
+    /**
+     * @return: return boardSize to Stone class to set the location of a new stone.
+     */
+    public int getBoardSize() {
+        return boardSize;
+    }
+
+    /**
+     * When clicked on a point at the grid, place a stone in the color of the actual player.
+     * @param xCoord: x-coordinate where stone will be placed in the grid.
+     * @param yCoord: y-coordinate where stone will be placed in the grid.
+     */
+    public void setStone(int xCoord, int yCoord) {
+        // Stones can only be set when inspection mode is turned off
+        if (model.turnOffJumpModeIfOn()) {
+            disableJump();
+            cmi_inspection.setSelected(false);
+        }
+        model.controllerSetsStone(xCoord, yCoord, txt_status.getText());
+        gridReload();
+        setStatusText(model.getTurnColor());
+        zug = 0;
+    }
+
+    /**
+     * Change the status text on the mid bottom of the board.
+     * @param text: Text which will be displayed
+     */
     private void setStatusText(String text) {
         txt_status.setText(text);
     }
 
-    private void disableBtns() {
-        onJumpMenu();
-        cmi_inspection.setSelected(true);
-        btn_pass.setDisable(true);
-        btn_surrender.setDisable(true);
-        txt_status.setFocusTraversable(false);
-    }
-
+    /**
+     * When game ends, evaluate the points and the winner.
+     */
     private void endGame() {
         GameStatistics endGame = model.evaluateGame();
         System.out.println(endGame);
-        if(endGame.winner() == StoneColor.BLACK)
+        if (endGame.winner() == StoneColor.BLACK)
             setStatusText("SCHWARZ gewinnt!");
         else if (endGame.winner() == StoneColor.WHITE)
             setStatusText("WEIß gewinnt!");
@@ -227,6 +264,44 @@ public class BoardController {
         disableBtns();
     }
 
+    /**
+     * Game buttons must not be clicked after game has ended.
+     */
+    private void disableBtns() {
+        onJumpMenu();
+        cmi_inspection.setSelected(true);
+        btn_pass.setDisable(true);
+        btn_surrender.setDisable(true);
+        txt_status.setFocusTraversable(false);
+    }
+
+    /**
+     * Stone class must know which player turn it is to give the right hover effect.
+     * @return: StoneColor enum from actual player.
+     */
+    public StoneColor getTurn() {
+        return model.getTurn();
+    }
+
+    /**
+     * Stone class must know when game has ended to stop hover and set actions.
+     * @return: boolean if game is still active.
+     */
+    public boolean isGameNotEnded() {
+        return !model.isGameHasEnded();
+    }
+
+    /**
+     * Disable the inspection mode by vanishing the arrow-buttons.
+     */
+    private void disableJump() {
+        img_forward.setVisible(false);
+        img_backward.setVisible(false);
+    }
+
+    /**
+     *
+     */
     private void createAndConfigurePane() {
         gp_boardGrid.setGridLinesVisible(false);
 
@@ -236,7 +311,7 @@ public class BoardController {
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, 2, i + 3);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         //create left Numbers
@@ -244,7 +319,7 @@ public class BoardController {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 3, 2);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         //create the Stones and the Lines for the board
@@ -282,14 +357,14 @@ public class BoardController {
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, boardSize + 3, i + 3);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 3, boardSize + 3);
-            gp_boardGrid.setHalignment(text, HPos.CENTER);
+            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         ColumnConstraints col = new ColumnConstraints();
@@ -362,29 +437,4 @@ public class BoardController {
         txt_whitePoints.setText("" + model.getWhitePoints());
         txt_blackPoints.setText("" + model.getBlackPoints());
     }
-
-    public void setStone(int xCoord, int yCoord) {
-        if (model.turnOffJumpModeIfOn()) {
-            disableJump();
-            cmi_inspection.setSelected(false);
-        }
-        model.controllerSetsStone(xCoord, yCoord, txt_status.getText());
-        gridReload();
-        setStatusText(model.getTurnColor());
-        zug = 0;
-    }
-
-    public StoneColor getTurn() {
-        return model.getTurn();
-    }
-
-    public boolean isGameEnded() {
-        return model.isGameHasEnded();
-    }
-
-    private void disableJump() {
-        img_forward.setVisible(false);
-        img_backward.setVisible(false);
-    }
-
 }

@@ -63,6 +63,7 @@ public class GoModel {
 
     /**
      * Evaluate with arithmetic operation which player is in turn.
+     *
      * @return StoneColor-object
      */
     public StoneColor getTurn() {
@@ -82,13 +83,14 @@ public class GoModel {
 
     /**
      * Controller tells model to set a stone when he recognizes a click on the board
-     * @param xCoord: x-coordinate where stone will be placed in the grid.
-     * @param yCoord: y-coordinate where stone will be placed in the grid.
+     *
+     * @param xCoord:      x-coordinate where stone will be placed in the grid.
+     * @param yCoord:      y-coordinate where stone will be placed in the grid.
      * @param description: Move description which is displayed in status bar.
      */
     public void controllerSetsStone(int xCoord, int yCoord, String description) {
         turnOffInspectionModeIfOn();
-        if(isSuicideMove(xCoord, yCoord, getTurn())) return;
+        if (isSuicideMove(xCoord, yCoord, getTurn())) return;
         boardArray[xCoord][yCoord] = getTurn();
         SingleMove setMove;
         if (getTurn() == StoneColor.BLACK) {
@@ -102,14 +104,9 @@ public class GoModel {
         this.checkAllStonesIfTheyHaveLiberties(setMove, description);
     }
 
-
-
-    private boolean isValidArrayCoord(int x, int y, StoneColor[][] array){
-        return x >= 0 && x < array.length && y >= 0 && y < array[x].length;
-    }
-
     /**
      * Tell the controller which player has surrendered the game.
+     *
      * @return: String with the text for the status bar.
      */
     public String getSurrenderer() {
@@ -123,6 +120,7 @@ public class GoModel {
 
     /**
      * Tell the controller which color is in turn.
+     *
      * @return: StoneColor-object
      */
     public String getTurnColor() {
@@ -135,6 +133,7 @@ public class GoModel {
 
     /**
      * Tell the controller which color is in turn and has passed his move.
+     *
      * @return: StoneColor-object
      */
     public String getPassColor() {
@@ -147,19 +146,20 @@ public class GoModel {
 
     /**
      * Forward the boardSize and the file in which the file has to be saved to MoveList class.
+     *
      * @param saveFile: File returned by the FileChooser of the save-Button.
      */
-    public void saveGame(File saveFile) {
+    public void saveGame(File saveFile) throws IOException {
         moveList.exportMoves(saveFile, size);
     }
 
     /**
      * Method which reads the moves and points from the loaded game-file.
+     *
      * @param loadedFile: File which is loaded by the FileChooser from the load-Button.
      * @throws IOException: Given exception is thrown toward Main class.
      */
     public void loadGame(File loadedFile) throws IOException {
-        //clearBoardArray();
         moveList.importMoves(loadedFile);
         for (SingleMove singleMove : moveList.getAllSingleMoves()) {
             if (singleMove.isSetStone()) {
@@ -174,7 +174,8 @@ public class GoModel {
 
     /**
      * check if every stone or stone group have at least one liberty, if not remove it.
-     * @param setMove: Current move which was made from user.
+     *
+     * @param setMove:     Current move which was made from user.
      * @param description: Description of the current move.
      */
     private void checkAllStonesIfTheyHaveLiberties(SingleMove setMove, String description) {
@@ -228,7 +229,6 @@ public class GoModel {
     }
 
     /**
-     *
      * @param grid
      * @param x
      * @param y
@@ -249,7 +249,6 @@ public class GoModel {
     }
 
     /**
-     *
      * @param x
      * @param y
      * @return
@@ -273,7 +272,6 @@ public class GoModel {
     }
 
     /**
-     *
      * @param original
      * @return
      */
@@ -290,6 +288,7 @@ public class GoModel {
 
     /**
      * Create a new board with no stones placed on it.
+     *
      * @return: StoneColor-array which contains the empty board.
      */
     public StoneColor[][] getNeutralBoardArray() {
@@ -313,38 +312,9 @@ public class GoModel {
         return out + "]";
     }
 
-    /*public void removeCatchedStones() {
-        for (int i = 0; i < size * size; i++) {
-            removeCatchedStone(i / size, i % size);
-        }
-        System.out.println(this);
-    }
-
-    public void removeCatchedStone(int xCoord, int yCoord) {
-        StoneColor color = boardArray[xCoord][yCoord];
-        if (yCoord > 0 && yCoord < size - 1 && xCoord > 0 && xCoord < size - 1) {
-            if (color == StoneColor.WHITE && isCatchedWhiteInnerStone(xCoord, yCoord)) {
-                removeStone(xCoord, yCoord);
-                System.out.println(xCoord + " " + yCoord);
-            }
-            if (color == StoneColor.BLACK && isCatchedBlackInnerStone(xCoord, yCoord)) {
-                removeStone(xCoord, yCoord);
-                System.out.println(xCoord + " " + yCoord);
-            }
-        }
-    }
-
-
-    public boolean isCatchedWhiteInnerStone(int x, int y) {
-        return (boardArray[x - 1][y] == StoneColor.BLACK && boardArray[x + 1][y] == StoneColor.BLACK && boardArray[x][y - 1] == StoneColor.BLACK && boardArray[x][y + 1] == StoneColor.BLACK);
-    }
-
-    public boolean isCatchedBlackInnerStone(int x, int y) {
-        return (boardArray[x - 1][y] == StoneColor.WHITE && boardArray[x + 1][y] == StoneColor.WHITE && boardArray[x][y - 1] == StoneColor.WHITE && boardArray[x][y + 1] == StoneColor.WHITE);
-    }*/
-
     /**
      * Set the stone on the given coordinates to neutral ("remove it" from the board)
+     *
      * @param xCoord: x-coordinate from stone which must be removed
      * @param yCoord: y-coordinate from stone which must be removed
      */
@@ -354,6 +324,7 @@ public class GoModel {
 
     /**
      * From stone id we can get the color of the stone by arithmetic operation.
+     *
      * @param id: Stone identifier.
      * @return: Color of the given stone.
      */
@@ -365,6 +336,7 @@ public class GoModel {
 
     /**
      * Check by stone id if a stone is set on that point of the grid.
+     *
      * @param id: Stone identifier.
      * @return: Boolean value if stone is set or neutral.
      */
@@ -374,6 +346,7 @@ public class GoModel {
 
     /**
      * Turn off inspection mode when activated.
+     *
      * @return: Boolean if inspection was on or off.
      */
     public boolean turnOffInspectionModeIfOn() {
@@ -461,6 +434,7 @@ public class GoModel {
 
     /**
      * Get the description from the actual step which the user jumped to.
+     *
      * @return: String of the current description from the move.
      */
     public String getDescriptionFromJump() {
@@ -472,6 +446,7 @@ public class GoModel {
 
     /**
      * If description gets changed in inspection mode set it to the new String when jumping.
+     *
      * @param description: New description which is set by user.
      */
     public void setDescriptionWhenJumping(String description) {
@@ -482,6 +457,7 @@ public class GoModel {
 
     /**
      * Trigger the GameEvaluation class and generate a GameStatistics object where game parameters are stored.
+     *
      * @return: GameStatistics object for controller to display winner and points.
      */
     public GameStatistics evaluateGame() {
@@ -495,11 +471,12 @@ public class GoModel {
 
     /**
      * Set the given amount of handicap stones on the board and add it as first move to moveList.
+     *
      * @param handicap: Amount of handicap stones to set.
-     * @param komi: Amount of komi to add as point for white side.
+     * @param komi:     Amount of komi to add as point for white side.
      */
-    public void setHandicap(int handicap, double komi){
-        if(handicap > 9 || handicap < 0) throw new IllegalArgumentException("Invalid Input!");
+    public void setHandicap(int handicap, double komi) {
+        if (handicap > 9 || handicap < 0) throw new IllegalArgumentException("Invalid Input!");
 
         switch (size) {
             case 9 -> setHandicap9x9(handicap);
@@ -509,8 +486,8 @@ public class GoModel {
 
         List<SingleMove> singleMoves = new LinkedList<>();
         for (int x = 0; x < boardArray.length; x++) {
-            for(int y = 0; y < boardArray[x].length; y++){
-                if(boardArray[x][y] == StoneColor.BLACK){
+            for (int y = 0; y < boardArray[x].length; y++) {
+                if (boardArray[x][y] == StoneColor.BLACK) {
                     singleMoves.add(new SingleMove(StoneColor.BLACK, x, y, true));
                 }
             }
@@ -521,68 +498,71 @@ public class GoModel {
 
     /**
      * Set fixed handicap positions for 9x9 board size.
+     *
      * @param handicap: Amount of handicap stones.
      */
-    public void setHandicap9x9(int handicap){
-        if(size != 9) throw new IllegalArgumentException();
+    public void setHandicap9x9(int handicap) {
+        if (size != 9) throw new IllegalArgumentException();
 
-        if(handicap ==9) boardArray[4][4] = StoneColor.BLACK;
-        if(handicap >=8) boardArray[2][4] = StoneColor.BLACK;
-        if(handicap >=7) boardArray[4][6] = StoneColor.BLACK;
-        if(handicap >=6) boardArray[6][4] = StoneColor.BLACK;
-        if(handicap >=5) boardArray[4][2] = StoneColor.BLACK;
-        if(handicap >=4) boardArray[2][6] = StoneColor.BLACK;
-        if(handicap >=3) boardArray[6][6] = StoneColor.BLACK;
-        if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
-        if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
+        if (handicap == 9) boardArray[4][4] = StoneColor.BLACK;
+        if (handicap >= 8) boardArray[2][4] = StoneColor.BLACK;
+        if (handicap >= 7) boardArray[4][6] = StoneColor.BLACK;
+        if (handicap >= 6) boardArray[6][4] = StoneColor.BLACK;
+        if (handicap >= 5) boardArray[4][2] = StoneColor.BLACK;
+        if (handicap >= 4) boardArray[2][6] = StoneColor.BLACK;
+        if (handicap >= 3) boardArray[6][6] = StoneColor.BLACK;
+        if (handicap >= 2) boardArray[6][2] = StoneColor.BLACK;
+        if (handicap >= 1) boardArray[2][2] = StoneColor.BLACK;
 
 
     }
 
     /**
      * Set fixed handicap positions for 13x13 board size.
+     *
      * @param handicap: Amount of handicap stones.
      */
-    public void setHandicap13x13(int handicap){
-        if(size != 13) throw new IllegalArgumentException();
+    public void setHandicap13x13(int handicap) {
+        if (size != 13) throw new IllegalArgumentException();
 
-        if(handicap ==9) boardArray[6][6] = StoneColor.BLACK;
-        if(handicap >=8) boardArray[3][6] = StoneColor.BLACK;
-        if(handicap >=7) boardArray[6][9] = StoneColor.BLACK;
-        if(handicap >=6) boardArray[9][6] = StoneColor.BLACK;
-        if(handicap >=5) boardArray[6][3] = StoneColor.BLACK;
-        if(handicap >=4) boardArray[3][9] = StoneColor.BLACK;
-        if(handicap >=3) boardArray[9][9] = StoneColor.BLACK;
-        if(handicap >=2) boardArray[9][3] = StoneColor.BLACK;
-        if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
+        if (handicap == 9) boardArray[6][6] = StoneColor.BLACK;
+        if (handicap >= 8) boardArray[3][6] = StoneColor.BLACK;
+        if (handicap >= 7) boardArray[6][9] = StoneColor.BLACK;
+        if (handicap >= 6) boardArray[9][6] = StoneColor.BLACK;
+        if (handicap >= 5) boardArray[6][3] = StoneColor.BLACK;
+        if (handicap >= 4) boardArray[3][9] = StoneColor.BLACK;
+        if (handicap >= 3) boardArray[9][9] = StoneColor.BLACK;
+        if (handicap >= 2) boardArray[9][3] = StoneColor.BLACK;
+        if (handicap >= 1) boardArray[3][3] = StoneColor.BLACK;
 
     }
 
     /**
      * Set fixed handicap positions for 19x19 board size.
+     *
      * @param handicap: Amount of handicap stones.
      */
-    public void setHandicap19x19(int handicap){
-        if(size != 19) throw new IllegalArgumentException();
+    public void setHandicap19x19(int handicap) {
+        if (size != 19) throw new IllegalArgumentException();
 
-        if(handicap ==9) boardArray[9][9] = StoneColor.BLACK;
-        if(handicap >=8) boardArray[3][9] = StoneColor.BLACK;
-        if(handicap >=7) boardArray[9][15] = StoneColor.BLACK;
-        if(handicap >=6) boardArray[15][9] = StoneColor.BLACK;
-        if(handicap >=5) boardArray[9][3] = StoneColor.BLACK;
-        if(handicap >=4) boardArray[3][15] = StoneColor.BLACK;
-        if(handicap >=3) boardArray[15][15] = StoneColor.BLACK;
-        if(handicap >=2) boardArray[15][3] = StoneColor.BLACK;
-        if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
+        if (handicap == 9) boardArray[9][9] = StoneColor.BLACK;
+        if (handicap >= 8) boardArray[3][9] = StoneColor.BLACK;
+        if (handicap >= 7) boardArray[9][15] = StoneColor.BLACK;
+        if (handicap >= 6) boardArray[15][9] = StoneColor.BLACK;
+        if (handicap >= 5) boardArray[9][3] = StoneColor.BLACK;
+        if (handicap >= 4) boardArray[3][15] = StoneColor.BLACK;
+        if (handicap >= 3) boardArray[15][15] = StoneColor.BLACK;
+        if (handicap >= 2) boardArray[15][3] = StoneColor.BLACK;
+        if (handicap >= 1) boardArray[3][3] = StoneColor.BLACK;
     }
 
-    private boolean isSuicideMove(int x, int y, StoneColor moveColor){
+    private boolean isSuicideMove(int x, int y, StoneColor moveColor) {
         List<Point> moveGroup = new ArrayList<>();
         StoneColor[][] dummyArray = deepCopy(boardArray);
         dummyArray[x][y] = moveColor;
         callBFS(dummyArray, x, y, moveColor, moveGroup);
         int totalLiberties = 0;
-        for(Point p : moveGroup){
+        for (Point p : moveGroup) {
             totalLiberties = getLiberties(p.x, p.y);
         }
         return totalLiberties <= 0;

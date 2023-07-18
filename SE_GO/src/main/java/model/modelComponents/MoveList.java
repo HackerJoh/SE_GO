@@ -28,25 +28,23 @@ public class MoveList {
         moves.add(new Move(singleMoves, description, blackPoints, whitePoints));
     }
 
-    public void exportMoves(File saveFile, int size) {
+    public void exportMoves(File saveFile, int size) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         SaveGame saveGame = new SaveGame(size, moves);
-        try (FileWriter fileWriter = new FileWriter(saveFile)) {
-            String json = mapper.writeValueAsString(saveGame);
-            fileWriter.write(json);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        FileWriter fileWriter = new FileWriter(saveFile);
+        String json = mapper.writeValueAsString(saveGame);
+        fileWriter.write(json);
+        fileWriter.close();
     }
 
-    public static int getSizeFromFile(File loadedFile) throws IOException { //TODO: einheitliche Fehlerbehandlung
+    public static int getSizeFromFile(File loadedFile) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         SaveGame importSaveGame = mapper.readValue(loadedFile, new TypeReference<>() {
         });
         return importSaveGame.boardsize();
     }
 
-    public void importMoves(File loadedFile) throws IOException { //TODO: getsizeFromFile und importMoves zusammenlegen -- mit Moritz absprechen
+    public void importMoves(File loadedFile) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         SaveGame importSavegame = mapper.readValue(loadedFile, new TypeReference<>() {
         });
@@ -63,21 +61,21 @@ public class MoveList {
         return allSingleMoves;
     }
 
-    public Move getLastMove(){
-        return moves.get(moves.size()-1);
+    public Move getLastMove() {
+        return moves.get(moves.size() - 1);
     }
 
-    public void deleteMovesAfterIndex(int index){
+    public void deleteMovesAfterIndex(int index) {
         if (moves.size() > index + 1) {
             moves.subList(index + 1, moves.size()).clear();
         }
     }
 
-    public int getIndexOfLastMove(){
-      return moves.size()-1;
+    public int getIndexOfLastMove() {
+        return moves.size() - 1;
     }
 
-    public Move getMoveByIndex(int index){
+    public Move getMoveByIndex(int index) {
         return moves.get(index);
     }
 }

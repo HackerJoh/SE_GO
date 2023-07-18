@@ -20,7 +20,7 @@ public class GameEvalutation {
     private double whitePoints;
     private final EndgameColors[][] endBoard;
 
-    public GameEvalutation(StoneColor[][] board, MoveList moveList){
+    public GameEvalutation(StoneColor[][] board, MoveList moveList) {
         this.board = board;
         this.moveList = moveList;
         this.blackPoints = moveList.getLastMove().getBlackPoints();
@@ -28,7 +28,7 @@ public class GameEvalutation {
         this.endBoard = new EndgameColors[board.length][board.length];
     }
 
-    public GameStatistics evaluateEndGameStatistics(){
+    public GameStatistics evaluateEndGameStatistics() {
         lifeOfTwoStones();
         syncEndBoard();
         checkAllNeutralAreas();
@@ -47,30 +47,30 @@ public class GameEvalutation {
         return new GameStatistics(blackPoints, whitePoints, blackMoves, whiteMoves, capturedBlackStones, capturedWhiteStones, winner, endBoard);
     }
 
-    private void syncEndBoard(){
+    private void syncEndBoard() {
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[x].length; y++) {
-                if(board[x][y] == StoneColor.BLACK) endBoard[x][y] = EndgameColors.BLACK;
-                if(board[x][y] == StoneColor.WHITE) endBoard[x][y] = EndgameColors.WHITE;
-                if(board[x][y] == StoneColor.NEUTRAL) endBoard[x][y] = EndgameColors.NEUTRAL;
+                if (board[x][y] == StoneColor.BLACK) endBoard[x][y] = EndgameColors.BLACK;
+                if (board[x][y] == StoneColor.WHITE) endBoard[x][y] = EndgameColors.WHITE;
+                if (board[x][y] == StoneColor.NEUTRAL) endBoard[x][y] = EndgameColors.NEUTRAL;
             }
         }
     }
 
-    private void lifeOfTwoStones(){
+    private void lifeOfTwoStones() {
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[x].length; y++) {
-                if(board[x][y] != StoneColor.NEUTRAL){
-                    checkSingleStoneGroupTwoStones(x,y);
+                if (board[x][y] != StoneColor.NEUTRAL) {
+                    checkSingleStoneGroupTwoStones(x, y);
                 }
             }
         }
     }
 
-    private void checkSingleStoneGroupTwoStones(int x, int y){
+    private void checkSingleStoneGroupTwoStones(int x, int y) {
         List<Point> islandPoints = new ArrayList<>();
         callBFS(GoModel.deepCopy(this.board), x, y, this.board[x][y], islandPoints);
-        if(islandPoints.size() < 2){
+        if (islandPoints.size() < 2) {
             islandPoints.forEach(p -> this.board[p.x][p.y] = StoneColor.NEUTRAL);
         }
     }
@@ -87,17 +87,17 @@ public class GameEvalutation {
         callBFS(grid, x, y + 1, color, islandPoints);
         callBFS(grid, x, y - 1, color, islandPoints);
         callBFS(grid, x + 1, y + 1, color, islandPoints);
-        callBFS(grid, x + 1, y -1, color, islandPoints);
+        callBFS(grid, x + 1, y - 1, color, islandPoints);
         callBFS(grid, x - 1, y + 1, color, islandPoints);
         callBFS(grid, x - 1, y - 1, color, islandPoints);
     }
 
 
-    private void checkAllNeutralAreas(){
+    private void checkAllNeutralAreas() {
         StoneColor[][] dummyArray = GoModel.deepCopy(this.board);
         for (int x = 0; x < dummyArray.length; x++) {
             for (int y = 0; y < dummyArray[x].length; y++) {
-                if(dummyArray[x][y] == StoneColor.NEUTRAL){
+                if (dummyArray[x][y] == StoneColor.NEUTRAL) {
                     checkSingleNeutralArea(dummyArray, x, y);
 
                 }
@@ -105,46 +105,46 @@ public class GameEvalutation {
         }
     }
 
-    private void checkSingleNeutralArea(StoneColor[][] dummyArray, int x, int y){
+    private void checkSingleNeutralArea(StoneColor[][] dummyArray, int x, int y) {
         List<Point> neutralIsland = new ArrayList<>();
         callNeutralBFS(dummyArray, x, y, neutralIsland);
 
         boolean hasBlackStoneNeighbour = false;
         boolean hasWhiteStoneNeighbour = false;
 
-        for(Point p : neutralIsland){
-            if(hasColoredStoneNeighbour(dummyArray, p, StoneColor.BLACK)){
+        for (Point p : neutralIsland) {
+            if (hasColoredStoneNeighbour(dummyArray, p, StoneColor.BLACK)) {
                 hasBlackStoneNeighbour = true;
             }
-            if(hasColoredStoneNeighbour(dummyArray, p, StoneColor.WHITE)){
+            if (hasColoredStoneNeighbour(dummyArray, p, StoneColor.WHITE)) {
                 hasWhiteStoneNeighbour = true;
             }
         }
 
-        if(hasBlackStoneNeighbour && !hasWhiteStoneNeighbour){
+        if (hasBlackStoneNeighbour && !hasWhiteStoneNeighbour) {
             blackPoints += neutralIsland.size();
             neutralIsland.forEach(p -> endBoard[p.x][p.y] = EndgameColors.BLACKAREA);
         }
-        if(hasWhiteStoneNeighbour && !hasBlackStoneNeighbour){
+        if (hasWhiteStoneNeighbour && !hasBlackStoneNeighbour) {
             whitePoints += neutralIsland.size();
             neutralIsland.forEach(p -> endBoard[p.x][p.y] = EndgameColors.WHITEAREA);
         }
         neutralIsland.forEach(p -> dummyArray[p.x][p.y] = StoneColor.UNDEFINED);
     }
 
-    private boolean hasColoredStoneNeighbour(StoneColor[][] dummyArray, Point p, StoneColor color){
-        return  (isValidArrayCoord(p.x - 1, p.y, dummyArray) && dummyArray[p.x -1][p.y] == color) ||
-                (isValidArrayCoord(p.x + 1, p.y, dummyArray) && dummyArray[p.x +1][p.y] == color) ||
-                (isValidArrayCoord(p.x, p.y - 1, dummyArray) && dummyArray[p.x][p.y -1] == color) ||
-                (isValidArrayCoord(p.x, p.y + 1, dummyArray) && dummyArray[p.x][p.y +1] == color);
+    private boolean hasColoredStoneNeighbour(StoneColor[][] dummyArray, Point p, StoneColor color) {
+        return (isValidArrayCoord(p.x - 1, p.y, dummyArray) && dummyArray[p.x - 1][p.y] == color) ||
+                (isValidArrayCoord(p.x + 1, p.y, dummyArray) && dummyArray[p.x + 1][p.y] == color) ||
+                (isValidArrayCoord(p.x, p.y - 1, dummyArray) && dummyArray[p.x][p.y - 1] == color) ||
+                (isValidArrayCoord(p.x, p.y + 1, dummyArray) && dummyArray[p.x][p.y + 1] == color);
     }
 
-    private boolean isValidArrayCoord(int x, int y, StoneColor[][] array){
+    private boolean isValidArrayCoord(int x, int y, StoneColor[][] array) {
         return x >= 0 && x < array.length && y >= 0 && y < array[x].length;
     }
 
     private static void callNeutralBFS(StoneColor[][] grid, int x, int y, List<Point> neutralIsland) {
-        if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] != StoneColor.NEUTRAL || grid[x][y] == StoneColor.UNDEFINED)){
+        if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] != StoneColor.NEUTRAL || grid[x][y] == StoneColor.UNDEFINED)) {
             return;
         }
         neutralIsland.add(new Point(x, y));
@@ -156,22 +156,21 @@ public class GameEvalutation {
         callNeutralBFS(grid, x, y - 1, neutralIsland);
     }
 
-    private int countMovesByColor(StoneColor color){
-        return (int)Arrays.stream(moveList.getAllSingleMoves()).filter(m -> m.isSetStone() && m.getColor() == color).count();
+    private int countMovesByColor(StoneColor color) {
+        return (int) Arrays.stream(moveList.getAllSingleMoves()).filter(m -> m.isSetStone() && m.getColor() == color).count();
     }
 
-    private int countCapturedStoneByColor(StoneColor color){
-        return (int)Arrays.stream(moveList.getAllSingleMoves()).filter(m -> !m.isSetStone() && m.getColor() == color).count();
+    private int countCapturedStoneByColor(StoneColor color) {
+        return (int) Arrays.stream(moveList.getAllSingleMoves()).filter(m -> !m.isSetStone() && m.getColor() == color).count();
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder out = new StringBuilder("GameStats\n----------------------------------\n");
         out.append("BlackPoints: ").append(blackPoints).append("\n");
         out.append("WhitePoints: ").append(whitePoints).append("\n");
         return out.toString();
     }
-
 
 
 }

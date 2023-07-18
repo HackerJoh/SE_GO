@@ -1,6 +1,6 @@
 package singleComponents;
 
-public enum EndgameColors{
+public enum EndgameColors {
     BLACK,
     WHITE,
     BLACKAREA,

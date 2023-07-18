@@ -14,7 +14,7 @@ public class Stone extends Circle {
     private final BoardController controller;
 
 
-    public Stone(int id, double radius, BoardController controller){
+    public Stone(int id, double radius, BoardController controller) {
         super(radius, Color.TRANSPARENT);
         this.id = id;
         this.isUsed = false;
@@ -23,34 +23,34 @@ public class Stone extends Circle {
         this.controller = controller;
     }
 
-    private void addSetListener(){
+    private void addSetListener() {
         this.setStroke(Color.TRANSPARENT);
         this.setOnMouseClicked(mouseEvent -> {
-            if(!isUsed && controller.isGameNotEnded()){
-                controller.setStone(id/controller.getBoardSize(), id%controller.getBoardSize());
+            if (!isUsed && controller.isGameNotEnded()) {
+                controller.setStone(id / controller.getBoardSize(), id % controller.getBoardSize());
             }
         });
     }
 
-    private void addHoverListener(){
+    private void addHoverListener() {
         this.setOnMouseEntered(mouseEvent -> {
-            if(!isUsed && controller.isGameNotEnded()){
-                if(controller.getTurn() == StoneColor.BLACK){
+            if (!isUsed && controller.isGameNotEnded()) {
+                if (controller.getTurn() == StoneColor.BLACK) {
                     this.setFill(hoverColorBlack);
-                }else{
+                } else {
                     this.setFill(hoverColorWhite);
                 }
             }
         });
 
         this.setOnMouseExited(mouseEvent -> {
-            if(!isUsed){
+            if (!isUsed) {
                 this.setFill(Color.TRANSPARENT);
             }
         });
     }
 
-    public void setUsed(boolean isUsed){
+    public void setUsed(boolean isUsed) {
         this.isUsed = isUsed;
     }
 }

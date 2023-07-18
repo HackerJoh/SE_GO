@@ -16,6 +16,7 @@ public class Main extends Application {
 
     /**
      * The start() method is called when the JavaFX application is launched.
+     *
      * @param primaryStage: Transports the actual stage which will be displayed.
      * @throws Exception: Throw exception towards main-method.
      */

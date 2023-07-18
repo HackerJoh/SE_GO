@@ -1,12 +1,10 @@
 package controller;
 
 
-import GoApplication.Main;
 import controller.guiComponents.HLine;
 import controller.guiComponents.Stone;
 import controller.guiComponents.VLine;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -15,10 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -68,12 +64,6 @@ public class BoardController {
     @FXML
     private CheckMenuItem cmi_inspection;
 
-    @FXML
-    private Hyperlink hyperlink;
-
-    @FXML
-    private MenuItem mi_rules;
-
     /**
      * When exit-Button is pressed, quit the program.
      */
@@ -100,7 +90,7 @@ public class BoardController {
      * Open a FileChooser to select where the file should be saved when clicking on save-button (only .json allowed).
      */
     @FXML
-    private void onSave() {
+    private void onSave() throws IOException {
         Stage primaryStage = (Stage) btn_surrender.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("JSON File", "*.json");
@@ -173,7 +163,7 @@ public class BoardController {
                 a.setHeaderText("Alle Regeln im Überblick:");
                 a.setContentText("https://de.wikipedia.org/wiki/Go-Regeln");
                 Optional<ButtonType> result = a.showAndWait();
-                if (result.get() == open){
+                if (result.get() == open) {
                     getHostServices().showDocument("https://de.wikipedia.org/wiki/Go-Regeln");
                 }
             }
@@ -185,7 +175,7 @@ public class BoardController {
      * Open a new Stage to display the About FXML.
      */
     @FXML
-    private void openAbout(){
+    private void openAbout() {
         Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setTitle("Über");
         a.setHeaderText("JKU GO");
@@ -337,7 +327,6 @@ public class BoardController {
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, 2, i + 3);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         //create left Numbers
@@ -345,7 +334,6 @@ public class BoardController {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 3, 2);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         //create the Stones and the Lines for the board
@@ -383,14 +371,12 @@ public class BoardController {
         for (int i = 0; i < boardSize; i++) {
             Text text = new Text("" + (i + 1));
             gp_boardGrid.add(text, boardSize + 3, i + 3);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         for (int i = 0; i < boardSize; i++) {
             char vertical = (char) (65 + i);
             Text text = new Text(Character.toString(vertical));
             gp_boardGrid.add(text, i + 3, boardSize + 3);
-            //gp_boardGrid.setHalignment(text, HPos.CENTER);
         }
 
         ColumnConstraints col = new ColumnConstraints();

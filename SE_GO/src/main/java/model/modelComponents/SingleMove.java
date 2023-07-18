@@ -7,13 +7,14 @@ import singleComponents.StoneColor;
  */
 public class SingleMove {
     private StoneColor color;
-    private  int xCoord;
-    private  int yCoord;
-    private  boolean isSetStone;
+    private int xCoord;
+    private int yCoord;
+    private boolean isSetStone;
 
-    public SingleMove(){}
+    public SingleMove() {
+    }
 
-    public SingleMove(StoneColor color, int xCoord, int yCoord, boolean isSetStone){
+    public SingleMove(StoneColor color, int xCoord, int yCoord, boolean isSetStone) {
         this.color = color;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
@@ -53,7 +54,7 @@ public class SingleMove {
         this.isSetStone = setStone;
     }
 
-    public String toString(){
+    public String toString() {
         return color.toString();
     }
 }

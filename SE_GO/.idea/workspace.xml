@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Changes" />
+    <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Minor Changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/GoModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/GoModelTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
+        <option value="Record" />
         <option value="Class" />
       </list>
     </option>
@@ -21,10 +27,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/.." value="jlumetsberger" />
+        <entry key="$PROJECT_DIR$/.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -39,21 +53,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dokumente\WIN\4. Sem\SE_GO\SE_GO\src\main\resources\gameFiles" />
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\src\main\resources\view" />
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\src\main\resources" />
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\src\main\java\model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="model.Main" />
+      <option name="MAIN_CLASS_NAME" value="GoApplication.Main" />
       <module name="SE_GO" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="GoApplication.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -61,10 +81,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GoModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE_GO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.GoModelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.GoModelTest" />
       </list>
     </recent_temporary>
   </component>
@@ -77,68 +112,365 @@
       <option name="presentableId" value="Default" />
       <updated>1679991152459</updated>
       <workItem from="1679991153243" duration="860000" />
-      <workItem from="1682066640248" duration="652000" />
-      <workItem from="1682970927209" duration="8466000" />
-      <workItem from="1683021880730" duration="4065000" />
-      <workItem from="1683229460042" duration="3829000" />
+      <workItem from="1684328586929" duration="1348000" />
+      <workItem from="1684749892355" duration="950000" />
+      <workItem from="1685456913482" duration="4252000" />
+      <workItem from="1685461926235" duration="648000" />
+      <workItem from="1686604217939" duration="35000" />
+      <workItem from="1686604282097" duration="5268000" />
+      <workItem from="1686764024963" duration="9777000" />
+      <workItem from="1686825406756" duration="4780000" />
+      <workItem from="1687294156883" duration="1084000" />
+      <workItem from="1688326928032" duration="3122000" />
+      <workItem from="1688407305432" duration="2390000" />
+      <workItem from="1688410362695" duration="2500000" />
+      <workItem from="1688503880868" duration="373000" />
+      <workItem from="1688586040456" duration="4811000" />
     </task>
-    <task id="LOCAL-00001" summary="Rebased">
-      <created>1681806117856</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1681806117856</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Added GoLine">
-      <created>1682980269592</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1682980269592</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Structered Stone and added Lines to the Gobaord">
-      <created>1683022310323</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1683022310323</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Structered Stone and added Lines to the Gobaord">
-      <created>1683229502718</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1683229502719</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Structered Stone and added Lines to the Gobaord">
-      <created>1683229877021</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1683229877021</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added Comments to HLine and VLine">
-      <created>1683232196344</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1683232196344</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Added Comments to Model">
-      <created>1683237667192</created>
+    <task id="LOCAL-00007" summary="Added Dependencies for the Json Writer">
+      <created>1685460797193</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1683237667192</updated>
+      <updated>1685460797193</updated>
     </task>
-    <task id="LOCAL-00008" summary="Made some Variables Final">
-      <created>1683237728597</created>
+    <task id="LOCAL-00008" summary="Added a Move Oject!">
+      <created>1685460910774</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1683237728597</updated>
+      <updated>1685460910774</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added a Object which stores Move Objects and can Export them to a Json File.">
+      <created>1685460955136</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460955136</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Updated Module info for the new Depencies">
+      <created>1685460987451</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1685460987451</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Made that Removed Stones can setted again">
+      <created>1685461023036</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1685461023036</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added Cordinates to the Moves">
+      <created>1685461277029</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1685461277029</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Class Move added getter vor Coordinates">
+      <created>1686602670018</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1686602670018</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Changed Boardarray to Stonecolorarray and changed all necessary Methods for this.">
+      <created>1686642703509</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1686642703509</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Minor Changes">
+      <created>1686774186670</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774186670</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Added a SingleMove, which represents one Stone in a Move">
+      <created>1686774233187</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774233187</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Changed Move list so it can Contains a Array of SingleMoves">
+      <created>1686774287125</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774287125</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Changed Constructor for Movelist">
+      <created>1686774324643</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774324643</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Removed a Empty line">
+      <created>1686774344165</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774344165</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added feature so that Set Stone and romve Stone added in the Movelist">
+      <created>1686774391723</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1686774391723</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Missused the Surrender Button for Import the Json">
+      <created>1686784333349</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1686784333349</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Changed, that the Deleting Move is also saved in the Move where the other stones are deleted">
+      <created>1686784901847</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1686784901847</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Bug Fixes">
+      <created>1686785710855</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1686785710855</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Updated the latest Version for the Moves, because the last Commit doesn't worked">
+      <created>1686827755244</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1686827755244</updated>
+    </task>
+    <task id="LOCAL-00025" summary="MVC changes">
+      <created>1686829961598</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1686829961598</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Deleted Unnecessary import">
+      <created>1686830148341</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1686830148341</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Changed loadGame(), that Points were Imported from the JSON">
+      <created>1688318707304</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318707304</updated>
+    </task>
+    <task id="LOCAL-00028" summary="New List">
+      <created>1688318715725</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318715725</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Added Points to the Moves and deleted unnacessary ID">
+      <created>1688318840792</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318840792</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Changend Contructors for saving of the Points">
+      <created>1688318874509</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318874509</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Minor Changes">
+      <created>1688318888501</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1688318888501</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Implementing Jump Mode">
+      <created>1688321490394</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1688321490394</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Added a record for the Savegame">
+      <created>1688408139245</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408139246</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Minor Changes">
+      <created>1688408149575</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408149575</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Changed Import/Export from JSON to a Record">
+      <created>1688408178600</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408178600</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Added the boardsize as Parameter for the ExportGame function">
+      <created>1688408230105</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408230105</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Added the boardsize as Parameter for the ExportGame function">
+      <created>1688408235620</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408235620</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Deleted Boardsize Attribute in the Move Class">
+      <created>1688408520024</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1688408520024</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Added classes for game statistics at the end">
+      <created>1688484660279</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1688484660279</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Changed Project Structure">
+      <created>1688504203331</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1688504203331</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Changed callBFS to Static so it can be Used in de Evaluation, and deleted islandPoints List as Class Field">
+      <created>1688589812378</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1688589812379</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Added Undefined for de Evaluation of Neutral Areas (So that NumberOfIslands Algorithm works also on Neutral)">
+      <created>1688589846281</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1688589846281</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Added some Algos for calculating the Game Points">
+      <created>1688590030658</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1688590030658</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Added GameEvaluate Function!">
+      <created>1688590506674</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1688590506674</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Added toString()">
+      <created>1688590616788</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1688590616789</updated>
+    </task>
+    <task id="LOCAL-00046" summary="changed endGame logic">
+      <created>1689017543422</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1689017543422</updated>
+    </task>
+    <task id="LOCAL-00047" summary="bugfix endGame">
+      <created>1689018650153</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1689018650153</updated>
+    </task>
+    <task id="LOCAL-00048" summary="handicap">
+      <created>1689019561294</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1689019561294</updated>
+    </task>
+    <task id="LOCAL-00049" summary="bug fixing">
+      <created>1689021904101</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1689021904101</updated>
+    </task>
+    <task id="LOCAL-00050" summary="bug fixing">
+      <created>1689022156140</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1689022156141</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Code-cleanup/javadoc">
+      <created>1689181859353</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1689181859353</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Code cleanup, javadoc, structural changes">
+      <created>1689186427132</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1689186427132</updated>
+    </task>
+    <task id="LOCAL-00053" summary="suicide">
+      <created>1689696967718</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1689696967718</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Minor Changes">
+      <created>1689699053131</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1689699053131</updated>
+    </task>
+    <task id="LOCAL-00055" summary="code cleanup">
+      <created>1689706729881</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1689706729882</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,15 +486,48 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Rebased" />
-    <MESSAGE value="Added GoLine" />
-    <MESSAGE value="Structered Stone and added Lines to the Gobaord" />
-    <MESSAGE value="Added Comments" />
-    <MESSAGE value="Added Comments to HLine and VLine" />
-    <MESSAGE value="Added Comments to Model" />
-    <MESSAGE value="Made some Variables Final" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made some Variables Final" />
+    <MESSAGE value="Changed loadGame(), that Points were Imported from the JSON" />
+    <MESSAGE value="New List" />
+    <MESSAGE value="Added Points to the Moves and deleted unnacessary ID" />
+    <MESSAGE value="Changend Contructors for saving of the Points" />
+    <MESSAGE value="Implementing Jump Mode" />
+    <MESSAGE value="Added a record for the Savegame" />
+    <MESSAGE value="Changed Import/Export from JSON to a Record" />
+    <MESSAGE value="Added the boardsize as Parameter for the ExportGame function" />
+    <MESSAGE value="Deleted Boardsize Attribute in the Move Class" />
+    <MESSAGE value="Added classes for game statistics at the end" />
+    <MESSAGE value="Changed Project Structure" />
+    <MESSAGE value="Changed callBFS to Static so it can be Used in de Evaluation, and deleted islandPoints List as Class Field" />
+    <MESSAGE value="Added Undefined for de Evaluation of Neutral Areas (So that NumberOfIslands Algorithm works also on Neutral)" />
+    <MESSAGE value="Added some Algos for calculating the Game Points" />
+    <MESSAGE value="Added GameEvaluate Function!" />
+    <MESSAGE value="Added toString()" />
+    <MESSAGE value="changed endGame logic" />
+    <MESSAGE value="bugfix endGame" />
+    <MESSAGE value="handicap" />
+    <MESSAGE value="bug fixing" />
+    <MESSAGE value="Code-cleanup/javadoc" />
+    <MESSAGE value="Code cleanup, javadoc, structural changes" />
+    <MESSAGE value="suicide" />
+    <MESSAGE value="Minor Changes" />
+    <MESSAGE value="code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="code cleanup" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testKomi.ic" NAME="MenuControllerTest.testKomi Coverage Results" MODIFIED="1684785015702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testComboBoxSize.ic" NAME="MenuControllerTest.testComboBoxSize Coverage Results" MODIFIED="1684784585450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testInitialize.ic" NAME="MenuControllerTest.testInitialize Coverage Results" MODIFIED="1684781310757" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SE_GO$Main.ic" NAME="Main Coverage Results" MODIFIED="1684784781832" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>GoApplication.*</FILTER>
+    </SUITE>
   </component>
 </project>

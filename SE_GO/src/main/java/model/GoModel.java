@@ -209,7 +209,6 @@ public class GoModel {
                             this.removeStone(p.x, p.y);
                             move[counter] = new SingleMove(getTurn(), p.x, p.y, false);
                             counter++;
-                            System.out.println(this);
                             if (color == StoneColor.WHITE) {
                                 blackPoints++;
                             } else {
@@ -229,18 +228,20 @@ public class GoModel {
     }
 
     /**
-     * @param grid
-     * @param x
-     * @param y
-     * @param color
-     * @param islandPoints
+     * Iterate recursively through the grid and find the stone groups of same color.
+     *
+     * @param grid:         Actual Board multi demensional array.
+     * @param x:            x-coordinate of the stone to check.
+     * @param y:            y-coordinate of the stone to check.
+     * @param color:        Color of the stone to check.
+     * @param islandPoints: List of stones from a stone group with one color
      */
     public static void callBFS(StoneColor[][] grid, int x, int y, StoneColor color, List<Point> islandPoints) {
         if (x < 0 || x >= grid.length || y < 0 || y >= grid[x].length || (grid[x][y] != color || grid[x][y] == StoneColor.NEUTRAL)) {
             return;
         }
         islandPoints.add(new Point(x, y));
-        grid[x][y] = StoneColor.NEUTRAL; // Test mit neutral?
+        grid[x][y] = StoneColor.NEUTRAL;
 
         callBFS(grid, x + 1, y, color, islandPoints);
         callBFS(grid, x - 1, y, color, islandPoints);
@@ -249,9 +250,11 @@ public class GoModel {
     }
 
     /**
-     * @param x
-     * @param y
-     * @return
+     * Gets the coordinates of a stone and checks how many liberties he has next to him.
+     *
+     * @param x: x-coordinate of the stone to check.
+     * @param y: y-coordinate of the stone to check.
+     * @return: Amount of free fields next to the stone.
      */
     private int getLiberties(int x, int y) {
         int liberties = 0;
@@ -272,8 +275,8 @@ public class GoModel {
     }
 
     /**
-     * @param original
-     * @return
+     * @param original: Grid to copy.
+     * @return: Copy of original grid.
      */
     public static StoneColor[][] deepCopy(StoneColor[][] original) {
         if (original == null) {
@@ -463,10 +466,8 @@ public class GoModel {
     public GameStatistics evaluateGame() {
         setGameHasEnded(true);
         GameEvalutation evalutation = new GameEvalutation(deepCopy(boardArray), moveList);
-        GameStatistics endgame = evalutation.evaluateEndGameStatistics();
-        System.out.println(endgame);
 
-        return endgame;
+        return evalutation.evaluateEndGameStatistics();
     }
 
     /**
@@ -556,6 +557,14 @@ public class GoModel {
         if (handicap >= 1) boardArray[3][3] = StoneColor.BLACK;
     }
 
+    /**
+     * Method to check if a move would be a suicide and prevent this move.
+     *
+     * @param x:         x-coordinate where user wants to set a stone.
+     * @param y:         y-coordinate where user wants to set a stone.
+     * @param moveColor: Color of the actual user in turn.
+     * @return: Boolean value if turn is a suicide move.
+     */
     private boolean isSuicideMove(int x, int y, StoneColor moveColor) {
         List<Point> moveGroup = new ArrayList<>();
         StoneColor[][] dummyArray = deepCopy(boardArray);

@@ -8,22 +8,14 @@ public record GameStatistics(double blackPoints, double whitePoints, int blackMo
                              EndgameColors[][] endBoard) {
     @Override
     public String toString() {
-        StringBuilder out = new StringBuilder("GameStats\n----------------------------------\n");
-        out.append("BlackPoints: ").append(blackPoints).append("\n");
-        out.append("WhitePoints: ").append(whitePoints).append("\n");
-        out.append("BlackMoves: ").append(blackMoves).append("\n");
-        out.append("WhiteMoves: ").append(whiteMoves).append("\n");
-        out.append("CapturedBlackStones: ").append(capturedBlackStones).append("\n");
-        out.append("CapturedWhiteStones: ").append(capturedWhiteStones).append("\n");
-        out.append("Winner: ").append(winner).append("\n\n");
+        String out = "GameStats\n----------------------------------\n" + "BlackPoints: " + blackPoints + "\n" +
+                "WhitePoints: " + whitePoints + "\n" +
+                "BlackMoves: " + blackMoves + "\n" +
+                "WhiteMoves: " + whiteMoves + "\n" +
+                "CapturedBlackStones: " + capturedBlackStones + "\n" +
+                "CapturedWhiteStones: " + capturedWhiteStones + "\n" +
+                "Winner: " + winner + "\n\n";
 
-        for (EndgameColors[] subarray : endBoard) {
-            for (EndgameColors color : subarray) {
-                out.append(color).append(" ");
-            }
-            out.append("\n");
-        }
-
-        return out.toString();
+        return out;
     }
 }

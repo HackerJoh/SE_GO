@@ -10,16 +10,18 @@ import org.junit.jupiter.api.Test;
 import singleComponents.Settings;
 import singleComponents.StoneColor;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GoModelTest {
     private GoModel model;
     BoardController controller = null;
+
     @BeforeAll
-    static void beforeAll(){
-        Platform.startup(() -> {});
+    static void beforeAll() {
+        Platform.startup(() -> {
+        });
     }
+
     @BeforeEach
     void setUp() throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Board.fxml"));
@@ -32,6 +34,7 @@ public class GoModelTest {
         controller.initData(s);
         model = controller.model;
     }
+
     //set noOfMoves
     @Test
     public void testSetNoMoves() {
@@ -61,6 +64,7 @@ public class GoModelTest {
         // Assert
         assertEquals(noMoves3, model.getNoMoves());
     }
+
     //GetNoOfMoves
     @Test
     public void testGetNoMovesInitiallyZero() {
@@ -70,6 +74,7 @@ public class GoModelTest {
         // Assert
         assertEquals(0, actualNoMoves);
     }
+
     @Test
     public void testCheckAllStonesIfTheyHaveLibertiesAndTestPointsCounting() {
         this.whiteCaptures1Black();
@@ -77,13 +82,13 @@ public class GoModelTest {
         double actualWhitePoints = model.getWhitePoints();
         double actualBlackPoints = model.getBlackPoints();
 
-        assertEquals(Color.TRANSPARENT,model.getColorById(3*9+3));
+        assertEquals(Color.TRANSPARENT, model.getColorById(3 * 9 + 3));
         // Assert
         assertEquals(1.0, actualWhitePoints);
         assertEquals(0.0, actualBlackPoints);
     }
 
-    public void whiteCaptures1Black(){
+    public void whiteCaptures1Black() {
         // Arrange
         // Set some stones on the board for testing
         model.controllerSetsStone(3, 3, "Move 1"); // Assuming the controllerSetsStone works as intended
@@ -112,7 +117,7 @@ public class GoModelTest {
         double actualWhitePoints = model.getWhitePoints();
         double actualBlackPoints = model.getBlackPoints();
 
-        assertEquals(Color.TRANSPARENT,model.getColorById(3*9+3));
+        assertEquals(Color.TRANSPARENT, model.getColorById(3 * 9 + 3));
         // Assert
         assertEquals(1.0, actualWhitePoints);
         assertEquals(1.0, actualBlackPoints);
@@ -120,92 +125,62 @@ public class GoModelTest {
 
     @Test
     public void testGetTurn() {
-        assertEquals(StoneColor.BLACK,model.getTurn());
-        model.controllerSetsStone(0,1,"Test");
-        assertEquals(StoneColor.WHITE,model.getTurn());
+        assertEquals(StoneColor.BLACK, model.getTurn());
+        model.controllerSetsStone(0, 1, "Test");
+        assertEquals(StoneColor.WHITE, model.getTurn());
     }
 
 
     @Test
     public void testGameEnd() {
         model.getSurrenderer();
-        assertEquals(model.isGameHasEnded(),true);
+        assertTrue(model.isGameHasEnded());
     }
 
     @Test
-    public void testHandicap9x9(){
+    public void testHandicap9x9() {
         model.setHandicap9x9(1);
-        assertEquals(Color.BLACK,model.getColorById(20));
+        assertEquals(Color.BLACK, model.getColorById(20));
     }
 
     @Test
-    public void testHandicap13x13(){
+    public void testHandicap13x13() {
         model = new GoModel(13);
         model.setHandicap13x13(1);
-        assertEquals(Color.BLACK,model.getColorById(42));
+        assertEquals(Color.BLACK, model.getColorById(42));
     }
 
     @Test
-    public void testHandicap19x19(){
+    public void testHandicap19x19() {
         model = new GoModel(19);
         model.setHandicap19x19(1);
-        assertEquals(Color.BLACK,model.getColorById(60));
+        assertEquals(Color.BLACK, model.getColorById(60));
     }
+
     @Test
-    public void testEvaluateGame(){
+    public void testEvaluateGame() {
         this.whiteCaptures1Black();
-        assertEquals(2.00,model.evaluateGame().whitePoints());
+        assertEquals(2.00, model.evaluateGame().whitePoints());
     }
 
     @Test
-    public void testInspectionMode(){
+    public void testInspectionMode() {
         model.enterInspectionMode();
-        assertEquals(true,model.isInspectionModeOn());
+        assertTrue(model.isInspectionModeOn());
         model.turnOffInspectionModeIfOn();
-        assertEquals(false,model.isInspectionModeOn());
+        assertFalse(model.isInspectionModeOn());
     }
 
     @Test
-    public void testGetPassColor(){
-        String test=model.getPassColor();
-        assertEquals("SCHWARZ passt",test);
-    }
-/*
-    @Test
-    public void testNoOfMoves() {
-        model.setStone(0, StoneColor.WHITE);
-        model.setStone(1, StoneColor.BLACK);
-        model.setStone(2, StoneColor.WHITE);
-        assertEquals(3,model.getNoMoves());
+    public void testGetPassColor() {
+        String test = model.getPassColor();
+        assertEquals("SCHWARZ passt", test);
     }
 
     @Test
     public void testIncreaseTurn() {
         model.increaseTurn();
-        assertEquals(1,model.getNoMoves());
+        assertEquals(1, model.getNoMoves());
     }
-
-    @Test
-    public void testSaveGame() {
-        model.saveGame();
-        File file = new File("list.json");
-        assertTrue(file.exists());
-    }
-
-    @Test
-    public void testLibertyCheck() {
-        model.setStone(0, StoneColor.WHITE);
-        model.setStone(1, StoneColor.BLACK);
-        model.setStone(3, StoneColor.BLACK);
-
-        assertEquals(1,model.getBlackPoints());
-    }
-
-    @Test
-    public void testRemoveCatchedStone() {
-        model.setStone(0, StoneColor.WHITE);
-        model.removeStone(0,0);
-        assertEquals(Color.TRANSPARENT,model.getColorById(0));
-    }*/
 
 }

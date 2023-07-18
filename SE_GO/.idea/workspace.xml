@@ -7,6 +7,8 @@
     <list default="true" id="174fc5a1-1338-40b0-9892-0426ea4b77da" name="Changes" comment="Minor Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/GoModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/GoModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/gameStatistics/GameStatistics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/GoModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/GoModelTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +54,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -65,7 +67,7 @@
       <recent name="C:\Dev\Projekte\Uni\PR_SE\GO\SE_GO\SE_GO\src\main\java\model" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GoApplication.Main" />
       <module name="SE_GO" />
@@ -79,9 +81,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GoModelTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="SE_GO" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.GoModelTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.GoModelTest" />
       </list>
     </recent_temporary>
   </component>
@@ -108,20 +126,6 @@
       <workItem from="1688410362695" duration="2500000" />
       <workItem from="1688503880868" duration="373000" />
       <workItem from="1688586040456" duration="4811000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added Dependecies for the JSON Writer">
-      <created>1685460740780</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460740780</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Added Setter for IsUsed boolean">
-      <created>1685460773795</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1685460773795</updated>
     </task>
     <task id="LOCAL-00007" summary="Added Dependencies for the Json Writer">
       <created>1685460797193</created>
@@ -452,7 +456,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689696967718</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Minor Changes">
+      <created>1689699053131</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1689699053131</updated>
+    </task>
+    <task id="LOCAL-00055" summary="code cleanup">
+      <created>1689706729881</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1689706729882</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -471,14 +489,12 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Deleted Unnecessary import" />
     <MESSAGE value="Changed loadGame(), that Points were Imported from the JSON" />
     <MESSAGE value="New List" />
     <MESSAGE value="Added Points to the Moves and deleted unnacessary ID" />
     <MESSAGE value="Changend Contructors for saving of the Points" />
     <MESSAGE value="Implementing Jump Mode" />
     <MESSAGE value="Added a record for the Savegame" />
-    <MESSAGE value="Minor Changes" />
     <MESSAGE value="Changed Import/Export from JSON to a Record" />
     <MESSAGE value="Added the boardsize as Parameter for the ExportGame function" />
     <MESSAGE value="Deleted Boardsize Attribute in the Move Class" />
@@ -496,7 +512,9 @@
     <MESSAGE value="Code-cleanup/javadoc" />
     <MESSAGE value="Code cleanup, javadoc, structural changes" />
     <MESSAGE value="suicide" />
-    <option name="LAST_COMMIT_MESSAGE" value="suicide" />
+    <MESSAGE value="Minor Changes" />
+    <MESSAGE value="code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="code cleanup" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SE_GO$MenuControllerTest_testKomi.ic" NAME="MenuControllerTest.testKomi Coverage Results" MODIFIED="1684785015702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

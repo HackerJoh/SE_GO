@@ -88,6 +88,7 @@ public class GoModel {
      */
     public void controllerSetsStone(int xCoord, int yCoord, String description) {
         turnOffInspectionModeIfOn();
+        if(isSuicideMove(xCoord, yCoord, getTurn())) return;
         boardArray[xCoord][yCoord] = getTurn();
         SingleMove setMove;
         if (getTurn() == StoneColor.BLACK) {
@@ -567,5 +568,17 @@ public class GoModel {
         if(handicap >=3) boardArray[15][15] = StoneColor.BLACK;
         if(handicap >=2) boardArray[15][3] = StoneColor.BLACK;
         if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
+    }
+
+    private boolean isSuicideMove(int x, int y, StoneColor moveColor){
+        List<Point> moveGroup = new ArrayList<>();
+        StoneColor[][] dummyArray = deepCopy(boardArray);
+        dummyArray[x][y] = moveColor;
+        callBFS(dummyArray, x, y, moveColor, moveGroup);
+        int totalLiberties = 0;
+        for(Point p : moveGroup){
+            totalLiberties = getLiberties(p.x, p.y);
+        }
+        return totalLiberties <= 0;
     }
 }

@@ -528,6 +528,8 @@ public class GoModel {
         if(handicap >=3) boardArray[6][6] = StoneColor.BLACK;
         if(handicap >=2) boardArray[6][2] = StoneColor.BLACK;
         if(handicap >=1) boardArray[2][2] = StoneColor.BLACK;
+
+
     }
 
     /**
@@ -546,6 +548,7 @@ public class GoModel {
         if(handicap >=3) boardArray[9][9] = StoneColor.BLACK;
         if(handicap >=2) boardArray[9][3] = StoneColor.BLACK;
         if(handicap >=1) boardArray[3][3] = StoneColor.BLACK;
+
     }
 
     /**

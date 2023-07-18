@@ -102,6 +102,12 @@ public class GoModel {
         this.checkAllStonesIfTheyHaveLiberties(setMove, description);
     }
 
+
+
+    private boolean isValidArrayCoord(int x, int y, StoneColor[][] array){
+        return x >= 0 && x < array.length && y >= 0 && y < array[x].length;
+    }
+
     /**
      * Tell the controller which player has surrendered the game.
      * @return: String with the text for the status bar.
